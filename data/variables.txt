@@ -1,0 +1,11 @@
+{
+	"bio01d": ["mean annual air temperature","mean annual daily mean air temperatures averaged over 1 year"],
+	"bio04d": ["temperature seasonality","standard deviation of the montlhly temperatures"],
+	"bio12d": ["annual precipitation","accumulated preccipitation amount over 1 year"],
+	"cdd": ["consecutive_dry_days_index_per_time_period","number_of_cdd_periods_with_more_than_5days_per_time_period"],
+	"fd": ["frost_days_index_per_time_period"],
+	"gdd5": ["Growing degree days heat sum above 5°C","heat sum of all days above the 5°C temperature accumulated over 1 year"],
+	"prsd": ["precipitation"],
+	"scd": ["Snow cover days","Number of days with snowcover calculated using the snowpack model implementation in from TREELIM"],
+	"swe": ["Snow water equivalent","Amount of luquid water if snow is melted"]
+}
