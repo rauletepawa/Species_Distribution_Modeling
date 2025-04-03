@@ -13,18 +13,6 @@
             "state": {
               "type": "image",
               "state": {
-                "file": "Images/Pasted image 20250403135323.png"
-              },
-              "icon": "lucide-image",
-              "title": "Pasted image 20250403135323"
-            }
-          },
-          {
-            "id": "5875e6afe047b7ae",
-            "type": "leaf",
-            "state": {
-              "type": "image",
-              "state": {
                 "file": "Images/Pasted image 20250403135641.png"
               },
               "icon": "lucide-image",
@@ -46,7 +34,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -195,23 +183,23 @@
   },
   "active": "a428b0c2f62d11de",
   "lastOpenFiles": [
+    "data/variables.txt",
+    "code/readme.md",
+    "code/Splitting_Norway_in_grids.ipynb",
+    "code/Build_CNN_dataset.ipynb",
+    "code/1_gbif_norge_data.R",
     "Images/Pasted image 20250403140435.png",
-    "Images/Pasted image 20250403135323.png",
     "Images/Pasted image 20250403135641.png",
-    "readme.md",
-    "Images/Pasted image 20250403103202.png",
-    "Images/Pasted image 20250403103328.png",
-    "Images/Pasted image 20250403103343.png",
-    "Images/Pasted image 20250403103853.png",
-    "Images/Pasted image 20250403122302.png",
+    "Images/Pasted image 20250403135323.png",
     "Images/Pasted image 20250403122951.png",
     "Images/Pasted image 20250403122559.png",
+    "Images/Pasted image 20250403122302.png",
+    "Images/Pasted image 20250403103853.png",
+    "Images/Pasted image 20250403103343.png",
+    "Images/Pasted image 20250403103202.png",
     "Images",
-    "Nueva carpeta",
-    "Pasted image 20250403122951.png",
-    "code/Splitting_Norway_in_grids.ipynb",
-    "code/1_gbif_norge_data.R",
-    "data/variables.txt",
-    "code/Build_CNN_dataset.ipynb"
+    "readme.md",
+    "Images/Pasted image 20250403103328.png",
+    "Nueva carpeta"
   ]
 }

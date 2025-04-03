@@ -336,7 +336,7 @@ class Args:
         self.threshold = 0.15
 ```
 
-#### Model Evaluation:
+#### Model Model Training:
 
 The CNN model outputs a logits vector for each training sample, after applying a [sigmoid](https://machinelearningmastery.com/a-gentle-introduction-to-sigmoid-function/) function to these logits vectors, we obtain a probability vector where each probability value is independent of the other probabilities (they do not add up to 1 as in the softmax function). 
 
@@ -364,7 +364,155 @@ While α balances the importance of positive/negative examples, it does not diff
 
 $FL(p_{t}) = −α_{t}(1 − p_{t})^γ log(p_{t})$
 
-#### ResNet FineTunning:
+#### Evaluation Metrics
+
+I used a the **evaluate** function to asses general performance scores in the models when evaluating them on the test dataset.
+This function computes the True Positives (TP), True Negatives (TN), False Positives (FP) and False Negatives (FN) for all the samples in the test dataset. With these metrics I compute the macro_tss, micro_tss and weighted_tss. 
+
+##### True Statistic Skill (TSS):
+
+$TSS=Sensitivity+Specificity−1$
+
+This is the fundamental evaluation metric I will use to mesure the performance of the models. The TSS consists in a trade-off between Sensitivity and Specificity.
+
+Where:
+
+- **Sensitivity (Recall or True Positive Rate)** = $\frac{TP}{TP + FN}​$  
+    Measures how well the model detects presences.
+    
+- **Specificity (True Negative Rate)** = $\frac{TN}{TN + FP}$
+    Measures how well the model detects absences.
+##### Interpretation of TSS
+
+- **TSS = 1** → Perfect model (100% correct classification).
+    
+- **TSS = 0** → Model performs no better than random chance.
+    
+- **TSS < 0** → Model performs worse than random.
+    
+
+TSS is a performance metric that really suits our Multi-Label classification problem because it accounts for both omission errors (false absences) and commission errors (false presences), making it a good alternative to simpler accuracy metrics, as we are evaluating the model's performance across 1819 different classes.
+
+##### Micro TSS
+
+- Computes TSS globally across all species by summing True Positives (TP), False Positives (FP), True Negatives (TN), and False Negatives (FN) before calculating TSS.
+    
+- Gives more weight to species with more samples (dominant species).
+    
+
+${Micro-TSS} = \frac{\sum TP}{\sum TP + \sum FN} + \frac{\sum TN}{\sum TN + \sum FP} - 1$
+
+When evaluating about overall model performance across all species.
+
+
+---
+
+#####  Macro TSS
+
+- Computes TSS for each species separately and then takes the average across species.
+    
+- Treats all species equally, regardless of sample size.
+    
+${Macro-TSS} = \frac{1}{N} \sum_{i=1}^{N} TSS_i$
+
+When species should have equal importance, even if some are rare
+
+---
+
+##### Weighted (Average) TSS
+
+- Averages TSS per species but weights them based on sample size.
+    
+- Balances between micro and macro by giving species a proportional contribution based on how many samples they have.
+    
+
+${Weighted-TSS} = \sum_{i=1}^{N} w_i \cdot TSS_i$
+
+When species importance should be proportional to how frequently they appear in the dataset.
+
+---
+
+###### Which One Should We Use?
+
+- **Micro-TSS** → If we want an overall performance metric (biased toward frequent species).
+    
+- **Macro-TSS** → If we want equal representation of all species, regardless of rarity.
+    
+- **Weighted-TSS** → If we want a balance between both approaches.
+
+
+The state of the art has demonstrated that it is possible to train and fine-tune CNNs that have a macro and micro TSS of 69.67% and 75.24% respectively.
+
+The best trained from scratch CNN model I obtained has:
+
+| Model            | Eval Loss | Macro TSS | Micro TSS | Weighted TSS |
+| ---------------- | --------- | --------- | --------- | ------------ |
+| Baseline CNN FL  | 0.00023   | 0.489     | 0.502     | 0.362        |
+| Baseline CNN BCE | 0.00617   | 0.452     | 0.4677    | 0.322        |
+
+##### Evaluate Function:
+
+```
+def evaluate(model, eval_loader, criterion,thresholds, args):
+    
+    TP, TN, FP, FN = 0., 0., 0., 0.
+    label_cnt = 0.
+    eval_loss = []
+    model.eval()
+    with torch.no_grad():
+        # for data, targets in tqdm(eval_loader, file=sys.stdout):
+        for batch in eval_loader:
+            if args.model_type=="MLP" or args.model_type=="CNN" or args.model_type=="ViT":
+                samples = batch['images'].to(args.device, non_blocking=True)
+                outputs = model(samples)
+            elif args.model_type=="Fusion":
+                samples_img, samples_meta = data
+                samples_img = samples_img.to(args.device, non_blocking=True)
+                samples_meta = samples_meta.to(args.device, non_blocking=True)
+                outputs = model(samples_img, samples_meta)
+                
+            targets = batch['labels'].to(args.device, non_blocking=True)
+            label_cnt += targets.sum(0).float()
+            
+            loss = criterion(outputs, targets)
+            eval_loss.append(loss.item())
+            
+            if args.thres_method == 'adaptive':
+                # thresholds = torch.load(args.output_dir.joinpath('thresholds_train.pth'))
+                thresholds = torch.tensor(thresholds, dtype=torch.float32).to("cuda:0")
+                # thresholds = torch.tensor(thresholds).to(args.device)
+            elif args.thres_method == 'global':
+                thresholds = args.threshold
+                
+            tp, tn, fp, fn = compute_scores(torch.sigmoid(outputs), targets, thresholds)
+            TP += tp
+            TN += tn
+            FP += fp
+            FN += fn
+        
+        eval_loss = torch.tensor(eval_loss).mean().item()
+        weight = label_cnt / label_cnt.sum()
+        macro_tss, micro_tss, weighted_tss = compute_metrics(TP, TN, FP, FN, weight=weight)
+        
+        if args.eval:
+            recall, spec, tss = compute_metrics_per_cls(TP, TN, FP, FN)
+            species = []
+            cdref2species = pd.read_csv('filelist/cdref2species.csv')
+            for ref in list(map(float, args.classes)):
+                temp = cdref2species.loc[cdref2species.cd_ref==ref]
+                species.append(temp.nom_reconnu.values[0])
+            df = pd.DataFrame({'species':species, 'train_cnt':args.train_label_cnt.values(), 'test_cnt': args.test_label_cnt.values(), 'recall': recall.detach().cpu(), 'specificity': spec.detach().cpu(), 'tss':tss.detach().cpu()})
+            df.to_csv(args.output_dir.joinpath('{}_tss_per_cls.csv'.format(args.model_type)), index=False)
+            print('Per class performance saved!')
+        
+        eval_stats = {'eval_loss': eval_loss, 'macro_tss': macro_tss, 'micro_tss': micro_tss, 'weighted_tss': weighted_tss}
+        
+        return eval_stats
+```
+### FineTuning Pretrained Models:
+
+
+#### ResNet FineTuning:
 
 
 
