@@ -37,8 +37,8 @@ Vegetation plots can be encoded as binary vectors where 0 corresponds to absence
 
 **Species composition vector example:**
 
-[](https://github.com/rauletepawa/Species_Distribution_Modeling/blob/main/Images/Pasted%20image%2020250403103202.png)
-[](https://github.com/rauletepawa/Species_Distribution_Modeling/blob/main/Images/Pasted%20image%2020250403103328.png)
+[sp_vector](https://github.com/rauletepawa/Species_Distribution_Modeling/blob/main/Images/Pasted%20image%2020250403103202.png)
+[sp_vector_ex](https://github.com/rauletepawa/Species_Distribution_Modeling/blob/main/Images/Pasted%20image%2020250403103328.png)
 
 As you can see, we have multiple 0 (absent species) and multiple 1 (present species). 
 In the same vegetation plot we can have many present species (many 1 values) in the species composition vector.
