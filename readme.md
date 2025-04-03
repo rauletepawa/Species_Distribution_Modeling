@@ -343,7 +343,7 @@ The CNN model outputs a logits vector for each training sample, after applying a
 ##### BCE loss training
 ![[Pasted image 20250403135323.png]]
 ##### FL Training
-
+![Image](Images/Pasted image 20250403135641.png)
 ![[Pasted image 20250403135641.png]]
 ##### DICE loss Training
 ![[Pasted image 20250403140435.png]]
@@ -368,6 +368,10 @@ $FL(p_{t}) = −α_{t}(1 − p_{t})^γ log(p_{t})$
 
 I used a the **evaluate** function to asses general performance scores in the models when evaluating them on the test dataset.
 This function computes the True Positives (TP), True Negatives (TN), False Positives (FP) and False Negatives (FN) for all the samples in the test dataset. With these metrics I compute the macro_tss, micro_tss and weighted_tss. 
+
+#### Thresholding
+
+So as we mentioned in the Training Loop section
 
 ##### True Statistic Skill (TSS):
 
@@ -432,7 +436,7 @@ When species importance should be proportional to how frequently they appear in 
 
 ---
 
-###### Which One Should We Use?
+##### Which One Should We Use?
 
 - **Micro-TSS** → If we want an overall performance metric (biased toward frequent species).
     
@@ -514,7 +518,9 @@ def evaluate(model, eval_loader, criterion,thresholds, args):
 
 #### ResNet FineTuning:
 
+Añadir imagenes e Indice!!
 
+![Alt text](image.png)
 
 
 
