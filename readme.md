@@ -88,7 +88,7 @@ The 11 variables stacked in the climatic maps, acoording to CHELSA's manual, cor
 
 #### Loading the training data:
 
-To build the CNN model both [Tensorflow]() and [Pytorch]() have been tested. Resulting Pytorch the best framework to asses this kind of problem as there are more resources online to costumize specific metrics for evaluating the plant assemblage prediction models. 
+To build the CNN model both [Tensorflow](https://www.tensorflow.org/) and [Pytorch](https://pytorch.org/) have been tested. Resulting Pytorch the best framework to asses this kind of problem as there are more resources online to costumize specific metrics for evaluating the plant assemblage prediction models. 
 
 However, both pipelines in pytorch and tensorflow are uploaded in this repository.
 
@@ -243,7 +243,7 @@ class CNNModel_1(nn.Module):
 
 To make the baseline CNN converge in the most efficient way possible I made several experiments with 3 loss metrics:
 - [Binary Cross Entropy (BCE)](https://medium.com/data-science/understanding-binary-cross-entropy-log-loss-a-visual-explanation-a3ac6025181a)
-- [Focal Loss](https://arxiv.org/pdf/1708.02002) 
+- [Focal Loss (FL)](https://arxiv.org/pdf/1708.02002) 
 - [Dice Loss](https://cvinvolution.medium.com/dice-loss-in-medical-image-segmentation-d0e476eb486) 
 
 Also BCE and Focal Loss where tested with weighting and without weighting. And I have chose weighting as it has shown better convergence plots such as it is described in the [original paper](https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.14466?utm=) where the CustomLoss class is described:
@@ -342,10 +342,31 @@ The CNN model outputs a logits vector for each training sample, after applying a
 
 ##### BCE loss training
 ![[Pasted image 20250403135323.png]]
-##### FOCAL loss Training
+##### FL Training
 
 ![[Pasted image 20250403135641.png]]
+##### DICE loss Training
+![[Pasted image 20250403140435.png]]
+
+##### Loss Functions Conclusions:
+
+The weighted classes loss functions converge to lower loss values than the non weighted ones.
+As you can see DICE loss training plot is catastrophic, so I am discarting this loss for any other training.
+
+BCE and FL have good convergence plots. Altough BCE Looks more smooth and stable in later epochs, FL converges with a much lower error (0.0063 vs 0.0024) in the validation set. 
+
+FL is the best option to train our CNN as it also takes into account class imbalance and makes more focus on those samples that are more difficult to classify (classes where the model tend to  underperform) by downscaling the importance of the most common classes.
+
+As it is shown in [this paper](https://arxiv.org/pdf/1708.02002), the large class imbalance encountered during training of dense detectors **overwhelms** the cross entropy loss. **Easily classified negatives** comprise the majority of the loss and **dominate the gradient**. 
+While α balances the importance of positive/negative examples, it does not differentiate between easy/hard examples.
+
+**Balanced Focal Loss formula**
+
+$FL(p_{t}) = −α_{t}(1 − p_{t})^γ log(p_{t})$
+
 #### ResNet FineTunning:
+
+
 
 
 
