@@ -45,9 +45,15 @@ In the same vegetation plot we can have many present species (many 1 values) in 
 In a multilabel classification we can have many correct instances (present species) for a single sample. So this kind of classification approach perfectly suits our problem!!
 
 ### CNN-SDM model diagram
+
 ![[Pasted image 20250403103853.png]]
 
 #### Dataset
+
+We used an [Rscript](https://github.com/rauletepawa/Species_Distribution_Modeling/blob/main/code/1_gbif_norge_data.R) to download all the GBIF occurrences in vascular plants in Norway main land from 1991 to 2020. We applied some filters to remove all those occurrences located in capitals, institutions, seas or that did not have any valid coordinates assigned inside Norway.
+
+Then we obtained a occurrence clean dataset 
+
 The dataset is composed by a total of 59.074 vegetation plots collected from 1991 until 2018. For each vegetation plot coordinates (location) I extracted a 11 channels (variables) 32x32 climatic map at 1km resolution (1 pixel corresponds to 1km). All the samples were carefully filtered through geospatial analysis to 
 
 #### Variables
