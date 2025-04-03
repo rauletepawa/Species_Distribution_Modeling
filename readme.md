@@ -48,15 +48,41 @@ In a multilabel classification we can have many correct instances (present speci
 
 ![[Pasted image 20250403103853.png]]
 
-#### Dataset
+#### Plant assemblage Dataset
 
-We used an [Rscript](https://github.com/rauletepawa/Species_Distribution_Modeling/blob/main/code/1_gbif_norge_data.R) to download all the GBIF occurrences in vascular plants in Norway main land from 1991 to 2020. We applied some filters to remove all those occurrences located in capitals, institutions, seas or that did not have any valid coordinates assigned inside Norway.
+I used an [Rscript](https://github.com/rauletepawa/Species_Distribution_Modeling/blob/main/code/1_gbif_norge_data.R) to download all the GBIF occurrences in vascular plants in Norway main land from 1991 to 2020. I applied some filters to remove all those occurrences located in capitals, institutions, seas or that did not have any valid coordinates assigned inside Norway.
 
-Then we obtained a occurrence clean dataset 
+Then I obtained a occurrence clean dataset with a total of 3.011.729 occurences.
+Using the [splitting norway in grids](https://github.com/rauletepawa/Species_Distribution_Modeling/blob/main/code/Splitting_Norway_in_grids.ipynb) script we splitted norway in grids of 1km and I counted as a co-occurrence all the species that are observed in the same grid at the same year. Thus I built a plant assemblage dataset that includes all the plant species that co-occur in the same 1km grid the same year filtering all those assemblages that including less than 5 co-occurrences.
 
-The dataset is composed by a total of 59.074 vegetation plots collected from 1991 until 2018. For each vegetation plot coordinates (location) I extracted a 11 channels (variables) 32x32 climatic map at 1km resolution (1 pixel corresponds to 1km). All the samples were carefully filtered through geospatial analysis to 
+**Here there is an example of the dataset:**
+![[Pasted image 20250403122559.png]]
 
-#### Variables
+![[Pasted image 20250403122302.png]]
+
+#### Climatic Dataset
+The climatic dataset is composed by a total of 59.074 plant assemblages collected from 1991 until 2018. For each vegetation plot coordinates (location) I extracted a 11 channels (variables) 32x32 climatic map at 1km resolution (1 pixel corresponds to 1km).
+This climatic dataset construction can be followed in the [Build CNN dataset](https://github.com/rauletepawa/Species_Distribution_Modeling/blob/main/code/Build_CNN_dataset.ipynb) script.
+
+We also transformed the plant assamblages into binary presence/absence vectors with the [filtering species script](http://localhost:8888/notebooks/Projects/GitHub/Species_Distribution_Modeling/code/filtering_species.ipynb) 
+
+Here you can see how the final CNN dataset looks like:
+
+![[Pasted image 20250403122951.png]]
+
+#### Climatic Variables
+
+The 11 variables stacked in the climatic maps, acoording to CHELSA's manual, correspond to:
+
+- bio01d: mean annual air temperature, mean annual daily mean air temperatures averaged over 1 year
+- bio04d: temperature seasonality, standard deviation of the montlhly temperatures
+- bio12d: annual precipitation, accumulated preccipitation amount over 1 year
+- cdd: consecutive_dry_days_index_per_time_period, number_of_cdd_periods_with_more_than_5days_per_time_period
+- fd: frost_days_index_per_time_period
+- gdd5: Growing degree days heat sum above 5°C, heat sum of all days above the 5°C temperature accumulated over 1 year
+- prsd: precipitation
+- scd: Snow cover days, Number of days with snowcover calculated using the snowpack model implementation in from TREELIM
+- swe: Snow water equivalent, Amount of liquid water if snow is melted
 
 
 
