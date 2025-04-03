@@ -36,9 +36,8 @@ Building a Species Distribution Model (SDM) that interprets climatic maps to pre
 Vegetation plots can be encoded as binary vectors where 0 corresponds to absence and 1 corresponds to presence. Thus if we have encoded in a fixed position all the 1819 plant species in norway, we can represent the present and absent species in a determinated area using a binary vector of 1819 variables.
 
 **Species composition vector example:**
-
-![[Pasted image 20250403103202.png]]
-![[Pasted image 20250403103343.png]]
+[](https://github.com/rauletepawa/Species_Distribution_Modeling/blob/main/Images/Pasted%20image%2020250403103202.png)
+[](https://github.com/rauletepawa/Species_Distribution_Modeling/blob/main/Images/Pasted%20image%2020250403103328.png)
 
 As you can see, we have multiple 0 (absent species) and multiple 1 (present species). 
 In the same vegetation plot we can have many present species (many 1 values) in the species composition vector.
