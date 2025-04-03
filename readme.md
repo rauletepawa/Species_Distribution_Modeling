@@ -343,7 +343,7 @@ The CNN model outputs a logits vector for each training sample, after applying a
 ##### BCE loss training
 ![[Pasted image 20250403135323.png]]
 ##### FL Training
-![Image](Images/Pasted image 20250403135641.png)
+![Image](obsidian://open?vault=Species_Distribution_Modeling&file=Images%2FPasted%20image%2020250403140435.png)
 ![[Pasted image 20250403135641.png]]
 ##### DICE loss Training
 ![[Pasted image 20250403140435.png]]
