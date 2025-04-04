@@ -2,8 +2,6 @@
 
 ## Table of Contents
 
-##### Tú dijiste:
-
 - [Introduction](#Introduction) 
 - [Objectives](#Objectives) 
 - [Methods](#Methods)
