@@ -43,8 +43,8 @@ Vegetation plots can be encoded as binary vectors where 0 corresponds to absence
 
 **Species composition vector example:**
 
-![vector example](Vector-example.png)
-![binary-vector](binary-vector.png)
+![vector example](Images/Vector-example.png)
+![binary-vector](Images/binary-vector.png)
 
 As you can see, we have multiple 0 (absent species) and multiple 1 (present species). 
 In the same vegetation plot we can have many present species (many 1 values) in the species composition vector.
@@ -52,7 +52,7 @@ In a multilabel classification we can have many correct instances (present speci
 
 ### CNN-SDM model diagram
 
-![cnn-diagram](cnn-diagram.png)
+![cnn-diagram](Images/cnn-diagram.png)
 
 ### Data Pipeline
 #### Plant assemblage Dataset
@@ -63,9 +63,9 @@ Then I obtained a occurrence clean dataset with a total of 3.011.729 occurences.
 Using the [splitting norway in grids](https://github.com/rauletepawa/Species_Distribution_Modeling/blob/main/code/Splitting_Norway_in_grids.ipynb) script we splitted norway in grids of 1km and I counted as a co-occurrence all the species that are observed in the same grid at the same year. Thus I built a plant assemblage dataset that includes all the plant species that co-occur in the same 1km grid the same year filtering all those assemblages that including less than 5 co-occurrences.
 
 **Here there is an example of the dataset:**
-![assemblage-dataset-ex](assemblage-dataset-ex.png)
+![assemblage-dataset-ex](Images/assemblage-dataset-ex.png)
 
-![assamblage-points-norway](assamblage-points-norway-1991-2020.png)
+![assamblage-points-norway](Images/assamblage-points-norway-1991-2020.png)
 
 #### Climatic Dataset
 The climatic dataset is composed by a total of 59.074 plant assemblages collected from 1991 until 2018. For each vegetation plot coordinates (location) I extracted a 11 channels (variables) 32x32 climatic map at 1km resolution (1 pixel corresponds to 1km).
@@ -348,12 +348,11 @@ class Args:
 The CNN model outputs a logits vector for each training sample, after applying a [sigmoid](https://machinelearningmastery.com/a-gentle-introduction-to-sigmoid-function/) function to these logits vectors, we obtain a probability vector where each probability value is independent of the other probabilities (they do not add up to 1 as in the softmax function). 
 
 ##### BCE loss training
-![[BCE-loss.png]]
+![BCEloss](Images/BCE-loss.png)
 ##### FL Training
-![Image](Pasted image 20250403135641.png)
-![[FOCAL-loss.png]]
+![Focal-loss](Images/FOCAL-loss.png)
 ##### DICE loss Training
-![[DICE-loss.png]]
+![DICE-loss](Images/DICE-loss.png)
 
 ##### Loss Functions Conclusions:
 
@@ -525,9 +524,6 @@ def evaluate(model, eval_loader, criterion,thresholds, args):
 
 #### ResNet FineTuning:
 
-Añadir imagenes e Indice!!
-
-![Alt text](image.png)
 
 
 
