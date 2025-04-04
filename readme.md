@@ -7,12 +7,16 @@
 - [Introduction](#Introduction) 
 - [Objectives](#Objectives) 
 - [Methods](#Methods)
+  - [CNN for Multi-Label Classification](#cnn-multi-label-classification)
+  - [Data Collection](#data-collection)
+  - [CNN model building](#CNN-model-building)
+  - [ Model Evaluation](#model-evaluation)
 
-### Introduction
+## Introduction
 
 This project will focus on developing and training DL models, specifically CNNs, to predict the species composition of vascular plant assemblages in Norway using satellite-derived climatic data. We will use species occurrence records from the Global Biodiversity Information Facility (GBIF) and associate them with high-resolution climatic variables from sources like CHELSA [(Karger et al., 2021)](https://www.zotero.org/google-docs/?bLQSd8).
 
-### Objectives
+## Objectives
 
 #### 1. Develop Deep Learning Models for Species Composition Prediction
 
@@ -35,7 +39,7 @@ This project will focus on developing and training DL models, specifically CNNs,
 - Apply future climate projections to forecast changes in vascular plant assemblages under different climate change scenarios.![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXfXyCDU5eSdewtWPVPSsQn1I9v7t6puA6U3_CVmqZb82UcCRUEhKGCgBOT-1WEpmqY3BR4qmhNQi25wVvsnP_fopSz0R80nEH3cPLA_Tg5PEj-r4WFymvgG5avomDAf0XMx-ol5?key=RmwAfgQCK3ztacxMBzsRXSzW)
 
 ## Methods
-### Using CNN applied to Multi-label classification problems
+### CNN-Multi-label-Classification
 
 Building a Species Distribution Model (SDM) that interprets climatic maps to predict  vegetation plots compsition can be done by applying [Convolutional Neural Networks (CNN)](https://medium.com/thedeephub/convolutional-neural-networks-a-comprehensive-guide-5cc0b5eae175) to a [multilabel-classification](https://medium.com/data-science-in-your-pocket/multi-label-classification-for-beginners-with-codes-6b098cc76f99). 
 
@@ -54,15 +58,16 @@ In a multilabel classification we can have many correct instances (present speci
 
 ![cnn-diagram](Images/cnn-diagram.png)
 
-### Data Pipeline
+### Data-Collection
 #### Plant assemblage Dataset
 
-I used an [Rscript](https://github.com/rauletepawa/Species_Distribution_Modeling/blob/main/code/1_gbif_norge_data.R) to download all the GBIF occurrences in vascular plants in Norway main land from 1991 to 2020. I applied some filters to remove all those occurrences located in capitals, institutions, seas or that did not have any valid coordinates assigned inside Norway.
+I used an [Rscript](https://github.com/rauletepawa/Species_Distribution_Modeling/blob/main/code/1_gbif_norge_data.R) () to download all the GBIF occurrences in vascular plants in Norway main land from 1991 to 2020. I applied some filters to remove all those occurrences located in capitals, institutions, seas or that did not have any valid coordinates assigned inside Norway.
 
 Then I obtained a occurrence clean dataset with a total of 3.011.729 occurences.
 Using the [splitting norway in grids](https://github.com/rauletepawa/Species_Distribution_Modeling/blob/main/code/Splitting_Norway_in_grids.ipynb) script we splitted norway in grids of 1km and I counted as a co-occurrence all the species that are observed in the same grid at the same year. Thus I built a plant assemblage dataset that includes all the plant species that co-occur in the same 1km grid the same year filtering all those assemblages that including less than 5 co-occurrences.
 
 **Here there is an example of the dataset:**
+
 ![assemblage-dataset-ex](Images/assemblage-dataset-ex.png)
 
 ![assamblage-points-norway](Images/assamblage-points-norway-1991-2020.png)
@@ -91,7 +96,7 @@ The 11 variables stacked in the climatic maps, acoording to CHELSA's manual, cor
 - prsd: precipitation
 - scd: Snow cover days, Number of days with snowcover calculated using the snowpack model implementation in from TREELIM
 - swe: Snow water equivalent, Amount of liquid water if snow is melted
-### Building the CNN model
+### CNN-model-building
 
 #### Loading the training data:
 
@@ -370,7 +375,7 @@ While α balances the importance of positive/negative examples, it does not diff
 
 $FL(p_{t}) = −α_{t}(1 − p_{t})^γ log(p_{t})$
 
-#### Evaluation Metrics
+### Model-Evaluation
 
 I used a the **evaluate** function to asses general performance scores in the models when evaluating them on the test dataset.
 This function computes the True Positives (TP), True Negatives (TN), False Positives (FP) and False Negatives (FN) for all the samples in the test dataset. With these metrics I compute the macro_tss, micro_tss and weighted_tss. 
