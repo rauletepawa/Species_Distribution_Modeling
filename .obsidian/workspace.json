@@ -181,9 +181,10 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "0a4f3de6fef91148",
+  "active": "a428b0c2f62d11de",
   "lastOpenFiles": [
     "images/climatic-dataset-vectorized-ex.png",
+    "readme.md",
     "images/assemblage-dataset-ex.png",
     "images/assamblage-points-norway-1991-2020.png",
     "images/cnn-diagram.png",
@@ -192,7 +193,6 @@
     "images/binary-vector.png",
     "images/FOCAL-loss.png",
     "images/DICE-loss.png",
-    "readme.md",
     "Images/Pasted.md",
     "data/variables.txt",
     "code/readme.md",
