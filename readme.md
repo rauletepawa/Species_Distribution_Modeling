@@ -75,7 +75,7 @@ We also transformed the plant assamblages into binary presence/absence vectors w
 
 Here you can see how the final CNN dataset looks like:
 
-![Climatic Dataset](../images/climatic-dataset-vectorized-ex.png)
+![Climatic Dataset](Images/climatic-dataset-vectorized-ex.png)
 
 
 #### Climatic Variables
