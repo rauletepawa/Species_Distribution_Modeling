@@ -183,6 +183,9 @@
   },
   "active": "a428b0c2f62d11de",
   "lastOpenFiles": [
+    "models/thresholds_focal_RESNET18_60_tss.pkl",
+    "models/RESNET18_60_tss",
+    "Images/resnet18-fine-tunning.png",
     "data/differences_sp_Norway_list.json",
     "data/lu9204y77syw.tmp",
     "data/species list Norway.xlsx",
@@ -199,7 +202,6 @@
     "Images/Vector-example.png",
     "Images/binary-vector.png",
     "Images/FOCAL-loss.png",
-    "Images/DICE-loss.png",
     "Images/Pasted.md",
     "data/variables.txt",
     "code/readme.md",

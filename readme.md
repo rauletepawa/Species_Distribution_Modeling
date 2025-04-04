@@ -544,6 +544,7 @@ def evaluate(model, eval_loader, criterion,thresholds, args):
 
 #### ResNet FineTuning:
 
+![resnet18-fine-tunning](Images/resnet18-fine-tunning.png)
 
 
 
