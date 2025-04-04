@@ -10,6 +10,7 @@
   - [CNN for Multi-Label Classification](#cnn-multi-label-classification)
   - [Data Collection](#data-collection)
   - [CNN model building](#CNN-model-building)
+  - [Model Training](#model-training)
   - [ Model Evaluation](#model-evaluation)
 
 ## Introduction
@@ -61,7 +62,7 @@ In a multilabel classification we can have many correct instances (present speci
 ### Data-Collection
 #### Plant assemblage Dataset
 
-I used an [Rscript](https://github.com/rauletepawa/Species_Distribution_Modeling/blob/main/code/1_gbif_norge_data.R) () to download all the GBIF occurrences in vascular plants in Norway main land from 1991 to 2020. I applied some filters to remove all those occurrences located in capitals, institutions, seas or that did not have any valid coordinates assigned inside Norway.
+I used an [Rscript](https://github.com/rauletepawa/Species_Distribution_Modeling/blob/main/code/1_gbif_norge_data.R) ([Camila Pacheco 2024](https://nsojournals.onlinelibrary.wiley.com/doi/10.1111/ecog.07213)) to download all the GBIF occurrences in vascular plants in Norway main land from 1991 to 2020. I applied some filters to remove all those occurrences located in capitals, institutions, seas or that did not have any valid coordinates assigned inside Norway.
 
 Then I obtained a occurrence clean dataset with a total of 3.011.729 occurences.
 Using the [splitting norway in grids](https://github.com/rauletepawa/Species_Distribution_Modeling/blob/main/code/Splitting_Norway_in_grids.ipynb) script we splitted norway in grids of 1km and I counted as a co-occurrence all the species that are observed in the same grid at the same year. Thus I built a plant assemblage dataset that includes all the plant species that co-occur in the same 1km grid the same year filtering all those assemblages that including less than 5 co-occurrences.
@@ -258,7 +259,7 @@ To make the baseline CNN converge in the most efficient way possible I made seve
 - [Focal Loss (FL)](https://arxiv.org/pdf/1708.02002) 
 - [Dice Loss](https://cvinvolution.medium.com/dice-loss-in-medical-image-segmentation-d0e476eb486) 
 
-Also BCE and Focal Loss where tested with weighting and without weighting. And I have chose weighting as it has shown better convergence plots such as it is described in the [original paper](https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.14466?utm=) where the CustomLoss class is described:
+Also BCE and Focal Loss where tested with weighting and without weighting. And I have chose weighting as it has shown better convergence plots such as it is described in [Yuqing Hu 2024](https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.14466?utm=) where the CustomLoss class is described:
 
 ```
 import torch.nn.functional as F
@@ -348,7 +349,7 @@ class Args:
         self.threshold = 0.15
 ```
 
-#### Model Model Training:
+### Model-Training
 
 The CNN model outputs a logits vector for each training sample, after applying a [sigmoid](https://machinelearningmastery.com/a-gentle-introduction-to-sigmoid-function/) function to these logits vectors, we obtain a probability vector where each probability value is independent of the other probabilities (they do not add up to 1 as in the softmax function). 
 
@@ -368,7 +369,7 @@ BCE and FL have good convergence plots. Altough BCE Looks more smooth and stable
 
 FL is the best option to train our CNN as it also takes into account class imbalance and makes more focus on those samples that are more difficult to classify (classes where the model tend to  underperform) by downscaling the importance of the most common classes.
 
-As it is shown in [this paper](https://arxiv.org/pdf/1708.02002), the large class imbalance encountered during training of dense detectors **overwhelms** the cross entropy loss. **Easily classified negatives** comprise the majority of the loss and **dominate the gradient**. 
+As it is shown in [Tsung-Yi Lin, 2018](https://arxiv.org/pdf/1708.02002), the large class imbalance encountered during training of dense detectors **overwhelms** the cross entropy loss. **Easily classified negatives** comprise the majority of the loss and **dominate the gradient**. 
 While α balances the importance of positive/negative examples, it does not differentiate between easy/hard examples.
 
 **Balanced Focal Loss formula**
@@ -380,11 +381,27 @@ $FL(p_{t}) = −α_{t}(1 − p_{t})^γ log(p_{t})$
 I used a the **evaluate** function to asses general performance scores in the models when evaluating them on the test dataset.
 This function computes the True Positives (TP), True Negatives (TN), False Positives (FP) and False Negatives (FN) for all the samples in the test dataset. With these metrics I compute the macro_tss, micro_tss and weighted_tss. 
 
-#### Thresholding
+#### Thresholds
 
-So as we mentioned in the Training Loop section
+So as we mentioned in the Training Loop section the CNN outputs a logits vector. By applying a sigmoid function, the logits vector is transformed into a probability vector. 
+However, we need to transform this probability of presence vector into a binary vector that determines the absolute presence or absence of the plant species. 
+Thus we will be able to evaluate the model accuracy and performance by comparing the binary predicted vectors with the true binary vectors. 
 
-##### True Statistic Skill (TSS):
+So to be able to transform the probabilities vector into a binary vector we have to set a threshold. This threshold will determine based on the probability value if the specie is present (1) or absent (0).
+
+There are 2 ways of setting the threshold:
+
+	1- Setting a global threshold for all the species
+	2- Setting a adaptive threshold vector
+
+For this use case where we have many different classes, option 2 is the one that better performs. 
+##### Adaptive thresholds
+
+This technique consists in calculating the optimal value of the ROC curve for each class in our species vector. Thus, we obtain a list of the optimal thresholds for each species. We will use this list to optimaly transform the probability vector to a binary vector using a different threshold for each probability that will maximize the  [AUC](https://medium.com/@shaileydash/understanding-the-roc-and-auc-intuitively-31ca96445c02)
+
+![optimal-threshold](Images/optimal-threshold.png)
+
+#### True Statistic Skill (TSS):
 
 $TSS=Sensitivity+Specificity−1$
 
@@ -408,7 +425,7 @@ Where:
 
 TSS is a performance metric that really suits our Multi-Label classification problem because it accounts for both omission errors (false absences) and commission errors (false presences), making it a good alternative to simpler accuracy metrics, as we are evaluating the model's performance across 1819 different classes.
 
-##### Micro TSS
+#### Micro TSS
 
 - Computes TSS globally across all species by summing True Positives (TP), False Positives (FP), True Negatives (TN), and False Negatives (FN) before calculating TSS.
     
@@ -422,7 +439,7 @@ When evaluating about overall model performance across all species.
 
 ---
 
-#####  Macro TSS
+####  Macro TSS
 
 - Computes TSS for each species separately and then takes the average across species.
     
@@ -434,7 +451,7 @@ When species should have equal importance, even if some are rare
 
 ---
 
-##### Weighted (Average) TSS
+#### Weighted (Average) TSS
 
 - Averages TSS per species but weights them based on sample size.
     

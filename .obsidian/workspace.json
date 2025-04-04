@@ -181,10 +181,12 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "a428b0c2f62d11de",
+  "active": "0a4f3de6fef91148",
   "lastOpenFiles": [
-    "CNN for Multi-label classification.md",
+    "Images/optimal-threshold.png",
+    "().md",
     "readme.md",
+    "CNN for Multi-label classification.md",
     "Pasted.md",
     "Images/climatic-dataset-vectorized-ex.png",
     "Images/assemblage-dataset-ex.png",
