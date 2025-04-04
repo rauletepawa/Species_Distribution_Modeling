@@ -181,8 +181,11 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "0a4f3de6fef91148",
+  "active": "a428b0c2f62d11de",
   "lastOpenFiles": [
+    "data/differences_sp_Norway_list.json",
+    "data/lu9204y77syw.tmp",
+    "data/species list Norway.xlsx",
     "Images/optimal-threshold.png",
     "().md",
     "readme.md",
@@ -204,7 +207,6 @@
     "code/Build_CNN_dataset.ipynb",
     "code/1_gbif_norge_data.R",
     "Images",
-    "Images/Pasted image 20250403103328.png",
     "Nueva carpeta"
   ]
 }
