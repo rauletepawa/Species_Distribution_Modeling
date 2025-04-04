@@ -1,10 +1,13 @@
 # Repository for Masters Thesis Project
 
-### Short description
+## Table of Contents
+
+[TOC]
+### Introduction
 
 This project will focus on developing and training DL models, specifically CNNs, to predict the species composition of vascular plant assemblages in Norway using satellite-derived climatic data. We will use species occurrence records from the Global Biodiversity Information Facility (GBIF) and associate them with high-resolution climatic variables from sources like CHELSA [(Karger et al., 2021)](https://www.zotero.org/google-docs/?bLQSd8).
 
-### Main Objectives:
+### Objectives
 
 #### 1. Develop Deep Learning Models for Species Composition Prediction
 
@@ -343,7 +346,7 @@ The CNN model outputs a logits vector for each training sample, after applying a
 ##### BCE loss training
 ![[Pasted image 20250403135323.png]]
 ##### FL Training
-![Image](obsidian://open?vault=Species_Distribution_Modeling&file=Images%2FPasted%20image%2020250403140435.png)
+![Image](Pasted image 20250403135641.png)
 ![[Pasted image 20250403135641.png]]
 ##### DICE loss Training
 ![[Pasted image 20250403140435.png]]
