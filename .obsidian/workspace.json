@@ -181,17 +181,17 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "a428b0c2f62d11de",
+  "active": "0a4f3de6fef91148",
   "lastOpenFiles": [
-    "Images/climatic-dataset-vectorized-ex.png",
-    "Images/assemblage-dataset-ex.png",
-    "Images/assamblage-points-norway-1991-2020.png",
-    "Images/cnn-diagram.png",
-    "Images/BCE-loss.png",
-    "Images/Vector-example.png",
-    "Images/binary-vector.png",
-    "Images/FOCAL-loss.png",
-    "Images/DICE-loss.png",
+    "images/climatic-dataset-vectorized-ex.png",
+    "images/assemblage-dataset-ex.png",
+    "images/assamblage-points-norway-1991-2020.png",
+    "images/cnn-diagram.png",
+    "images/BCE-loss.png",
+    "images/Vector-example.png",
+    "images/binary-vector.png",
+    "images/FOCAL-loss.png",
+    "images/DICE-loss.png",
     "readme.md",
     "Images/Pasted.md",
     "data/variables.txt",
@@ -199,7 +199,7 @@
     "code/Splitting_Norway_in_grids.ipynb",
     "code/Build_CNN_dataset.ipynb",
     "code/1_gbif_norge_data.R",
-    "Images",
+    "images",
     "Images/Pasted image 20250403103328.png",
     "Nueva carpeta"
   ]
