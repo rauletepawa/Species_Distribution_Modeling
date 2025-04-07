@@ -546,6 +546,6 @@ The best trained from scratch CNN model I obtained has:
 
 | Model               | Eval Loss | Macro TSS | Micro TSS | Weighted TSS |
 | ------------------- | --------- | --------- | --------- | ------------ |
-| Fine Tuned ResNet18 | 0.00024   | 0.604     | 0.4883    | 0.355        |
+| Fine Tuned ResNet18 | 0.00025   | 0.513     | 0.531     | 0.398        |
 | Baseline CNN FL     | 0.00023   | 0.489     | 0.502     | 0.362        |
 | Baseline CNN BCE    | 0.00617   | 0.452     | 0.4677    | 0.322        |
