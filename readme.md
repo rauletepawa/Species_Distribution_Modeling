@@ -9,7 +9,9 @@
   - [Data Collection](#data-collection)
   - [CNN model building](#CNN-model-building)
   - [Model Training](#model-training)
-  - [ Model Evaluation](#model-evaluation)
+  - [Model Evaluation](#model-evaluation)
+  - [FineTuning Pretrained Models](#FineTuning-Pretrained-Models)
+  - [Best Models Results](#Best-Results)
 
 ## Introduction
 
@@ -470,16 +472,7 @@ When species importance should be proportional to how frequently they appear in 
     
 - **Weighted-TSS** → If we want a balance between both approaches.
 
-
-The state of the art has demonstrated that it is possible to train and fine-tune CNNs that have a macro and micro TSS of 69.67% and 75.24% respectively.
-
-The best trained from scratch CNN model I obtained has:
-
-| Model            | Eval Loss | Macro TSS | Micro TSS | Weighted TSS |
-| ---------------- | --------- | --------- | --------- | ------------ |
-| Baseline CNN FL  | 0.00023   | 0.489     | 0.502     | 0.362        |
-| Baseline CNN BCE | 0.00617   | 0.452     | 0.4677    | 0.322        |
-
+The choice between these two averaging methods depends on how the problem is approached. Macro TSS treats all species with equal weight, as it calculates the metric independently for each species. It is suitable when all species in the dataset are considered equally important. In contrast, micro TSS places greater emphasis on well-performing species, as it is influenced more by species with high performance. This method is appropriate when focusing on species with superior performance. In this paper, we present both macro and micro TSS to provide a comprehensive assessment of model performance.
 ##### Evaluate Function:
 
 ```
@@ -539,13 +532,20 @@ def evaluate(model, eval_loader, criterion,thresholds, args):
         
         return eval_stats
 ```
-### FineTuning Pretrained Models:
+### FineTuning-Pretrained-Models:
 
 
-#### ResNet FineTuning:
+#### ResNet18 FineTuning:
 
 ![resnet18-fine-tunning](Images/resnet18-fine-tunning.png)
+### Best-Results
 
+The state of the art has demonstrated that it is possible to train and fine-tune CNNs that have a macro and micro TSS of 69.67% and 75.24% respectively.
 
+The best trained from scratch CNN model I obtained has:
 
-
+| Model               | Eval Loss | Macro TSS | Micro TSS | Weighted TSS |
+| ------------------- | --------- | --------- | --------- | ------------ |
+| Fine Tuned ResNet18 | 0.00024   | 0.604     | 0.4883    | 0.355        |
+| Baseline CNN FL     | 0.00023   | 0.489     | 0.502     | 0.362        |
+| Baseline CNN BCE    | 0.00617   | 0.452     | 0.4677    | 0.322        |
