@@ -534,7 +534,7 @@ def evaluate(model, eval_loader, criterion,thresholds, args):
 ```
 ### FineTuning-Pretrained-Models:
 
-**Fine-tuning** is a [transfer learning](https://medium.com/@davidfagb/guide-to-transfer-learning-in-deep-learning-1f685db1fc94) technique where you take a **pretrained neural network** (like ResNet18, trained on ImageNet) and adapt it to a **new, specific task**, often with a **smaller dataset**.
+**Fine-tuning** is a [transfer learning](https://medium.com/@davidfagb/guide-to-transfer-learning-in-deep-learning-1f685db1fc94) technique where you take a **pretrained neural network** (like [ResNet18](https://arxiv.org/pdf/1512.03385), trained on ImageNet) and adapt it to a **new, specific task**, often with a **smaller dataset**.
 
 Instead of training the whole model from scratch, we reuse the pretrained model’s **learned features** (like edges, textures, shapes), which are already very good at general visual understanding.
 

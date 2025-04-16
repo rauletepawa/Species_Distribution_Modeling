@@ -25,12 +25,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "readme.md",
+                "file": "notes/Useful Commands.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "readme"
+              "title": "Useful Commands"
             }
           }
         ],
@@ -183,8 +183,8 @@
   },
   "active": "a428b0c2f62d11de",
   "lastOpenFiles": [
-    "notes/Useful Commands.md",
     "readme.md",
+    "notes/Useful Commands.md",
     "notes",
     "Images/vit_finetuning.png",
     "Images/resnet18.png",

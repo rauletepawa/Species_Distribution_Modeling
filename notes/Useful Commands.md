@@ -46,5 +46,5 @@ conda install conda-forge::pytorch-cpu
 **Install interesting libraries for data analysis**
 
 ```
-pip install pandas numpy matplotlib scikit-learn seaborn captum 
+pip install pandas numpy matplotlib scikit-learn seaborn captum geopandas
 ```
