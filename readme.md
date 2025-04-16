@@ -534,18 +534,183 @@ def evaluate(model, eval_loader, criterion,thresholds, args):
 ```
 ### FineTuning-Pretrained-Models:
 
+**Fine-tuning** is a [transfer learning](https://medium.com/@davidfagb/guide-to-transfer-learning-in-deep-learning-1f685db1fc94) technique where you take a **pretrained neural network** (like ResNet18, trained on ImageNet) and adapt it to a **new, specific task**, often with a **smaller dataset**.
 
+Instead of training the whole model from scratch, we reuse the pretrained model’s **learned features** (like edges, textures, shapes), which are already very good at general visual understanding.
+
+Resnet18 architecture:
+
+![resnet18](Images/resnet18.png)
+
+Fine-tuning this architecture will allow us to achieve better results with fewer epochs than self-architected models training from scratch.
 #### ResNet18 FineTuning:
 
+As pretrained models are adapted to 3 channel data by default we modifyied the first layer of the model to accept 11 channels image data. We loaded the weights from the Imagenet 1000 V1 Resnet18. 
+
+```
+class CustomResNet18(nn.Module):
+    def __init__(self, num_classes):
+        super(CustomResNet18, self).__init__()
+        
+        # Load Pretrained ResNet18
+        # self.resnet = models.resnet18(weights=models.ResNet18_Weights.IMAGENET1K_V1)
+        self.resnet = models.resnet18(weights=True)
+
+        # Modify the first convolutional layer to accept 11 channels instead of 3
+        self.resnet.conv1 = nn.Conv2d(11, 64, kernel_size=7, stride=2, padding=3, bias=False)
+
+        # Modify the final fully connected layer to match the number of classes
+        self.in_features = self.resnet.fc.in_features
+        self.resnet.fc = nn.Linear(self.in_features, num_classes)
+
+        # Unfreezing all layers to train the whole model
+        for param in self.resnet.parameters():
+            param.requires_grad = True
+
+    def forward(self, x):
+        return self.resnet(x)
+
+```
+
+
+We tested different fine-tuning strategies: 
+
+1. Fine-tuning only the forward block
+2. Fine-tuning the forward layer + the last convolutional block
+3. Fine-tuning all the layers
+4. Fine-tuning the forward block for 3 epochs and then unfreeze al the layers for deeper fine-tuning.
+
+The 3rd strategy is the one that has given better and more consistant results converging at epoch 7.
+
+We employed a cosine scheduler with a 5-epoch warm-up, starting at 1e-4, and set the maximum learning rate to 1e-3, with a minimum learning rate of 1e-6. Regarding regularization, which plays an essential role during training that prevents the model from overfitting, we used a weight decay of 5e-2 on the AdamW optimizer.
+
+AdamW is an improved version of the well-known Adam optimizer that also tracks averages of the gradient (called the first moment) and the square of the gradients (called the second moment). But instead of adding the regularization term to the cost function, AdamW directly computes its corresponding gradient form and adds it to perform gradient descend. This avoids the regularization term from going through the moving average computation, and effectively improves the efficacy of regularization.
+
+**Fine-Tuning Loss Plot:**
+
+
 ![resnet18-fine-tunning](Images/resnet18-fine-tunning.png)
+**Fine-tuning function:**
+```
+def fine_tunning(dataloader, dataset, num_epochs, model, custom_loss, optimizer,delta,patience):
+    
+    # Initialize the learning rate scheduler
+    scheduler = CosineLRScheduler(
+        optimizer, 
+        t_initial=num_epochs,    # Total epochs
+        lr_min=1e-5, #1e-5            # Minimum LR
+        warmup_t=5,  #2            # Warm-up epochs
+        warmup_lr_init=1e-3 #1e-4     # Initial warm-up LR
+    )
+
+    epoch_train_loss = []
+    epoch_val_loss = []
+    
+    best_val_loss = float('inf')
+    early_stop_counter = 0
+    best_model_state = None
+
+    for epoch in range(num_epochs):
+        train_losses = []
+        dataset.mode = 'train'
+        model.train()
+
+        for D in dataloader:
+            optimizer.zero_grad()
+            data = D['images'].to(device, dtype=torch.float)
+            labels = D['labels'].to(device, dtype=torch.float)
+            y_hat = model(data)
+            loss = custom_loss(y_hat, labels)
+            loss.backward()
+            optimizer.step()
+            train_losses.append(loss.item())
+
+        epoch_train_loss.append(np.mean(train_losses))
+
+        # Validation
+        val_losses = []
+        dataset.mode = 'val'
+        model.eval()
+        with torch.no_grad():
+            for D in dataloader:
+                data = D['images'].to(device, dtype=torch.float)
+                labels = D['labels'].to(device, dtype=torch.float)
+                y_hat = model(data)
+                loss = custom_loss(y_hat, labels)
+                val_losses.append(loss.item())
+                
+        current_val_loss = np.mean(val_losses)
+        epoch_val_loss.append(np.mean(val_losses))
+
+        # **Update Learning Rate Scheduler**
+        scheduler.step(epoch + 1)
+
+        # Print progress
+        print(f'Train Epoch: {epoch+1} \t Train Loss: {np.mean(train_losses):.6f} \t Val Loss: {np.mean(val_losses):.6f}')
+        print(f'Learning Rate: {optimizer.param_groups[0]["lr"]:.8f}')
+        
+        # Early Stopping Check
+        if current_val_loss + delta < best_val_loss:
+            best_val_loss = current_val_loss
+            best_model_state = model.state_dict()
+            early_stop_counter = 0
+        else:
+            early_stop_counter += 1
+            print(f"⚠️ No improvement for {early_stop_counter} epoch(s).")
+
+        if early_stop_counter >= patience:
+            print(f"⏹️ Early stopping triggered after {epoch+1} epochs.")
+            break
+
+    # Load best model before returning
+    if best_model_state is not None:
+        model.load_state_dict(best_model_state)
+    
+    return model, epoch_train_loss, epoch_val_loss
+```
+
+#### ViT Fine-tuning
+
+We fine-tune a pretrained [DeiT3 Vision Transformer (ViT)](https://arxiv.org/abs/2204.07118) to predict plant species assemblages from multi-channel climate raster data. Our custom architecture adapts the ViT to work with climate maps and perform multi-label classification:
+
+- **Input preprocessing**: An initial convolutional stem reduces 11-channel climate inputs (e.g. temperature, precipitation) to 3 channels to match ViT’s expected input format. Images were resized from 32x32 to 224x244 pixels.
+    
+- **ViT Backbone**: A pretrained `deit3_base_patch16_224` model is loaded via the `timm` library, enabling transfer learning.
+    
+- **Classifier head**: The default classification head is replaced with a fully connected layer outputting one logit per species, supporting multi-label prediction across 1819 plant species.
+    
+
+The model is fine-tuned using:
+
+- **Optimizer**: AdamW with learning rate `1e-4` and weight decay `5e-2`.
+    
+- **Loss**: A custom Focal Loss designed to handle class imbalance.
+    
+- **Training loop**: Includes early stopping and performance tracking across epochs.
+    
+
+This approach enables predictive modeling of species distributions based on high-dimensional climate data, with applications in ecology and climate change impact studies.
+
+![vit_finetuning](Images/vit_finetuning.png)
+
+
 ### Best-Results
 
 The state of the art has demonstrated that it is possible to train and fine-tune CNNs that have a macro and micro TSS of 69.67% and 75.24% respectively.
 
-The best trained from scratch CNN model I obtained has:
+Best models performance summary table:
 
 | Model               | Eval Loss | Macro TSS | Micro TSS | Weighted TSS |
 | ------------------- | --------- | --------- | --------- | ------------ |
 | Fine Tuned ResNet18 | 0.00025   | 0.513     | 0.531     | 0.398        |
 | Baseline CNN FL     | 0.00023   | 0.489     | 0.502     | 0.362        |
-| Baseline CNN BCE    | 0.00617   | 0.452     | 0.4677    | 0.322        |
+| Baseline CNN BCE    | 0.00617   | 0.452     | 0.468     | 0.322        |
+| Fine Tuned ViT      | 0.00025   | 0.419     | 0.430     | 0.303        |
+### Training-1991-2017-and-testing-with-2018-data
+
+Due to spatial overlap between some samples, a random train-test split does not guarantee that the model is fully isolated from test-time climatic information during training. To address this, we adopt a **temporal split** strategy: samples from **1991 to 2017** are used for training, while **2018** samples are reserved exclusively for testing and evaluation.
+
+Using 2018 as a dedicated test set also facilitates **model interpretability during experimentation**, enabling us to **benchmark performance against recent data** and analyze where the model performs well or poorly under realistic and unseen climatic scenarios.
+
+### Intepretability-techniques
+

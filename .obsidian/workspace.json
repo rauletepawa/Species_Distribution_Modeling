@@ -183,6 +183,11 @@
   },
   "active": "a428b0c2f62d11de",
   "lastOpenFiles": [
+    "notes/Useful Commands.md",
+    "readme.md",
+    "notes",
+    "Images/vit_finetuning.png",
+    "Images/resnet18.png",
     "models/thresholds_focal_RESNET18_60_tss.pkl",
     "models/RESNET18_60_tss",
     "Images/resnet18-fine-tunning.png",
@@ -191,7 +196,6 @@
     "data/species list Norway.xlsx",
     "Images/optimal-threshold.png",
     "().md",
-    "readme.md",
     "CNN for Multi-label classification.md",
     "Pasted.md",
     "Images/climatic-dataset-vectorized-ex.png",
@@ -200,15 +204,11 @@
     "Images/cnn-diagram.png",
     "Images/BCE-loss.png",
     "Images/Vector-example.png",
-    "Images/binary-vector.png",
-    "Images/FOCAL-loss.png",
     "Images/Pasted.md",
     "data/variables.txt",
     "code/readme.md",
     "code/Splitting_Norway_in_grids.ipynb",
     "code/Build_CNN_dataset.ipynb",
-    "code/1_gbif_norge_data.R",
-    "Images",
-    "Nueva carpeta"
+    "code/1_gbif_norge_data.R"
   ]
 }
