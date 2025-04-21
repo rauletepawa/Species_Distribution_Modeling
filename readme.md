@@ -720,4 +720,6 @@ In order to understand better the model
 
 UMAP
 
-[umap_3d_plot](http://github.com/rauletepawa/Species_Distribution_Modeling/blob/main/Images/umap_3d_plot.html)
+<iframe src="https://rauletepawa.github.io/Species_Distribution_Modeling/umap_3d_plot.html" width="100%" height="600"></iframe>
+
+

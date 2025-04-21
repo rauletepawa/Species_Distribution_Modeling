@@ -8,18 +8,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "58156bd267d70f63",
-            "type": "leaf",
-            "state": {
-              "type": "image",
-              "state": {
-                "file": "Images/Pasted image 20250403135641.png"
-              },
-              "icon": "lucide-image",
-              "title": "Pasted image 20250403135641"
-            }
-          },
-          {
             "id": "a428b0c2f62d11de",
             "type": "leaf",
             "state": {
@@ -33,8 +21,7 @@
               "title": "readme"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -183,6 +170,7 @@
   },
   "active": "a428b0c2f62d11de",
   "lastOpenFiles": [
+    "readme.md",
     "docs/umap_3d_plot.html",
     "docs",
     "Nueva carpeta",
@@ -193,9 +181,7 @@
     "data/10_filtered_vectorized_gbif_assemblages_climatic_1991-2018_32.pkl",
     "data/vectorized_gbif_assemblages_climatic_1991-2018_32.pkl",
     "data/vectorized_gbif_assemblages_climatic_1991-2018_32.rar",
-    "data/Full_Scale.rar",
     "notes/Useful Commands.md",
-    "readme.md",
     "Images/vit_finetuning.png",
     "Images/resnet18.png",
     "Images/resnet18-fine-tunning.png",
