@@ -720,4 +720,4 @@ In order to understand better the model
 
 UMAP
 
-[umap_3d_plot](Images/umap_3d_plot)
+[umap_3d_plot](Images/umap_3d_plot.html)
