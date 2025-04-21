@@ -714,3 +714,10 @@ Using 2018 as a dedicated test set also facilitates **model interpretability dur
 
 ### Intepretability-techniques
 
+In order to understand better the model 
+
+#### UMAP
+
+UMAP
+
+[umap_3d_plot](Images/umap_3d_plot)

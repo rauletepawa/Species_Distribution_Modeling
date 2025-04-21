@@ -25,12 +25,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "notes/Useful Commands.md",
+                "file": "readme.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Useful Commands"
+              "title": "readme"
             }
           }
         ],
@@ -183,17 +183,22 @@
   },
   "active": "a428b0c2f62d11de",
   "lastOpenFiles": [
-    "readme.md",
+    "data/10_filtered_vectorized_gbif_assemblages_climatic_2018_32.pkl",
+    "data/untitled.txt",
+    "Images/umap_3d_plot.html",
+    "data/interesting species.xlsx",
+    "data/10_filtered_vectorized_gbif_assemblages_climatic_1991-2018_32.pkl",
+    "data/vectorized_gbif_assemblages_climatic_1991-2018_32.pkl",
+    "data/vectorized_gbif_assemblages_climatic_1991-2018_32.rar",
+    "data/Full_Scale.rar",
     "notes/Useful Commands.md",
+    "readme.md",
     "notes",
     "Images/vit_finetuning.png",
     "Images/resnet18.png",
     "models/thresholds_focal_RESNET18_60_tss.pkl",
     "models/RESNET18_60_tss",
     "Images/resnet18-fine-tunning.png",
-    "data/differences_sp_Norway_list.json",
-    "data/lu9204y77syw.tmp",
-    "data/species list Norway.xlsx",
     "Images/optimal-threshold.png",
     "().md",
     "CNN for Multi-label classification.md",
@@ -205,10 +210,6 @@
     "Images/BCE-loss.png",
     "Images/Vector-example.png",
     "Images/Pasted.md",
-    "data/variables.txt",
-    "code/readme.md",
-    "code/Splitting_Norway_in_grids.ipynb",
-    "code/Build_CNN_dataset.ipynb",
-    "code/1_gbif_norge_data.R"
+    "code/readme.md"
   ]
 }
