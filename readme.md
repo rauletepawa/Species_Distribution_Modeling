@@ -356,7 +356,7 @@ The CNN model outputs a logits vector for each training sample, after applying a
 ##### BCE loss training
 ![BCEloss](Images/BCE-loss.png)
 ##### FL Training
-![Focal-loss](Images/FOCAL-loss.png)
+![Focal-loss](Images/normalized_FL_CNN.png)
 ##### DICE loss Training
 ![DICE-loss](Images/DICE-loss.png)
 

@@ -170,6 +170,7 @@
   },
   "active": "a428b0c2f62d11de",
   "lastOpenFiles": [
+    "Images/normalized_FL_CNN.png",
     "data/absolute_stats.csv",
     "data/gadm41_NOR_shp/gadm41_NOR_2.shx",
     "data/gadm41_NOR_shp/gadm41_NOR_2.shp",
@@ -180,7 +181,6 @@
     "data/gadm41_NOR_shp/gadm41_NOR_1.shp",
     "data/gadm41_NOR_shp/gadm41_NOR_1.prj",
     "data/gadm41_NOR_shp/gadm41_NOR_1.dbf",
-    "data/gadm41_NOR_shp/gadm41_NOR_1.cpg",
     "Images/umap_image.png",
     "readme.md",
     "notes/Useful Commands.md",
