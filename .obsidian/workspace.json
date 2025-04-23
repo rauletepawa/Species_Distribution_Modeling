@@ -13,6 +13,20 @@
             "state": {
               "type": "markdown",
               "state": {
+                "file": "notes/Useful Commands.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Useful Commands"
+            }
+          },
+          {
+            "id": "d4a726d0860bc191",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
                 "file": "readme.md",
                 "mode": "source",
                 "source": false
@@ -21,7 +35,8 @@
               "title": "readme"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -168,22 +183,24 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "a428b0c2f62d11de",
+  "active": "d4a726d0860bc191",
   "lastOpenFiles": [
-    "Images/normalized_FL_CNN.png",
-    "data/absolute_stats.csv",
-    "data/gadm41_NOR_shp/gadm41_NOR_2.shx",
-    "data/gadm41_NOR_shp/gadm41_NOR_2.shp",
-    "data/gadm41_NOR_shp/gadm41_NOR_2.prj",
-    "data/gadm41_NOR_shp/gadm41_NOR_2.dbf",
-    "data/gadm41_NOR_shp/gadm41_NOR_2.cpg",
-    "data/gadm41_NOR_shp/gadm41_NOR_1.shx",
-    "data/gadm41_NOR_shp/gadm41_NOR_1.shp",
-    "data/gadm41_NOR_shp/gadm41_NOR_1.prj",
-    "data/gadm41_NOR_shp/gadm41_NOR_1.dbf",
-    "Images/umap_image.png",
-    "readme.md",
+    "notes/Old Results Table.md",
     "notes/Useful Commands.md",
+    "readme.md",
+    "data/Full_Scale/NO_NORM_10_filtered_vectorized_gbif_assemblages_climatic_2018_32.pkl",
+    "models/thresholds_BCE_RESNET18_53_tss_1991-2017_full.pkl",
+    "models/RESNET18_53_FOCAL_tss_1991-2017_full",
+    "models/RESNET18_53_BCE_tss_1991-2017_full",
+    "models/thresholds_FOCAL_RESNET18_53_tss_1991-2017_full.pkl",
+    "data/species_counts_filtered_10_1991_2018.json",
+    "data/species_counts_filtered_10_1991_2017.json",
+    "models/thresholds_BCE_RESNET18_53_tss_1991-2017.pkl",
+    "models/RESNET18_53_BCE_tss_1991-2017",
+    "Images/RESNET18_BCE_1991-2018_fine-tunning.png",
+    "models/thresholds_BCE_RESNET18_55_tss_1991-2018.pkl",
+    "Images/normalized_FL_CNN.png",
+    "Images/umap_image.png",
     "Images/vit_finetuning.png",
     "Images/resnet18.png",
     "Images/resnet18-fine-tunning.png",
@@ -194,8 +211,6 @@
     "Images/climatic-dataset-vectorized-ex.png",
     "Images/assemblage-dataset-ex.png",
     "Images/assamblage-points-norway-1991-2020.png",
-    "Images/cnn-diagram.png",
-    "Images/BCE-loss.png",
     "Images/Pasted.md",
     "code/readme.md"
   ]
