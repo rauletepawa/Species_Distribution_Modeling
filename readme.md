@@ -717,7 +717,7 @@ We use a Fine-Tuned ResNet18 on **1991-2017** data to make the following experim
 
 | Model                  | Eval Loss | Macro TSS | Micro TSS | Weighted TSS |
 | ---------------------- | --------- | --------- | --------- | ------------ |
-| Fine Tuned ResNet18 FL | 0.00025   | 0.513     | 0.531     | 0.398        |
+| Fine Tuned ResNet18 FL | 0.00027   | 0.380     | 0.557     | 0.302        |
 ### Intepretability-techniques
 
 In order to understand better the model 
