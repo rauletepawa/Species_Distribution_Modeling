@@ -185,6 +185,8 @@
   },
   "active": "d4a726d0860bc191",
   "lastOpenFiles": [
+    "data/Full_Scale/sampled_grids_bin_008.pkl",
+    "code/Resampling_data_2018.ipynb",
     "models/thresholds_FOCAL_RESNET18_53_tss_1991-2017_full.pkl",
     "models/RESNET18_53_FOCAL_tss_1991-2017_full",
     "data/centroids_norway/centroids_all_NOR_1x1.pkl",
@@ -194,8 +196,6 @@
     "data/centroids_norway/grid_norway_2km-x-2km.pkl",
     "data/centroids_norway/centroids_all_NOR_3x3.pkl",
     "data/centroids_norway/centroids_all_NOR_2x2.pkl",
-    "data/centroids_norway/grid_norway_3km-x-3km.pkl",
-    "data/centroids_norway",
     "notes/Useful Commands.md",
     "readme.md",
     "notes/Old Results Table.md",
