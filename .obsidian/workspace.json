@@ -183,8 +183,16 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "d4a726d0860bc191",
+  "active": "0a4f3de6fef91148",
   "lastOpenFiles": [
+    "Images/umap_image_6_clusters.png",
+    "docs/umap_3d_plot_no_rotate.html",
+    "docs/umap_3d_plot_no_rotate_old.html",
+    "Images/resnetfinetuning2.png",
+    "readme.md",
+    "Images/distribution of salix reticulata artsdatabanken.png",
+    "Images/Salix herbacea artsdatbanken.png",
+    "Images/Salix herbacea distribution.png",
     "data/Full_Scale/sampled_grids_bin_008.pkl",
     "code/Resampling_data_2018.ipynb",
     "models/thresholds_FOCAL_RESNET18_53_tss_1991-2017_full.pkl",
@@ -193,11 +201,7 @@
     "data/centroids_norway/grid_norway_1km-x-1km.pkl",
     "data/centroids_norway/centroids_all_NOR_1km.pkl",
     "data/centroids_all_NOR_1km.pkl",
-    "data/centroids_norway/grid_norway_2km-x-2km.pkl",
-    "data/centroids_norway/centroids_all_NOR_3x3.pkl",
-    "data/centroids_norway/centroids_all_NOR_2x2.pkl",
     "notes/Useful Commands.md",
-    "readme.md",
     "notes/Old Results Table.md",
     "Images/RESNET18_BCE_1991-2018_fine-tunning.png",
     "Images/normalized_FL_CNN.png",
@@ -205,13 +209,9 @@
     "Images/vit_finetuning.png",
     "Images/resnet18.png",
     "Images/resnet18-fine-tunning.png",
-    "Images/optimal-threshold.png",
     "().md",
     "CNN for Multi-label classification.md",
     "Pasted.md",
-    "Images/climatic-dataset-vectorized-ex.png",
-    "Images/assemblage-dataset-ex.png",
-    "Images/assamblage-points-norway-1991-2020.png",
     "Images/Pasted.md",
     "code/readme.md"
   ]

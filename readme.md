@@ -88,15 +88,20 @@ Here you can see how the final CNN dataset looks like:
 
 The 11 variables stacked in the climatic maps, acoording to CHELSA's manual, correspond to:
 
-- bio01d: mean annual air temperature, mean annual daily mean air temperatures averaged over 1 year
-- bio04d: temperature seasonality, standard deviation of the montlhly temperatures
-- bio12d: annual precipitation, accumulated preccipitation amount over 1 year
-- cdd: consecutive_dry_days_index_per_time_period, number_of_cdd_periods_with_more_than_5days_per_time_period
-- fd: frost_days_index_per_time_period
-- gdd5: Growing degree days heat sum above 5°C, heat sum of all days above the 5°C temperature accumulated over 1 year
-- prsd: precipitation
-- scd: Snow cover days, Number of days with snowcover calculated using the snowpack model implementation in from TREELIM
-- swe: Snow water equivalent, Amount of liquid water if snow is melted
+| Shortname | Longname                               | Unit          | Scale | Offset  | Explanation                                                                                                                                                                                    |
+| --------- | -------------------------------------- | ------------- | ----- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| bio1d     | Mean annual air temperature            | °C            | 0.1   | -273.15 | Mean annual daily mean air temperatures averaged over 1 year                                                                                                                                   |
+| bio04d    | temperature seasonality                | °C/100        | 0.1   | 0       | standard deviation of the monthly mean temperatures                                                                                                                                            |
+| bio12d    | annual precipitation amount            | kg m-2 year-1 | 0.1   | 0       | Accumulated precipitation amount over 1 year                                                                                                                                                   |
+| bio15d    | precipitation seasonality              | kg m-2        | 0.1   | 0       | The Coefficient of Variation is the standard deviation of the monthly precipitation estimates expressed as a percentage of the mean of those estimates (i.e. the annual mean)                  |
+| gdd5      | Growing degree days heat sum above 5°C | °C            | 0.1   | 0       | heat sum of all days above the 5°C temperature accumulated over 1 year                                                                                                                         |
+| scd       | Snow cover days                        | count         | -     | -       | Number of days with snowcover calculated using the snowpack model implementation in from TREELIM (https://doi.org/10.1007/s00035-014-0124-0)                                                   |
+| swe       | Snow water equivalent                  | kg m-2 year-1 | 0.1   | 0       | Amount of liquid water if snow is melted                                                                                                                                                       |
+| alt       | Altitude                               | m             |       |         | Altitude above the sea level                                                                                                                                                                   |
+| cdd       | Consecutive dry days                   | count         | -     | -       | Consecutive dry days is the greatest number of consecutive days per time period with daily from a timeseries of daily precipitation amount                                                     |
+| fd        | Frost days                             | count         | -     | -       | Consecutive frost days index is the greatest number of consecutive frost days in a given time period. Frost days is the number of days where minimum of temperature is below 0 degree Celsius. |
+
+
 ### CNN-model-building
 
 #### Loading the training data:
@@ -105,32 +110,67 @@ To build the CNN model both [Tensorflow](https://www.tensorflow.org/) and [Pytor
 
 However, both pipelines in pytorch and tensorflow are uploaded in this repository.
 
-The main file for the model building is the [TFM_CNN_pytorch](https://github.com/rauletepawa/Species_Distribution_Modeling/blob/main/code/TFM_CNN_pytorch.ipynb) file. There I have programmed a reproducible training pipeline where I load the final climatic assemblages dataset in a pytorch data loader with the **MultiLabelDataset** function:
+The main file for the model building is the [TFM_CNN_pytorch](https://github.com/rauletepawa/Species_Distribution_Modeling/blob/main/code/TFM_CNN_pytorch.ipynb) file. There I have programmed a reproducible training pipeline where I load the final climatic assemblages dataset in a pytorch data loader with the **MultiLabelDatasetRescale** function. Note that I included the maximum and minimum values of each variable from 1991 to 2018 in order to efficiently apply a MinMax normalization on the climatic maps:
 
 ````
-from sklearn.model_selection import train_test_split
-
-In [13]:
-
-class MultiLabelDataset(Dataset):
+class MultiLabelDatasetRescale(Dataset):
     def __init__(self):
         self.x_train, self.x_val, self.x_test, self.y_train, self.y_val, self.y_test = None, None, None, None, None, None
         self.mode = 'train'
 
-        self.images_no_perm = torch.tensor(np.stack(df['climatic_map'].values).astype(np.float32))#.to(device)  # Move data to GPU
-        self.labels = torch.tensor(np.stack(df['species_vector'].values).astype(np.float32))#.to(device)  # Move labels to GPU
-        self.images = []
-    
-        permuted_images = []
-        for image in self.images_no_perm:
-            permuted_image = image.permute(2, 0, 1)
-            self.images.append(permuted_image)
-        
-        
+        # Stack and convert to float32 tensor
+        raw_images = torch.tensor(np.stack(df['climatic_map'].values).astype(np.float32))  # shape: [N, H, W, C]
+        self.labels = torch.tensor(np.stack(df['species_vector'].values).astype(np.float32))
+
+        # Transpose to  [C, H, W] for PyTorch
+        # raw_images = raw_images.permute(2, 0, 1)
+        raw_images = raw_images.permute(0, 3, 1, 2)
+
+        # === NORMALIZE EACH CHANNEL INDEPENDENTLY ===
+        # These must match the order of your channels!
+        mins = torch.tensor([
+            1.9000409841537476,          # gdd5
+            1.44621741771698,            # prsd
+            0.9102739691734314,          # bio12d
+            0.009359435178339481,         # swe
+            -9.149993896484375,          # bio01d
+            3.1500244140625,             # bio04d
+            0.0,                         # cdd
+            0.0,                         # fd
+            1.0523613691329956,          # bio15d
+            0.0,                         # scd
+            0.0,                         # altitude
+        ])
+
+        maxs = torch.tensor([
+            3858.301513671875, # gdd5
+            29.09852409362793, # prsd
+            21.650711059570312, #bio12d
+            113.7122802734375, # swe
+            10.45001220703125, #bio01d
+            157.55001831054688, #bio04d
+            8.0, #cdd
+            362.0, # fd
+            2.7762691974639893, #bio15d
+            365.0, # scd
+            2296.0, #altitude
+        ])
+
+        # Avoid division by zero (e.g., for crs with constant 0)
+        ranges = maxs - mins
+        ranges[ranges == 0] = 1  # Prevent division by zero
+
+        # Apply scaling: (x - min) / (max - min)
+        # self.images = (raw_images - mins.view(-1, 1, 1)) / ranges.view(-1, 1, 1)
+        self.images = (raw_images - mins.view(1, -1, 1, 1)) / ranges.view(1, -1, 1, 1)
 
     def train_val_test_split(self):
-        self.x_train, self.x_test, self.y_train, self.y_test = train_test_split(self.images, self.labels, test_size = 0.15, random_state=42)
-        self.x_train, self.x_val, self.y_train, self.y_val = train_test_split(self.x_train, self.y_train, test_size = 0.15, random_state=42)
+        self.x_train, self.x_test, self.y_train, self.y_test = train_test_split(self.images, self.labels, test_size=0.15, random_state=42)
+        self.x_train, self.x_val, self.y_train, self.y_val = train_test_split(self.x_train, self.y_train, test_size=0.15, random_state=42)
+        
+    def full_train_val_test_split(self):
+        self.x_train, self.x_val, self.y_train, self.y_val = train_test_split(self.images, self.labels, test_size=0.15, random_state=42)
+
     def __len__(self):
         if self.mode == 'train':
             return len(self.x_train)
@@ -141,34 +181,45 @@ class MultiLabelDataset(Dataset):
 
     def __getitem__(self, idx):
         if self.mode == 'train':
-            sample = {'images': self.x_train[idx], 'labels': self.y_train[idx]}
+            return {'images': self.x_train[idx], 'labels': self.y_train[idx]}
         elif self.mode == 'val':
-            sample = {'images': self.x_val[idx], 'labels': self.y_val[idx]}
+            return {'images': self.x_val[idx], 'labels': self.y_val[idx]}
         elif self.mode == 'test':
-            sample = {'images': self.x_test[idx], 'labels': self.y_test[idx]}
-        return sample
+            return {'images': self.x_test[idx], 'labels': self.y_test[idx]}
 ````
 
 #### Training Loop Pytorch:
 
-In order to train the models efficiently I coded this training loop function that takes the dataloader,  dataset,  epochs, model type, custom loss and optimizer as variables that we can change and adjust acoordingly
+In order to train the models efficiently I coded this training loop function that takes the dataloader,  dataset,  epochs, model type, custom loss and optimizer as variables that we can change and adjust acoordingly. I also implemented a CosineLRScheaduler to optimally decrease the learning rate after 10 epochs to avoid overfitting. In order to find the optimal number of epochs I used an early stopping callback in the function. I also used a weight decay of 5e-2 on the [AdamW](https://pytorch.org/docs/stable/generated/torch.optim.AdamW.html) optimizer as a regularization technique.
 
 ```
-def model_training(dataloader,dataset,num_epochs,model,custom_loss,optimizer):
+def training_early_stopping(dataloader, dataset, num_epochs, model, custom_loss, optimizer,delta = 1e-6,patience=5):
     
-    # dataloader = DataLoader(dataset, batch_size = 32, shuffle = False)
+    # Initialize the learning rate scheduler
+    scheduler = CosineLRScheduler(
+        optimizer, 
+        t_initial=num_epochs,    # Total epochs
+        lr_min=1e-4,             # Minimum LR
+        warmup_t=10,              # Warm-up epochs
+        warmup_lr_init=1e-3      # Initial warm-up LR
+    )
 
     epoch_train_loss = []
     epoch_val_loss = []
+    
+    best_val_loss = float('inf')
+    early_stop_counter = 0
+    best_model_state = None
 
     for epoch in range(num_epochs):
         train_losses = []
         dataset.mode = 'train'
         model.train()
+
         for D in dataloader:
             optimizer.zero_grad()
-            data = D['images'].to(device, dtype = torch.float)
-            labels = D['labels'].to(device, dtype = torch.float)
+            data = D['images'].to(device, dtype=torch.float)
+            labels = D['labels'].to(device, dtype=torch.float)
             y_hat = model(data)
             loss = custom_loss(y_hat, labels)
             loss.backward()
@@ -177,22 +228,44 @@ def model_training(dataloader,dataset,num_epochs,model,custom_loss,optimizer):
 
         epoch_train_loss.append(np.mean(train_losses))
 
+        # Validation
         val_losses = []
-        val_iou = []
-
         dataset.mode = 'val'
         model.eval()
         with torch.no_grad():
             for D in dataloader:
-                data = D['images'].to(device, dtype = torch.float)
-                labels = D['labels'].to(device, dtype = torch.float)
+                data = D['images'].to(device, dtype=torch.float)
+                labels = D['labels'].to(device, dtype=torch.float)
                 y_hat = model(data)
                 loss = custom_loss(y_hat, labels)
                 val_losses.append(loss.item())
-
+                
+        current_val_loss = np.mean(val_losses)
         epoch_val_loss.append(np.mean(val_losses))
 
-        print(f'Train Epoch: {epoch+1} \t Train Loss:{np.mean(train_losses)} \t Val Loss: {np.mean(val_losses)}')
+        # **Update Learning Rate Scheduler**
+        scheduler.step(epoch + 1)
+
+        # Print progress
+        print(f'Train Epoch: {epoch+1} \t Train Loss: {np.mean(train_losses):.6f} \t Val Loss: {np.mean(val_losses):.6f}')
+        print(f'Learning Rate: {optimizer.param_groups[0]["lr"]:.8f}')
+        
+        # Early Stopping Check
+        if current_val_loss + delta < best_val_loss:
+            best_val_loss = current_val_loss
+            best_model_state = model.state_dict()
+            early_stop_counter = 0
+        else:
+            early_stop_counter += 1
+            print(f"⚠️ No improvement for {early_stop_counter} epoch(s).")
+
+        if early_stop_counter >= patience:
+            print(f"⏹️ Early stopping triggered after {epoch+1} epochs.")
+            break
+
+    # Load best model before returning
+    if best_model_state is not None:
+        model.load_state_dict(best_model_state)
     
     return model, epoch_train_loss, epoch_val_loss
 ```
@@ -397,7 +470,7 @@ There are 2 ways of setting the threshold:
 For this use case where we have many different classes, option 2 is the one that better performs. 
 ##### Adaptive thresholds
 
-This technique consists in calculating the optimal value of the ROC curve for each class in our species vector. Thus, we obtain a list of the optimal thresholds for each species. We will use this list to optimaly transform the probability vector to a binary vector using a different threshold for each probability that will maximize the  [AUC](https://medium.com/@shaileydash/understanding-the-roc-and-auc-intuitively-31ca96445c02)
+This technique consists in calculating the optimal value of the ROC curve for each class in our species vector. Thus, we obtain a list of the optimal thresholds for each species. We will use this list to optimaly transform the probability vector to a binary vector using a different threshold for each species presence probability that will maximize the  [AUC](https://medium.com/@shaileydash/understanding-the-roc-and-auc-intuitively-31ca96445c02).
 
 ![optimal-threshold](Images/optimal-threshold.png)
 
@@ -589,7 +662,7 @@ AdamW is an improved version of the well-known Adam optimizer that also tracks a
 **Fine-Tuning Loss Plot:**
 
 
-![resnet18-fine-tunning](Images/resnet18-fine-tunning.png)
+![resnet18-fine-tunning](Images/resnetfinetuning2.png)
 **Fine-tuning function:**
 ```
 def fine_tunning(dataloader, dataset, num_epochs, model, custom_loss, optimizer,delta,patience):
@@ -599,8 +672,8 @@ def fine_tunning(dataloader, dataset, num_epochs, model, custom_loss, optimizer,
         optimizer, 
         t_initial=num_epochs,    # Total epochs
         lr_min=1e-5, #1e-5            # Minimum LR
-        warmup_t=5,  #2            # Warm-up epochs
-        warmup_lr_init=1e-3 #1e-4     # Initial warm-up LR
+        warmup_t=2,  #2            # Warm-up epochs
+        warmup_lr_init=1e-4 #1e-4     # Initial warm-up LR
     )
 
     epoch_train_loss = []
@@ -696,7 +769,7 @@ This approach enables predictive modeling of species distributions based on high
 
 ### Best-Results
 
-The state of the art has demonstrated that it is possible to train and fine-tune CNNs that have a macro and micro TSS of 69.67% and 75.24% respectively.
+The state of the art models tested on the alps region have demonstrated that it is possible to fine tune CNN models with a macro and micro TSS of 69.67% and 75.24% respectively.
 
 Best models performance summary table:
 
@@ -729,7 +802,7 @@ UMAP
 ## 🌍 Interactive 3D UMAP Plot
 
 
-[![UMAP 3D Preview](Images/umap_image.png)](https://rauletepawa.github.io/Species_Distribution_Modeling/umap_3d_plot_no_rotate.html)
+[![UMAP 3D Preview](Images/umap_image_6_clusters.png)](https://rauletepawa.github.io/Species_Distribution_Modeling/umap_3d_plot_no_rotate.html)
 
 🔗 Click the image to open the interactive version
 
