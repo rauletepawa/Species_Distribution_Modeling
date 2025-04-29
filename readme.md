@@ -892,7 +892,7 @@ We can see that for _Salix reticulata_ the most important variables are the fr
 
 #### Single species distribution modeling
 
-Finally, we visualized the distribution of individual species across Norway. As an illustrative example, these figures present the distribution of _Salix reticulata_ and _Salix herbacea_. The left panel displays the reference distribution of _S. herbacea_ based on data from Artsdatabanken, the center panel shows the model’s predicted distribution for the year 2018 using the CNN, and the right panel indicates the GBIF-based occurrence data from **1991 to 2017** used during training. 
+Finally, we visualized the distribution of individual species across Norway. As an illustrative example, these figures present the distribution of _Salix reticulata_ and _Salix herbacea_. The left panel displays the reference distribution of _S. herbacea_ based on data from Artsdatabanken (that we will use as the reference most updated distribution), the center panel shows the model’s predicted distribution for the year 2018 using the CNN, and the right panel indicates the GBIF-based occurrence data from **1991 to 2017** used during training. 
 
 ![salix_herbacea](Images/salix_herbacea_comparison.png)
 
