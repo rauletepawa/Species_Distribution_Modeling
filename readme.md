@@ -885,7 +885,7 @@ This figure provides a more detailed view of the distribution of climatic variab
 To interpret the predictions of the convolutional neural network (CNN) and identify the most influential climatic features associated with the presence of _Salix reticulata_, I employed the [Integrated Gradients](https://captum.ai/docs/attribution_algorithms#integrated-gradients) (IG) method implemented in the [Captum]((https://captum.ai/) library. 
 Integrated Gradients is a widely used attribution technique that quantifies feature importance by integrating the gradients of the model's output with respect to the input along a linear path from a baseline (e.g., a zero-valued image) to the actual input. This approach mitigates issues such as gradient saturation and provides more stable and interpretable attributions compared to raw gradients. I applied IG to all climatic input samples in which _Salix reticulata_ was present, and computed the average attribution maps across these samples. This enabled us to identify the spatial and climatic patterns most strongly associated with the model's prediction of the species’ presence, offering ecological insights into the climatic preferences of _S. reticulata_ as captured by the model.
 
-![integrated_gradients](Integrated_gradients_salix_reticulata_2018.png)
+![integrated_gradients](Images/Integrated_gradients_salix_reticulata_2018.png)
 We can see that for _Salix reticulata_ the most important variables are the frost days (fd), the mean annual air temperature (bio01d) and the snow cover days (scd) as it is a specie that lives on alpine exposed areas with low snow accumulation.
 
 [Integrated Gradients Tutorial](https://captum.ai/tutorials/Titanic_Basic_Interpret) 
