@@ -13,20 +13,6 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "notes/Useful Commands.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Useful Commands"
-            }
-          },
-          {
-            "id": "d4a726d0860bc191",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
                 "file": "readme.md",
                 "mode": "source",
                 "source": false
@@ -35,8 +21,7 @@
               "title": "readme"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -183,32 +168,32 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "0a4f3de6fef91148",
+  "active": "a428b0c2f62d11de",
   "lastOpenFiles": [
-    "Images/umap_image_6_clusters.png",
+    "notes/Useful Commands.md",
+    "captum.md",
+    "readme.md",
+    "Images/distribution_of_cluster_variables_2018.png",
+    "Images/UMAP_map_2018.png",
+    "notes/Old Results Table.md",
+    "Images/counties_norway.png",
+    "Images/species_richness_2018.png",
+    "Images/sampled_climatic_dataset_with_preds.png",
+    "Images/sampled_climatic_dataset.png",
+    "Images/RandomlySampledGrids2018.png",
+    "Images/salix reticulata comparison.png",
+    "Images/salix herbacea comparison.png",
+    "Images/distribution of salix reticulata artsdatabanken.png",
+    "code/GBIF_sp_distribution.ipynb",
+    "code/Untitled.ipynb",
+    "data/absolute_stats_2018.csv",
+    "data/lu5300w8s5ju.tmp",
     "docs/umap_3d_plot_no_rotate.html",
     "docs/umap_3d_plot_no_rotate_old.html",
-    "Images/resnetfinetuning2.png",
-    "readme.md",
-    "Images/distribution of salix reticulata artsdatabanken.png",
-    "Images/Salix herbacea artsdatbanken.png",
-    "Images/Salix herbacea distribution.png",
     "data/Full_Scale/sampled_grids_bin_008.pkl",
     "code/Resampling_data_2018.ipynb",
     "models/thresholds_FOCAL_RESNET18_53_tss_1991-2017_full.pkl",
     "models/RESNET18_53_FOCAL_tss_1991-2017_full",
-    "data/centroids_norway/centroids_all_NOR_1x1.pkl",
-    "data/centroids_norway/grid_norway_1km-x-1km.pkl",
-    "data/centroids_norway/centroids_all_NOR_1km.pkl",
-    "data/centroids_all_NOR_1km.pkl",
-    "notes/Useful Commands.md",
-    "notes/Old Results Table.md",
-    "Images/RESNET18_BCE_1991-2018_fine-tunning.png",
-    "Images/normalized_FL_CNN.png",
-    "Images/umap_image.png",
-    "Images/vit_finetuning.png",
-    "Images/resnet18.png",
-    "Images/resnet18-fine-tunning.png",
     "().md",
     "CNN for Multi-label classification.md",
     "Pasted.md",

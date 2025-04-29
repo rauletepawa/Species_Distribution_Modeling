@@ -12,6 +12,7 @@
   - [Model Evaluation](#model-evaluation)
   - [FineTuning Pretrained Models](#FineTuning-Pretrained-Models)
   - [Best Models Results](#Best-Results)
+  - [Intepretability techniques](#Intepretability-techniques)
 
 ## Introduction
 
@@ -65,7 +66,7 @@ In a multilabel classification we can have many correct instances (present speci
 I used an [Rscript](https://github.com/rauletepawa/Species_Distribution_Modeling/blob/main/code/1_gbif_norge_data.R) ([Camila Pacheco 2024](https://nsojournals.onlinelibrary.wiley.com/doi/10.1111/ecog.07213)) to download all the GBIF occurrences in vascular plants in Norway main land from 1991 to 2020. I applied some filters to remove all those occurrences located in capitals, institutions, seas or that did not have any valid coordinates assigned inside Norway.
 
 Then I obtained a occurrence clean dataset with a total of 3.011.729 occurences.
-Using the [splitting norway in grids](https://github.com/rauletepawa/Species_Distribution_Modeling/blob/main/code/Splitting_Norway_in_grids.ipynb) script we splitted norway in grids of 1km and I counted as a co-occurrence all the species that are observed in the same grid at the same year. Thus I built a plant assemblage dataset that includes all the plant species that co-occur in the same 1km grid the same year filtering all those assemblages that including less than 5 co-occurrences.
+Using the [splitting norway in grids](https://github.com/rauletepawa/Species_Distribution_Modeling/blob/main/code/Splitting_Norway_in_grids.ipynb) script we splitted norway in grids of 1km and I counted as a co-occurrence all the species that are observed in the same grid at the same year. Thus I built a plant assemblage dataset that includes all the plant species that co-occur in the same 1km grid the same year excluding all those assemblages that including less than 5 co-occurrences and all those species that appear less than 5 times in Norway between 1991 and 2020.
 
 **Here there is an example of the dataset:**
 
@@ -74,7 +75,7 @@ Using the [splitting norway in grids](https://github.com/rauletepawa/Species_Dis
 ![assamblage-points-norway](Images/assamblage-points-norway-1991-2020.png)
 
 #### Climatic Dataset
-The climatic dataset is composed by a total of 59.074 plant assemblages collected from 1991 until 2018. For each vegetation plot coordinates (location) I extracted a 11 channels (variables) 32x32 climatic map at 1km resolution (1 pixel corresponds to 1km).
+The climatic dataset is composed by a total of **59.074**plant assemblages collected from **1991 until 2018**. For each vegetation plot coordinates (location) I extracted a 10 channels (variables) 32x32 climatic map at 1km resolution (1 pixel corresponds to 1km).
 This climatic dataset construction can be followed in the [Build CNN dataset](https://github.com/rauletepawa/Species_Distribution_Modeling/blob/main/code/Build_CNN_dataset.ipynb) script.
 
 We also transformed the plant assamblages into binary presence/absence vectors with the [filtering species script](http://localhost:8888/notebooks/Projects/GitHub/Species_Distribution_Modeling/code/filtering_species.ipynb) 
@@ -110,7 +111,7 @@ To build the CNN model both [Tensorflow](https://www.tensorflow.org/) and [Pytor
 
 However, both pipelines in pytorch and tensorflow are uploaded in this repository.
 
-The main file for the model building is the [TFM_CNN_pytorch](https://github.com/rauletepawa/Species_Distribution_Modeling/blob/main/code/TFM_CNN_pytorch.ipynb) file. There I have programmed a reproducible training pipeline where I load the final climatic assemblages dataset in a pytorch data loader with the **MultiLabelDatasetRescale** function. Note that I included the maximum and minimum values of each variable from 1991 to 2018 in order to efficiently apply a MinMax normalization on the climatic maps:
+The main file for the model building is the [TFM_CNN_pytorch](https://github.com/rauletepawa/Species_Distribution_Modeling/blob/main/code/TFM_CNN_pytorch.ipynb) file. There I have programmed a reproducible training pipeline where I load the final climatic assemblages dataset in a pytorch data loader with the **MultiLabelDatasetRescale** function. Note that I included the maximum and minimum values of each variable from **1991 to 2018** in order to efficiently apply a MinMax normalization on the climatic maps:
 
 ````
 class MultiLabelDatasetRescale(Dataset):
@@ -424,7 +425,7 @@ class Args:
 
 ### Model-Training
 
-The CNN model outputs a logits vector for each training sample, after applying a [sigmoid](https://machinelearningmastery.com/a-gentle-introduction-to-sigmoid-function/) function to these logits vectors, we obtain a probability vector where each probability value is independent of the other probabilities (they do not add up to 1 as in the softmax function). 
+The CNN model outputs a logits vector for each training sample, after applying a [sigmoid](https://machinelearningmastery.com/a-gentle-introduction-to-sigmoid-function/) function to these logits vectors, we obtain a probability vector where each probability value is independent of the other probabilities (they do not add up to 1 as in the softmax function), as we treat each species presence probability independent of the other species.
 
 ##### BCE loss training
 ![BCEloss](Images/BCE-loss.png)
@@ -438,7 +439,7 @@ The CNN model outputs a logits vector for each training sample, after applying a
 The weighted classes loss functions converge to lower loss values than the non weighted ones.
 As you can see DICE loss training plot is catastrophic, so I am discarting this loss for any other training.
 
-BCE and FL have good convergence plots. Altough BCE Looks more smooth and stable in later epochs, FL converges with a much lower error (0.0063 vs 0.0024) in the validation set. 
+**Both BCE and FL show good convergence behavior. While BCE exhibits a smoother and more stable loss curve in the later epochs, FL achieves a lower validation error (0.0063 vs. 0.0024). Additionally, FL produces predicted probabilities with a mean around 0.50, which is advantageous for threshold selection. In contrast, BCE tends to output lower probability values (mean ≈ 0.15), indicating reduced confidence in its predictions.**
 
 FL is the best option to train our CNN as it also takes into account class imbalance and makes more focus on those samples that are more difficult to classify (classes where the model tend to  underperform) by downscaling the importance of the most common classes.
 
@@ -773,13 +774,22 @@ The state of the art models tested on the alps region have demonstrated that it 
 
 Best models performance summary table:
 
+**Adaptive Threshold**
+
 | Model                  | Eval Loss | Macro TSS | Micro TSS | Weighted TSS |
 | ---------------------- | --------- | --------- | --------- | ------------ |
 | Fine Tuned ResNet18 FL | 0.00025   | 0.513     | 0.531     | 0.398        |
 | Baseline CNN FL        | 0.00023   | 0.489     | 0.502     | 0.362        |
 | Baseline CNN BCE       | 0.00617   | 0.452     | 0.468     | 0.322        |
-| Fine Tuned ViT         | 0.00025   | 0.419     | 0.430     | 0.303        
+| Fine Tuned ViT         | 0.00025   | 0.419     | 0.430     | 0.303        |
+**Global Threshold**
 
+| Model                  | Eval Loss | Macro TSS | Micro TSS | Weighted TSS |
+| ---------------------- | --------- | --------- | --------- | ------------ |
+| Fine Tuned ResNet18 FL | 0.00025   | 0.513     | 0.531     | 0.398        |
+| Baseline CNN FL        | 0.00023   | 0.489     | 0.502     | 0.362        |
+| Baseline CNN BCE       | 0.00617   | 0.452     | 0.468     | 0.322        |
+| Fine Tuned ViT         | 0.00025   | 0.419     | 0.430     | 0.303        |
 ### Training-1991-2017-and-testing-with-2018-data
 
 Due to spatial overlap between some samples, a random train-test split does not guarantee that the model is fully isolated from test-time climatic information during training. To address this, we adopt a **temporal split** strategy: samples from **1991 to 2017** are used for training, while **2018** samples are reserved exclusively for testing and evaluation.
@@ -793,13 +803,62 @@ We use a Fine-Tuned ResNet18 on **1991-2017** data to make the following experim
 | Fine Tuned ResNet18 FL | 0.00027   | 0.380     | 0.557     | 0.302        |
 ### Intepretability-techniques
 
-In order to understand better the model 
+Now we arrived where the fun part begins. Let's do some ecology!!
+
+In order to undertsand the model I conducted several tests and interpretation techniques:
+1. Predicting the species richness 
+2. Clusterizing and plotting the flattened vectors 
+3. Integrated gradients interpretation
+4. Single species distribution modeling
+
+#### Preparing Dataset for the experiments
+
+To evaluate our model using realistic simulations across the entire Norwegian territory, I divided Norway into approximately 330.000 grids of 1 km² each. From these, I performed a downsampling by selecting **11.400** randomly distributed grid points every 0.08º (~8 km), which provides sufficient coverage of Norway’s diverse climatic zones and geographic regions. The accompanying map illustrates the spatial coverage of the downsampled grids used for model interpretation.
+
+![randomly_sampled_grids](Images/RandomlySampledGrids2018.png)
+Then I extracted the 32x32x10 climatic maps in the year 2018 for each grid and I builded the dataset with the climatic information:
+
+![sampled_climatic_dataset](Images/sampled_climatic_dataset.png)
+Then I loaded the fine-tuned ResNet18 (trained with **1991-2017** data) model and predicted the species composition binary vector for each location.
+
+![sampled_climatic_dataset_with_preds](Images/sampled_climatic_dataset_with_preds.png)
+
+Now we can dive into all kinds of analyses 🎯
+We’ve already modeled the plant community composition for ALL of Norway! 🇳🇴🌿 
+This opens up endless possibilities for ecological interpretation and climate impact studies 🔬📊
+
+#### Predicting the Species Richness
+
+We can easily make a species richness heatmap for all Norway calculating the species richness for each location with this funciton.
+
+```
+def calculate_sp_richness(species_vectors):
+    richness = []
+    for i in species_vectors:
+        nonzero = np.count_nonzero(i)
+        richness.append(nonzero)
+    return richness    
+df_2018_with_preds['predicted_richness'] = calculate_sp_richness(df_2018_with_preds['predicted_vector'])    
+df_2018_with_preds
+```
+
+Note that the species richness here is defined as the total number of unique species in a sample.
+
+![species_richness](Images/species_richness_2018.png)
+In the species richness map, we observe that the highest diversity is concentrated around the Oslo region. This pattern aligns with expert knowledge and previous studies (_cite source here_). However, it’s important to note that these areas also correspond to some of the most densely populated counties in Norway, which are consequently the most heavily sampled in the GBIF dataset. This introduces a potential sampling bias that may be influencing the observed patterns. A similar situation occurs in the Trøndelag region, where a notable diversity hotspot appears around Trondheim. Despite these biases, the model generally predicts higher species richness along the Norwegian coast, with a clear gradient showing greater richness in the southern regions compared to the north; a trend consistent with known ecological and climatic patterns (_cite source here_).
+
+![counites_norway](Images/counties_norway.png)
+
+
 
 #### UMAP
 
-UMAP
+While our proposed models were able to accurately predict multiple species altogether, understanding the underlying patterns behind these predictions is crucial. This is feasible due to the network's capability to learn generalized features during training, aligning with the principles of Transfer Learning (Pan & Yang, [2009](https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.14466?utm=#mee314466-bib-0094); Torrey & Shavlik, [2010](https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.14466?utm=#mee314466-bib-0128)). Additionally, the feature extractor reduces the input dimensionality significantly, streamlining the process while retaining essential input information. To demonstrate this, we computed the image embeddings for the  **11.400** samples using CNN's feature extractor, generating a total of _N_ points, each represented as a **2048-dimensional** feature vector. We then project these high-dimensional feature vectors into a three-dimensional space for visualization purposes using Uniform Manifold Approximation and Projection (UMAP) (McInnes et al., [2018](https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.14466?utm=#mee314466-bib-0086)).
 
-## 🌍 Interactive 3D UMAP Plot
+The 3-D projection unveiled distinct clusters of community plots, each group sharing common image-derived features. This concept may resonate with those experienced in ecological ordinations, somewhat akin to community plot ordinations mapped onto a 3-D space through environmental principal component analysis (PCA). However, the distinguishing factor here is that the primary components emerging from UMAP reflect highly intricate features learned directly from the images, providing a unique perspective on community patterns.
+
+
+#### 🌍 Interactive 3D UMAP Plot
 
 
 [![UMAP 3D Preview](Images/umap_image_6_clusters.png)](https://rauletepawa.github.io/Species_Distribution_Modeling/umap_3d_plot_no_rotate.html)
@@ -807,4 +866,23 @@ UMAP
 🔗 Click the image to open the interactive version
 
 
+
+#### Plotting U-MAP in Norway
+
+To further interpret these patterns, we spatially mapped the 11,400 samples colored by their UMAP-derived cluster assignments. The resulting visualization revealed 6 clear geographic structuring, where distinct clusters corresponded to specific climatic and ecological regions. These spatial patterns suggest that the CNN successfully learned latent features that capture underlying vegetation–climate associations, potentially delineating ecological zones or floristic regions across the study area.
+
+![umapmap](Images/UMAP_map_2018.png)
+The map reveals that the clusters exhibit well-defined boundaries and minimal overlap, indicating that the identified climatic regions are both relevant and clearly differentiated.
+
+The clusters highlight strong climatic differences between the west coast and the rest of the country. This pattern aligns with the west–east Atlantic gradient, which significantly influences both climate conditions and plant community composition.
+We also observe strong climatic gradients between the southern and northern regions of Norway, with three main climatic ecoregions identified in the south: the southwestern coastal zone, the central alpine area, and the southeastern region. Notably, the southeastern region shows the highest species richness, as indicated in the previous species richness figure.
+
+![distribution_cluster_variables](Images/distribution_of_cluster_variables_2018.png)
+This figure provides a more detailed view of the distribution of climatic variables within each cluster, offering an overview of the characteristic climatic profiles associated with each region.
+
+#### Integrated gradients Interpretation
+
+Here I use[ Integrated Gradients](https://captum.ai/docs/attribution_algorithms#integrated-gradients) from the [captum](https://captum.ai/) library to analyze feature importance. 
+
+[Integrated Gradients Tutorial](https://captum.ai/tutorials/Titanic_Basic_Interpret) 
 
