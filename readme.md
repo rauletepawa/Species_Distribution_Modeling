@@ -778,17 +778,18 @@ Best models performance summary table:
 
 | Model                  | Eval Loss | Macro TSS | Micro TSS | Weighted TSS |
 | ---------------------- | --------- | --------- | --------- | ------------ |
-| Fine Tuned ResNet18 FL | 0.00025   | 0.513     | 0.531     | 0.398        |
-| Baseline CNN FL        | 0.00023   | 0.489     | 0.502     | 0.362        |
-| Baseline CNN BCE       | 0.00617   | 0.452     | 0.468     | 0.322        |
+| Fine Tuned ResNet18 FL | 0.00022   | 0.517     | 0.518     | 0.390        |
+| Baseline CNN FL        | 0.00022   | 0.507     | 0.511     | 0.381        |
+| Baseline CNN BCE       | 0.00456   | 0.535     | 0.540     | 0.408        |
 | Fine Tuned ViT         | 0.00025   | 0.419     | 0.430     | 0.303        |
+
 **Global Threshold**
 
 | Model                  | Eval Loss | Macro TSS | Micro TSS | Weighted TSS |
 | ---------------------- | --------- | --------- | --------- | ------------ |
-| Fine Tuned ResNet18 FL | 0.00025   | 0.513     | 0.531     | 0.398        |
-| Baseline CNN FL        | 0.00023   | 0.489     | 0.502     | 0.362        |
-| Baseline CNN BCE       | 0.00617   | 0.452     | 0.468     | 0.322        |
+| Fine Tuned ResNet18 FL | 0.00022   | 0.555     | 0.573     | 0.381        |
+| Baseline CNN FL        | 0.00022   | 0.548     | 0.513     | 0.361        |
+| Baseline CNN BCE       | 0.00456   | 0.193     | 0.021     | 0.026        |
 | Fine Tuned ViT         | 0.00025   | 0.419     | 0.430     | 0.303        |
 ### Training-1991-2017-and-testing-with-2018-data
 
@@ -882,7 +883,7 @@ This figure provides a more detailed view of the distribution of climatic variab
 
 #### Integrated gradients Interpretation
 
-To interpret the predictions of the convolutional neural network (CNN) and identify the most influential climatic features associated with the presence of _Salix reticulata_, I employed the [Integrated Gradients](https://captum.ai/docs/attribution_algorithms#integrated-gradients) (IG) method implemented in the [Captum]((https://captum.ai/) library. 
+To interpret the predictions of the convolutional neural network (CNN) and identify the most influential climatic features associated with the presence of _Salix reticulata_, I employed the [Integrated Gradients](https://captum.ai/docs/attribution_algorithms#integrated-gradients) (IG) method implemented in the [Captum](https://captum.ai/) library. 
 Integrated Gradients is a widely used attribution technique that quantifies feature importance by integrating the gradients of the model's output with respect to the input along a linear path from a baseline (e.g., a zero-valued image) to the actual input. This approach mitigates issues such as gradient saturation and provides more stable and interpretable attributions compared to raw gradients. I applied IG to all climatic input samples in which _Salix reticulata_ was present, and computed the average attribution maps across these samples. This enabled us to identify the spatial and climatic patterns most strongly associated with the model's prediction of the species’ presence, offering ecological insights into the climatic preferences of _S. reticulata_ as captured by the model.
 
 ![integrated_gradients](Images/Integrated_gradients_salix_reticulata_2018.png)
