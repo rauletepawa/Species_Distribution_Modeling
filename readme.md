@@ -870,7 +870,13 @@ The 3-D projection unveiled distinct clusters of community plots, each group sha
 
 #### Plotting U-MAP in Norway
 
-To further interpret these patterns, we spatially mapped the 11,400 samples colored by their UMAP-derived cluster assignments. The resulting visualization revealed 6 clear geographic structuring, where distinct clusters corresponded to specific climatic and ecological regions. These spatial patterns suggest that the CNN successfully learned latent features that capture underlying vegetation–climate associations, potentially delineating ecological zones or floristic regions across the study area.
+To further interpret these patterns, we spatially mapped the 11,400 samples colored by their UMAP-derived cluster assignments. The resulting visualization revealed 6 clear geographic structuring, where distinct clusters corresponded to specific climatic and ecological regions.
+
+We selected a cutoff of six clusters, as illustrated in the plot, because it represents the optimal trade-off between inertia (the within-cluster sum of squared distances between each point and its assigned cluster centroid) and the number of clusters.
+
+![elbow_curve](Images/elbow_curve_2018.png)
+
+These spatial patterns suggest that the CNN successfully learned latent features that capture underlying vegetation–climate associations, potentially delineating ecological zones or floristic regions across the study area.
 
 ![umapmap](Images/UMAP_map_2018.png)
 The map reveals that the clusters exhibit well-defined boundaries and minimal overlap, indicating that the identified climatic regions are both relevant and clearly differentiated.
