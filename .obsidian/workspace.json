@@ -170,6 +170,7 @@
   },
   "active": "a428b0c2f62d11de",
   "lastOpenFiles": [
+    "code/environments/pytorch_gpu_env.yml",
     "code/Resampling_data_FUTURE.ipynb",
     "code/Future_CNN_dataset.ipynb",
     "Images/2060-2080 bioclimatic regions in Norway.png",
@@ -186,7 +187,6 @@
     "models/2018/thresholds_focal_51_tss_1991-2018.pkl",
     "models/2018/CNNModel_1_FOCAL_51_tss_1991-2018",
     "models/2018/thresholds_BCE_53_tss_1991-2018.pkl",
-    "models/2018/CNNModel_1_BCE_53_tss_1991-2018",
     "Images/elbow_curve_2018.png",
     "readme.md",
     "notes/Callouts.md",
