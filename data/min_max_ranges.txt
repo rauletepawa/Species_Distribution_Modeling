@@ -1,0 +1,43 @@
+1991-2018
+
+gdd5: min = 1.9000, max = 3858.3015
+bio12d: min = 0.9103, max = 21.6507
+swe: min = 0.0094, max = 113.7123
+bio01d: min = -9.1500, max = 10.4500
+bio04d: min = 3.1500, max = 157.5500
+cdd: min = 0.0000, max = 8.0000
+fd: min = 0.0000, max = 362.0000
+bio15d: min = 1.0524, max = 2.7763
+scd: min = 0.0000, max = 365.0000
+altitude: min = 0.0000, max = 2296.0000
+
+
+HIRHAM5 2060-2080
+
+rcp45
+
+crs: min = 0.0000, max = 0.0000
+gdd5: min = 150.7205, max = 2535.5581
+bio12d: min = 1.4363, max = 16.4020
+swe: min = 0.0833, max = 5.2323
+bio01d: min = -4.5350, max = 11.1300
+bio04d: min = 4.4350, max = 9.7450
+cdd: min = 0.1500, max = 4.4000
+fd: min = 8.9000, max = 277.3500
+bio15d: min = 1.1975, max = 2.2100
+scd: min = 0.0000, max = 257.0000
+altitude: min = 0.0000, max = 2296.0000
+
+rcp85
+
+crs: min = 0.0000, max = 0.0000
+gdd5: min = 240.1658, max = 2707.0481
+bio12d: min = 1.5853, max = 14.6198
+swe: min = 0.0004, max = 0.0513
+bio01d: min = -3.3068, max = 11.7729
+bio04d: min = 4.4167, max = 9.9224
+cdd: min = 0.4000, max = 6.7000
+fd: min = 7.4000, max = 271.6500
+bio15d: min = 1.2977, max = 2.5778
+scd: min = 0.0000, max = 224.0000
+altitude: min = 0.0000, max = 2296.0000

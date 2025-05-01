@@ -778,19 +778,19 @@ Best models performance summary table:
 
 | Model                  | Eval Loss | Macro TSS | Micro TSS | Weighted TSS |
 | ---------------------- | --------- | --------- | --------- | ------------ |
-| Fine Tuned ResNet18 FL | 0.00022   | 0.517     | 0.518     | 0.390        |
-| Baseline CNN FL        | 0.00022   | 0.507     | 0.511     | 0.381        |
-| Baseline CNN BCE       | 0.00456   | 0.535     | 0.540     | 0.408        |
+| Baseline CNN BCE       | 0.00588   | 0.524     | 0.549     | 0.402        |
+| Fine Tuned ResNet18 FL | 0.00024   | 0.490     | 0.528     | 0.389        |
+| Baseline CNN FL        | 0.00024   | 0.462     | 0.480     | 0.345        |
 | Fine Tuned ViT         | 0.00025   | 0.419     | 0.430     | 0.303        |
 
 **Global Threshold**
 
-| Model                  | Eval Loss | Macro TSS | Micro TSS | Weighted TSS |
-| ---------------------- | --------- | --------- | --------- | ------------ |
-| Fine Tuned ResNet18 FL | 0.00022   | 0.555     | 0.573     | 0.381        |
-| Baseline CNN FL        | 0.00022   | 0.548     | 0.513     | 0.361        |
-| Baseline CNN BCE       | 0.00456   | 0.193     | 0.021     | 0.026        |
-| Fine Tuned ViT         | 0.00025   | 0.419     | 0.430     | 0.303        |
+| Model                  | Eval Loss | Macro TSS | Micro TSS | Weighted TSS | Average Threshold |
+| ---------------------- | --------- | --------- | --------- | ------------ | ----------------- |
+| Fine Tuned ResNet18 FL | 0.00024   | 0.547     | 0.561     | 0.384        | 0.5153            |
+| Baseline CNN FL        | 0.00024   | 0.512     | 0.509     | 0.329        | 0.5127            |
+| Baseline CNN BCE       | 0.00588   | 0.367     | 0.111     | 0.122        | 0.0063            |
+| Fine Tuned ViT         | 0.00025   | 0.419     | 0.430     | 0.303        | 0.3012            |
 ### Training-1991-2017-and-testing-with-2018-data
 
 Due to spatial overlap between some samples, a random train-test split does not guarantee that the model is fully isolated from test-time climatic information during training. To address this, we adopt a **temporal split** strategy: samples from **1991 to 2017** are used for training, while **2018** samples are reserved exclusively for testing and evaluation.
