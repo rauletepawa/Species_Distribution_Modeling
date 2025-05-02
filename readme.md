@@ -132,7 +132,6 @@ class MultiLabelDatasetRescale(Dataset):
         # These must match the order of your channels!
         mins = torch.tensor([
             1.9000409841537476,          # gdd5
-            1.44621741771698,            # prsd
             0.9102739691734314,          # bio12d
             0.009359435178339481,         # swe
             -9.149993896484375,          # bio01d
@@ -146,7 +145,6 @@ class MultiLabelDatasetRescale(Dataset):
 
         maxs = torch.tensor([
             3858.301513671875, # gdd5
-            29.09852409362793, # prsd
             21.650711059570312, #bio12d
             113.7122802734375, # swe
             10.45001220703125, #bio01d
@@ -469,13 +467,23 @@ There are 2 ways of setting the threshold:
 	1- Setting a global threshold for all the species
 	2- Setting a adaptive threshold vector
 
-For this use case where we have many different classes, option 2 is the one that better performs. 
+ Option 1 is the one that **better performs** and the one I will be using for model predictions and interpretation. 
 ##### Adaptive thresholds
 
 This technique consists in calculating the optimal value of the ROC curve for each class in our species vector. Thus, we obtain a list of the optimal thresholds for each species. We will use this list to optimaly transform the probability vector to a binary vector using a different threshold for each species presence probability that will maximize the  [AUC](https://medium.com/@shaileydash/understanding-the-roc-and-auc-intuitively-31ca96445c02).
 
 ![optimal-threshold](Images/optimal-threshold.png)
+##### Global Threshold
 
+While adaptive thresholding assigns a distinct, class-specific cutoff based on the receiver operating characteristic (ROC) analysis (optimizing the AUC for each species independently), this approach may suffer from overfitting, particularly in cases with imbalanced class distributions or limited data per species. Furthermore, species-specific thresholds can become unstable in time-sensitive applications, such as temporal transferability to future climatic scenarios.
+
+To address this limitation, we introduce a **global thresholding strategy**, in which a single threshold is applied uniformly across all species. This global threshold is computed as the arithmetic mean of the adaptive thresholds previously obtained for each class. Formally, if $\theta_i$​ denotes the optimal threshold for species $i$, the global threshold $\theta_{\text{global}}$​ is defined as:
+
+$\theta_{\text{global}} = \frac{1}{N} \sum_{i=1}^{N} \theta_i$
+
+where $N$ is the total number of species (the number of classes).
+
+This global threshold serves as a compromise between species-specific optimization and generalization. It mitigates the risks of overfitting to species-level validation data and improves robustness when extrapolating to temporally or spatially out-of-sample data. Empirical evaluations show that applying a unified threshold can result in more stable performance metrics (e.g., True Skill Statistic, F1-score) when assessing model predictions on previously unseen temporal datasets. As such, global thresholding constitutes a practical and theoretically justified alternative for multi-label ecological inference tasks, especially in scenarios where generalization is prioritized over per-class sensitivity.
 #### True Statistic Skill (TSS):
 
 $TSS=Sensitivity+Specificity−1$
