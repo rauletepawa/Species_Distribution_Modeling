@@ -1,4 +1,4 @@
-# Repository for Masters Thesis Project
+# Repository Masters Thesis Project
 
 ## Table of Contents
 
@@ -12,7 +12,8 @@
   - [Model Evaluation](#model-evaluation)
   - [FineTuning Pretrained Models](#FineTuning-Pretrained-Models)
   - [Best Models Results](#Best-Results)
-  - [Intepretability techniques](#Intepretability-techniques)
+  - [Results&Model Interpretation](#Results&Model-Interpretation)
+  - [Future Predictions](#Future-Predictions)
 
 ## Introduction
 
@@ -802,7 +803,7 @@ We use a Fine-Tuned ResNet18 on **1991-2017** data to make the following experim
 | Model                  | Eval Loss | Macro TSS | Micro TSS | Weighted TSS |
 | ---------------------- | --------- | --------- | --------- | ------------ |
 | Fine Tuned ResNet18 FL | 0.00027   | 0.380     | 0.557     | 0.302        |
-### Intepretability-techniques
+### Results&Model-Interpretation
 
 Now we arrived where the fun part begins. Let's do some ecology!! All the analysis can be found and followed in the [resampling_data](https://github.com/rauletepawa/Species_Distribution_Modeling/blob/main/code/Resampling_data_2018.ipynb) jupyter notebook
 
@@ -814,7 +815,7 @@ In order to undertsand the model I conducted several tests and interpretation te
 
 #### Preparing Dataset for the experiments
 
-To evaluate our model using realistic simulations across the entire Norwegian territory, I divided Norway into approximately 330.000 grids of 1 km² each. From these, I performed a downsampling by selecting **11.400** randomly distributed grid points every 0.08º (~8 km), which provides sufficient coverage of Norway’s diverse climatic zones and geographic regions. The accompanying map illustrates the spatial coverage of the downsampled grids used for model interpretation.
+To evaluate our model using realistic simulations across the entire Norwegian territory, I divided Norway into approximately 330.000 grids of 1 km² each. From these, I performed a downsampling by selecting **11.470** randomly distributed grid points every 0.08º (~8 km), which provides sufficient coverage of Norway’s diverse climatic zones and geographic regions. The accompanying map illustrates the spatial coverage of the downsampled grids used for model interpretation.
 
 ![randomly_sampled_grids](Images/RandomlySampledGrids2018.png)
 Then I extracted the 32x32x10 climatic maps in the year 2018 for each grid and I builded the dataset with the climatic information:
@@ -845,16 +846,24 @@ df_2018_with_preds
 
 Note that the species richness here is defined as the total number of unique species in a sample.
 
-![species_richness](Images/species_richness_2018.png)
+![species_richness](Images/SpeciesRichness_11000_samples.png)
 In the species richness map, we observe that the highest diversity is concentrated around the Oslo region. This pattern aligns with expert knowledge and previous studies (_cite source here_). However, it’s important to note that these areas also correspond to some of the most densely populated counties in Norway, which are consequently the most heavily sampled in the GBIF dataset. This introduces a potential sampling bias that may be influencing the observed patterns. A similar situation occurs in the Trøndelag region, where a notable diversity hotspot appears around Trondheim. Despite these biases, the model generally predicts higher species richness along the Norwegian coast, with a clear gradient showing greater richness in the southern regions compared to the north; a trend consistent with known ecological and climatic patterns (_cite source here_).
 
 ![counites_norway](Images/counties_norway.png)
 
 
+#### Predicting the REDListed Species Richness
+
+In the following map I have plotted the Red Listed Species richness in Norway. We consider as Red Listed all those species in Norway that fall in the following [IUCN RedList](https://www.iucnredlist.org/) Categories:
+- Vulnerable (VU)
+- Endangered (EN)
+- Critically Endangered (CR)
+![redlisted_sp](Images/2018_redlist_sp_in_Norway.png)
+We observe that the main concentration of Red Listed species is on the southern west and east coast, and Trondelag area,  where there is also the highes amount of species richness. However we also observe a significant concentration pattern of Red Listed species in the central-southern alpine areas in the intersection of Vestland, Innlandet and Buskerud counties. We can also find similar concentration patterns in northen areas such as Troms county.
 
 #### UMAP
 
-While our proposed models were able to accurately predict multiple species altogether, understanding the underlying patterns behind these predictions is crucial. This is feasible due to the network's capability to learn generalized features during training, aligning with the principles of Transfer Learning (Pan & Yang, [2009](https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.14466?utm=#mee314466-bib-0094); Torrey & Shavlik, [2010](https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.14466?utm=#mee314466-bib-0128)). Additionally, the feature extractor reduces the input dimensionality significantly, streamlining the process while retaining essential input information. To demonstrate this, we computed the image embeddings for the  **11.400** samples using CNN's feature extractor, generating a total of _N_ points, each represented as a **2048-dimensional** feature vector. We then project these high-dimensional feature vectors into a three-dimensional space for visualization purposes using Uniform Manifold Approximation and Projection (UMAP) (McInnes et al., [2018](https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.14466?utm=#mee314466-bib-0086)).
+While our proposed models were able to accurately predict multiple species altogether, understanding the underlying patterns behind these predictions is crucial. This is feasible due to the network's capability to learn generalized features during training, aligning with the principles of Transfer Learning (Pan & Yang, [2009](https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.14466?utm=#mee314466-bib-0094); Torrey & Shavlik, [2010](https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.14466?utm=#mee314466-bib-0128)). Additionally, the feature extractor reduces the input dimensionality significantly, streamlining the process while retaining essential input information. To demonstrate this, we computed the image embeddings for the  **11.470** samples using CNN's feature extractor, generating a total of _N_ points, each represented as a **2048-dimensional** feature vector. We then project these high-dimensional feature vectors into a three-dimensional space for visualization purposes using Uniform Manifold Approximation and Projection (UMAP) (McInnes et al., [2018](https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.14466?utm=#mee314466-bib-0086)).
 
 The 3-D projection unveiled distinct clusters of community plots, each group sharing common image-derived features. This concept may resonate with those experienced in ecological ordinations, somewhat akin to community plot ordinations mapped onto a 3-D space through environmental principal component analysis (PCA). However, the distinguishing factor here is that the primary components emerging from UMAP reflect highly intricate features learned directly from the images, providing a unique perspective on community patterns.
 
@@ -862,7 +871,7 @@ The 3-D projection unveiled distinct clusters of community plots, each group sha
 #### 🌍 Interactive 3D UMAP Plot
 
 
-[![UMAP 3D Preview](Images/umap_image_6_clusters.png)](https://rauletepawa.github.io/Species_Distribution_Modeling/umap_3d_plot_no_rotate.html)
+[![UMAP 3D Preview](Images/2018_bioclimatic_regions_in_Norway_UMAP.png)](https://rauletepawa.github.io/Species_Distribution_Modeling/umap_3d_plot_no_rotate.html)
 
 🔗 Click the image to open the interactive version
 
@@ -870,7 +879,7 @@ The 3-D projection unveiled distinct clusters of community plots, each group sha
 
 #### Plotting U-MAP in Norway
 
-To further interpret these patterns, we spatially mapped the 11,400 samples colored by their UMAP-derived cluster assignments. The resulting visualization revealed 6 clear geographic structuring, where distinct clusters corresponded to specific climatic and ecological regions.
+To further interpret these patterns, we spatially mapped the  **11.470** samples colored by their UMAP-derived cluster assignments. The resulting visualization revealed 6 clear geographic structuring, where distinct clusters corresponded to specific climatic and ecological regions.
 
 We selected a cutoff of six clusters, as illustrated in the plot, because it represents the optimal trade-off between inertia (the within-cluster sum of squared distances between each point and its assigned cluster centroid) and the number of clusters.
 
@@ -878,21 +887,20 @@ We selected a cutoff of six clusters, as illustrated in the plot, because it rep
 
 These spatial patterns suggest that the CNN successfully learned latent features that capture underlying vegetation–climate associations, potentially delineating ecological zones or floristic regions across the study area.
 
-![umapmap](Images/UMAP_map_2018.png)
+![umapmap](Images/2018_bioclimatic_regions_in_Norway.png)
 The map reveals that the clusters exhibit well-defined boundaries and minimal overlap, indicating that the identified climatic regions are both relevant and clearly differentiated.
 
 The clusters highlight strong climatic differences between the west coast and the rest of the country. This pattern aligns with the west–east Atlantic gradient, which significantly influences both climate conditions and plant community composition.
 We also observe strong climatic gradients between the southern and northern regions of Norway, with three main climatic ecoregions identified in the south: the southwestern coastal zone, the central alpine area, and the southeastern region. Notably, the southeastern region shows the highest species richness, as indicated in the previous species richness figure.
 
-![distribution_cluster_variables](Images/distribution_of_cluster_variables_2018.png)
+![distribution_cluster_variables](Images/2018_variables_distribution.png)
 This figure provides a more detailed view of the distribution of climatic variables within each cluster, offering an overview of the characteristic climatic profiles associated with each region.
 
 #### Integrated gradients Interpretation
 
 To interpret the predictions of the convolutional neural network (CNN) and identify the most influential climatic features associated with the presence of _Salix reticulata_, I employed the [Integrated Gradients](https://captum.ai/docs/attribution_algorithms#integrated-gradients) (IG) method implemented in the [Captum](https://captum.ai/) library. 
 Integrated Gradients is a widely used attribution technique that quantifies feature importance by integrating the gradients of the model's output with respect to the input along a linear path from a baseline (e.g., a zero-valued image) to the actual input. This approach mitigates issues such as gradient saturation and provides more stable and interpretable attributions compared to raw gradients. I applied IG to all climatic input samples in which _Salix reticulata_ was present, and computed the average attribution maps across these samples. This enabled us to identify the spatial and climatic patterns most strongly associated with the model's prediction of the species’ presence, offering ecological insights into the climatic preferences of _S. reticulata_ as captured by the model.
-
-![integrated_gradients](Images/Integrated_gradients_salix_reticulata_2018.png)
+![integrated_gradients](Images/Attributions_Salix_reticulata_2018.png)
 We can see that for _Salix reticulata_ the most important variables are the frost days (fd), the mean annual air temperature (bio01d) and the snow cover days (scd) as it is a specie that lives on alpine exposed areas with low snow accumulation.
 
 [Integrated Gradients Tutorial](https://captum.ai/tutorials/Titanic_Basic_Interpret) 
@@ -908,4 +916,42 @@ The model effectively captures the climatic patterns associated with the presenc
 ![salix_herbacea](Images/salix_reticulata_comparison.png)
 
 Remarkably, this predictive capacity is achieved despite the sparse and uneven distribution of the training data (as seen in the GBIF occurrences), yet the model is able to effectively learn meaningful patterns and generalize from this limited data, demonstrating its ability to extrapolate robustly from relatively few samples.
-Moreover, this modeling approach is scalable and can be applied simultaneously to over 1,800 species, enabling comprehensive biodiversity assessments under current and future climate scenarios.
+Moreover, this modeling approach is scalable and can be applied simultaneously to over **1,800** species, enabling comprehensive biodiversity assessments under current and future climate scenarios.
+
+### Future-Predictions
+
+#### Predicting Future Vegetation Distribution under Climate Change
+
+To predict future species distributions under climate change, we fine-tuned a **ResNet18 convolutional neural network** using bioclimatic data from the period **1991–2018**. Importantly, the input data were normalized to fall within the expected climatic range of future scenarios to ensure robust extrapolation.
+
+For future projections, we focused on the **RCP8.5 scenario** as simulated by the **HIRHAM5 regional climate model**, developed by the Danish Meteorological Institute, targeting the period **2061–2080**. We extracted a total of **11,470 climatic maps** of size **32×32 pixels with 10 channels** using the coordinates of the selected points (make reference to the figure) across all Norway. These maps served as input for the CNN to predict vegetation composition under future climatic conditions.
+
+The full preprocessing and inference pipeline is available at:  
+[Resampling_data_FUTURE](https://github.com/rauletepawa/Species_Distribution_Modeling/blob/main/code/Resampling_data_FUTURE.ipynb).
+
+Our primary focus is on understanding how **alpine plant assemblages** may shift in response to climate change. In particular, we aimed to detect potential spatial shifts in the **distributional boundaries** of alpine ecosystems by comparing model outputs between current (2018) and future (2061–2080) climate conditions.
+
+#### Species of Interest
+
+We analyzed both alpine specialists and treeline-expanding species, as listed below:
+
+- **Alpine species**:  
+    `Salix lanata`, `Salix polaris`, `Betula nana`, `Harrimanella hypnoides`, `Micranthes stellaris`, `Oxyria digyna`, `Sibbaldia procumbens`, `Ranunculus glacialis`
+    
+- **Treeline species**:  
+    `Picea abies`, `Betula pubescens`, `Pinus sylvestris`, `Salix caprea`, `Alnus incana`, `Lathyrus linifolius`, `Knautia arvensis`, `Prunus padus`
+    
+
+To reduce visual clutter in the resulting distribution maps, we only plotted locations where **at least three species co-occurred**. This filtering step improves the interpretability of the spatial patterns.
+
+#### Observed Trends
+
+![present_future_alpine_distribution](Images/present-future_alpine_distribution.png)
+
+
+This results indicate that **treeline species are projected to expand significantly northward and upward**, encroaching into current alpine zones. This trend is particularly evident in **Trøndelag and Nordland counties**, where model predictions show a marked expansion of treeline species beyond their current limits. A similar pattern is observed in **Finnmark**, suggesting that warming climates will facilitate the encroachment of boreal vegetation into areas currently dominated by alpine flora.
+
+
+
+
+
