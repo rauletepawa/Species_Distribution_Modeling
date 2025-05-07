@@ -83,7 +83,7 @@ We also transformed the plant assamblages into binary presence/absence vectors w
 
 Here you can see how the final CNN dataset looks like:
 
-![Climatic Dataset](Images/climatic-dataset-vectorized-ex.png)
+![Climatic Dataset](Images/dataset_tfm_example.png)
 
 
 #### Climatic Variables
@@ -954,7 +954,7 @@ To reduce visual clutter in the resulting distribution maps, we only plotted loc
 
 #### Observed Trends
 
-![present_future_alpine_distribution](Images/present-future_alpine_distribution.png)
+![present_future_alpine_distribution](Images/2021-2040_vs_2061-2080_treeline.png)
 
 
 This results indicate that **treeline species are projected to expand significantly northward and upward**, encroaching into current alpine zones. This trend is particularly evident in **Trøndelag and Nordland counties**, where model predictions show a marked expansion of treeline species beyond their current limits. A similar pattern is observed in **Finnmark**, suggesting that warming climates will facilitate the encroachment of boreal vegetation into areas currently dominated by alpine flora.
