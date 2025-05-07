@@ -932,12 +932,12 @@ Moreover, this modeling approach is scalable and can be applied simultaneously t
 
 To predict future species distributions under climate change, we fine-tuned a **ResNet18 convolutional neural network** using bioclimatic data from the period **1991–2018**. Importantly, the input data were normalized to fall within the expected climatic range of future scenarios to ensure robust extrapolation.
 
-For future projections, we focused on the **RCP8.5 scenario** as simulated by the **HIRHAM5 regional climate model**, developed by the Danish Meteorological Institute, targeting the period **2061–2080**. We extracted a total of **11,470 climatic maps** of size **32×32 pixels with 10 channels** using the coordinates of the selected points (make reference to the figure) across all Norway. These maps served as input for the CNN to predict vegetation composition under future climatic conditions.
+For future projections, we focused on the **RCP8.5 scenario** as simulated by the **HIRHAM5 regional climate model**, developed by the Danish Meteorological Institute, targeting the **2021–2040** & **2061–2080** periods. We extracted a total of **11,470 climatic maps** of size **32×32 pixels with 10 channels** using the coordinates of the selected points (make reference to the figure) across all Norway. These maps served as input for the CNN to predict vegetation composition under future climatic conditions.
 
 The full preprocessing and inference pipeline is available at:  
 [Resampling_data_FUTURE](https://github.com/rauletepawa/Species_Distribution_Modeling/blob/main/code/Resampling_data_FUTURE.ipynb).
 
-Our primary focus is on understanding how **alpine plant assemblages** may shift in response to climate change. In particular, we aimed to detect potential spatial shifts in the **distributional boundaries** of alpine ecosystems by comparing model outputs between current (2018) and future (2061–2080) climate conditions.
+Our primary focus is on understanding how **alpine plant assemblages** may shift in response to climate change. In particular, we aimed to detect potential spatial shifts in the **distributional boundaries** of alpine ecosystems by comparing model outputs between current (2021-2040) and future (2061–2080) climate conditions.
 
 #### Species of Interest
 
