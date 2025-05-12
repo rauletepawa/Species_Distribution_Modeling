@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "notes/Abstract.md",
+                "file": "readme.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Abstract"
+              "title": "readme"
             }
           }
         ],
@@ -183,9 +183,16 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "f385d837ebe07b02",
+  "active": "0a4f3de6fef91148",
   "lastOpenFiles": [
+    "Images/Narthecium ossifragum Distribution in Norway 2018.png",
+    "Images/Luzula sylvatica Distribution in Norway 2018.png",
+    "Images/Primula vulgaris Distribution in Norway 2018.png",
+    "Images/Erica cinerea Distribution in Norway 2018.png",
+    "Images/Salix herbacea Distribution in Norway 2018.png",
+    "Images/Salix reticulata Distribution in Norway 2018.png",
     "notes/Useful Commands.md",
+    "notes/Old Results Table.md",
     "notes/Abstract.md",
     "readme.md",
     "Untitled",
@@ -195,11 +202,6 @@
     "Images/2021-2040_vs_2061-2080_treeline.png",
     "Images/2061-2080_bioclimatic_regions_in_Norway.png",
     "Images/2021-2040_bioclimatic_regions_in_Norway.png",
-    "Images/2021-2040 redlist sp in Norway.png",
-    "Images/SpeciesRichness_11000_samples_2061-2080.png",
-    "Images/SpeciesRichness_11000_samples_2021-2040.png",
-    "Images/Alpine-Treeline_2021-2040_Species_Co-occurrence_in_Norway.png",
-    "Images/Alpine_Treeline_2061-2080_Species_Co-occurrence_in_Norway.png",
     "data/Full_Scale/NO_NORM_10_filtered_vectorized_gbif_assemblages_climatic_1991-2020_32.pkl",
     "Images.md",
     "code/environments/pytorch_gpu_env.yml",
@@ -212,7 +214,6 @@
     "notes/Callouts.md",
     "Images/salix.md",
     "captum.md",
-    "notes/Old Results Table.md",
     "().md",
     "CNN for Multi-label classification.md",
     "Pasted.md",
