@@ -1,0 +1,872 @@
+
+@incollection{Botella-2018a,
+	address = {Cham},
+	title = {A {Deep} {Learning} {Approach} to {Species} {Distribution} {Modelling}},
+	isbn = {978-3-319-76444-3 978-3-319-76445-0},
+	url = {http://link.springer.com/10.1007/978-3-319-76445-0_10},
+	language = {en},
+	urldate = {2025-02-26},
+	booktitle = {Multimedia {Tools} and {Applications} for {Environmental} \& {Biodiversity} {Informatics}},
+	publisher = {Springer International Publishing},
+	author = {Botella, Christophe and Joly, Alexis and Bonnet, Pierre and Monestiez, Pascal and Munoz, François},
+	editor = {Joly, Alexis and Vrochidis, Stefanos and Karatzas, Kostas and Karppinen, Ari and Bonnet, Pierre},
+	year = {2018},
+	doi = {10.1007/978-3-319-76445-0_10},
+	pages = {169--199},
+	file = {Versión enviada:files/162/Botella et al. - 2018 - A Deep Learning Approach to Species Distribution M.pdf:application/pdf},
+}
+
+@misc{Karger-2021,
+	title = {Climatologies at high resolution for the earth’s land surface {areasCHELSA} {V2}.1 (current)},
+	copyright = {Creative Commons Zero v1.0 Universal},
+	url = {https://www.envidat.ch/#/metadata/chelsa-climatologies},
+	doi = {10.16904/ENVIDAT.228.V2.1},
+	abstract = {High-resolution information on climatic conditions is essential to many applications in environmental and ecological sciences. Here we present the CHELSA (Climatologies at high resolution for the earth’s land surface areas) data of downscaled temperature and precipitation to a high resolution of 30 arc sec. The temperature algorithm is based on statistical downscaling of atmospheric temperatures. The precipitation algorithm incorporates orographic predictors including wind fields, valley exposition, and boundary layer height, with a subsequent bias correction. CHELSA data published in EnviDat includes the deprecated version 1.2 (originally published under 10.5061/dryad.kd1d4). Please use the current 2.1 version. Paper Citation: - \_Karger DN. et al. Climatologies at high resolution for the earth’s land surface areas, Scientific Data, 4, 170122 (2017) [doi: 10.1038/sdata.2017.122](https://doi.org/10.1038/sdata.2017.122).\_},
+	language = {en},
+	urldate = {2025-02-26},
+	publisher = {EnviDat},
+	author = {Karger, Dirk Nikolaus and Conrad, Olaf and Böhner, Jürgen and Kawohl, Tobias and Kreft, Holger and Soria-Auza, Rodrigo Wilber and Zimmermann, Niklaus E. and Linder, H. Peter and Kessler, Michael},
+	collaborator = {Karger, Dirk Nikolaus},
+	year = {2021},
+	note = {Artwork Size: 2.1 KB
+Pages: 2.1 KB},
+	keywords = {BIOCLIM, CLIMATE, CLIMATE CHANGE, CLIMATE LAYERS, CLIMATOLOGY, FREE CLIMATE DATA, PRECIPITATION, TEMPERATURE},
+}
+
+@article{Hu-2025,
+	title = {Introduction to deep learning methods for multi‐species predictions},
+	volume = {16},
+	issn = {2041-210X, 2041-210X},
+	url = {https://besjournals.onlinelibrary.wiley.com/doi/10.1111/2041-210X.14466},
+	doi = {10.1111/2041-210X.14466},
+	abstract = {Abstract
+            
+              
+                
+                  Predicting species distributions and entire communities is crucial for ecologists, to enhance our understanding of the drivers behind species distributions and community assembly and to provide quantitative data for conservation efforts.
+                
+                
+                  Popular species distribution models use statistical and machine learning methods but face limitations with multi‐species predictions at the community level, hindered by scalability and data imbalance sensitivity. This paper explores the potential of deep learning methods to overcome these challenges and provide more accurate multi‐species predictions.
+                
+                
+                  Specifically, we introduced four distinct deep learning models that use site × species community data but differ in their internal structure or on the input environmental data structure: (1) a multi‐layer perceptron (MLP) model for tabular data (e.g. in‐situ/raster climate or soil data), (2) a convolutional neural network (CNN) and (3) a vision transformer (ViT) models tailored for image data (e.g. aerial ortho‐photographs, satellite imagery), and a multimodal model that integrates both tabular and image data. We also show how adapted loss functions can address imbalance issues.
+                
+                
+                  We applied these deep learning models to a plant community dataset comprising 130,582 vegetation surveys encompassing 2522 species located in the French Alps. The tabular environmental data consisted of climate, terrain and soil information, while the images were derived from aerial photographs. All models achieved approximately 70\% true skill statistics on hold‐out data, demonstrating high predictive capacity for community data, the multimodal model being the best performing one. Additionally, we showcased how interpretability tools can illuminate community structure as seen by deep learning models.
+                
+                
+                  Deep learning models offer a broad array of features for predicting entire species communities. They handle imbalance issues and accommodate various data types, from tabular datasets to images, while also being equipped with insightful interpretation tools. The versatility extends to tabular datasets and images, with no clear superiority between the two. The last hidden layers can provide valuable features for modelling other species, and the trained models can be used to support transfer learning to related tasks. The field of ecology now possesses an additional, potent tool in its arsenal that can foster basic and fundamental research.
+                
+              
+            
+          , 
+            Résumé
+            
+              
+                
+                  La prédiction de la distribution des espèces et des communautés est essentielle pour les écologistes, afin d'améliorer notre compréhension des facteurs qui sous‐tendent la répartition des espèces et l'assemblage des communautés et de fournir des données quantitatives pour les efforts de conservation.
+                
+                
+                  Les modèles de distribution des espèces utilisent généralement des méthodes statistiques et d'apprentissage automatique, mais se heurtent à des limites pour les prédictions multi‐espèces au niveau de la communauté, entravées par l'extensibilité et la sensibilité au déséquilibre des données. Cet article explore le potentiel des méthodes d'apprentissage profond pour surmonter ces défis et fournir des prédictions multi‐espèces plus réalistes.
+                
+                
+                  Plus précisément, nous introduisons quatre différents modèles d'apprentissage profond qui utilisent des données sur les communautés d'espèces (sites × espèces) mais qui diffèrent par leur structure interne ou par la structure des données environnementales d'entrée: (1) un modèle de perceptron multicouche (MLP) pour les données tabulaires (par exemple, des données climatiques ou pédologiques mesurées in situ ou sous forme de raster), (2) un réseau de neurones convolutif (CNN) et (3) un vision transforer (ViT) adaptés aux données sous forme d'image (par exemple, orthophotos aériennes, images satellitaires), et un modèle multimodal qui intègre à la fois les données tabulaires et les données d'image. Nous montrons également comment des fonctions de perte adaptées peuvent résoudre les problèmes de déséquilibre.
+                
+                
+                  Nous avons appliqué ces modèles d'apprentissage profond sur des données de communautés végétales comprenant 130,582 relevés de végétation et 2522 d'espèces situées dans les Alpes françaises. Les données environnementales tabulaires comprenaient des informations sur le climat, le terrain et le sol, tandis que les images provenaient de photographies aériennes. Tous les modèles ont atteint environ une True Skill Statistics de 70\% sur les données d'évaluation , démontrant une grande capacité de prédiction pour les données de communautées, le modèle multimodal étant le plus performant. En outre, nous montrons comment les outils d'interprétabilité peuvent éclairer la structure de la communauté telle qu'elle est perçue par les modèles d'apprentissage profond.
+                
+                
+                  Les modèles d'apprentissage profond offrent donc un large éventail de caractéristiques pour prédire des communautés d'espèces dans leur ensemble. Ils gèrent les problèmes de déséquilibre et s'adaptent à différents types de données, des ensembles de données tabulaires aux images, tout en étant équipés de puissants outils d'interprétation . La polyvalence s'étend aux ensembles de données tabulaires et aux images, sans qu'il y ait de supériorité évidente entre les deux. Les dernières couches cachées peuvent fournir des caractéristiques précieuses pour la modélisation d'autres espèces, et les modèles formés peuvent être utilisés pour soutenir l'apprentissage par transfert vers des tâches connexes. Le domaine de l'écologie dispose désormais d'un outil supplémentaire et puissant dans son arsenal, qui peut favoriser la recherche fondamentale.},
+	language = {en},
+	number = {1},
+	urldate = {2025-02-26},
+	journal = {Methods in Ecology and Evolution},
+	author = {Hu, Yuqing and Si‐Moussi, Sara and Thuiller, Wilfried},
+	month = jan,
+	year = {2025},
+	pages = {228--246},
+	file = {Texto completo:files/167/Hu et al. - 2025 - Introduction to deep learning methods for multi‐sp.pdf:application/pdf},
+}
+
+@article{Deneu-2021a,
+	title = {Convolutional neural networks improve species distribution modelling by capturing the spatial structure of the environment},
+	volume = {17},
+	issn = {1553-7358},
+	url = {https://dx.plos.org/10.1371/journal.pcbi.1008856},
+	doi = {10.1371/journal.pcbi.1008856},
+	abstract = {Convolutional Neural Networks (CNNs) are statistical models suited for learning complex visual patterns. In the context of Species Distribution Models (SDM) and in line with predictions of landscape ecology and island biogeography, CNN could grasp how local landscape structure affects prediction of species occurrence in SDMs. The prediction can thus reflect the signatures of entangled ecological processes. Although previous machine-learning based SDMs can learn complex influences of environmental predictors, they cannot acknowledge the influence of environmental structure in local landscapes (hence denoted “punctual models”). In this study, we applied CNNs to a large dataset of plant occurrences in France (GBIF), on a large taxonomical scale, to predict ranked relative probability of species (by joint learning) to any geographical position. We examined the way local environmental landscapes improve prediction by performing alternative CNN models deprived of information on landscape heterogeneity and structure (“ablation experiments”). We found that the landscape structure around location crucially contributed to improve predictive performance of CNN-SDMs. CNN models can classify the predicted distributions of many species, as other joint modelling approaches, but they further prove efficient in identifying the influence of local environmental landscapes. CNN can then represent signatures of spatially structured environmental drivers. The prediction gain is noticeable for rare species, which open promising perspectives for biodiversity monitoring and conservation strategies. Therefore, the approach is of both theoretical and practical interest. We discuss the way to test hypotheses on the patterns learnt by CNN, which should be essential for further interpretation of the ecological processes at play.},
+	language = {en},
+	number = {4},
+	urldate = {2025-02-26},
+	journal = {PLOS Computational Biology},
+	author = {Deneu, Benjamin and Servajean, Maximilien and Bonnet, Pierre and Botella, Christophe and Munoz, François and Joly, Alexis},
+	editor = {Martiny, Adam C.},
+	month = apr,
+	year = {2021},
+	pages = {e1008856},
+	file = {Texto completo:files/169/Deneu et al. - 2021 - Convolutional neural networks improve species dist.pdf:application/pdf},
+}
+
+@article{Guisan-2005,
+	title = {Predicting species distribution: offering more than simple habitat models},
+	volume = {8},
+	issn = {1461-023X, 1461-0248},
+	shorttitle = {Predicting species distribution},
+	url = {https://onlinelibrary.wiley.com/doi/10.1111/j.1461-0248.2005.00792.x},
+	doi = {10.1111/j.1461-0248.2005.00792.x},
+	abstract = {Abstract
+            In the last two decades, interest in species distribution models (SDMs) of plants and animals has grown dramatically. Recent advances in SDMs allow us to potentially forecast anthropogenic effects on patterns of biodiversity at different spatial scales. However, some limitations still preclude the use of SDMs in many theoretical and practical applications. Here, we provide an overview of recent advances in this field, discuss the ecological principles and assumptions underpinning SDMs, and highlight critical limitations and decisions inherent in the construction and evaluation of SDMs. Particular emphasis is given to the use of SDMs for the assessment of climate change impacts and conservation management issues. We suggest new avenues for incorporating species migration, population dynamics, biotic interactions and community ecology into SDMs at multiple spatial scales. Addressing all these issues requires a better integration of SDMs with ecological theory.},
+	language = {en},
+	number = {9},
+	urldate = {2025-03-05},
+	journal = {Ecology Letters},
+	author = {Guisan, Antoine and Thuiller, Wilfried},
+	month = sep,
+	year = {2005},
+	pages = {993--1009},
+}
+
+@article{Elith-2009,
+	title = {Species {Distribution} {Models}: {Ecological} {Explanation} and {Prediction} {Across} {Space} and {Time}},
+	volume = {40},
+	issn = {1543-592X, 1545-2069},
+	shorttitle = {Species {Distribution} {Models}},
+	url = {https://www.annualreviews.org/doi/10.1146/annurev.ecolsys.110308.120159},
+	doi = {10.1146/annurev.ecolsys.110308.120159},
+	abstract = {Species distribution models (SDMs) are numerical tools that combine observations of species occurrence or abundance with environmental estimates. They are used to gain ecological and evolutionary insights and to predict distributions across landscapes, sometimes requiring extrapolation in space and time. SDMs are now widely used across terrestrial, freshwater, and marine realms. Differences in methods between disciplines reflect both differences in species mobility and in “established use.” Model realism and robustness is influenced by selection of relevant predictors and modeling method, consideration of scale, how the interplay between environmental and geographic factors is handled, and the extent of extrapolation. Current linkages between SDM practice and ecological theory are often weak, hindering progress. Remaining challenges include: improvement of methods for modeling presence-only data and for model selection and evaluation; accounting for biotic interactions; and assessing model uncertainty.},
+	language = {en},
+	number = {1},
+	urldate = {2025-03-05},
+	journal = {Annual Review of Ecology, Evolution, and Systematics},
+	author = {Elith, Jane and Leathwick, John R.},
+	month = dec,
+	year = {2009},
+	pages = {677--697},
+}
+
+@book{Guisan-2017,
+	edition = {1},
+	title = {Habitat {Suitability} and {Distribution} {Models}: {With} {Applications} in {R}},
+	copyright = {https://www.cambridge.org/core/terms},
+	isbn = {978-1-139-02827-1 978-0-521-76513-8 978-0-521-75836-9},
+	shorttitle = {Habitat {Suitability} and {Distribution} {Models}},
+	url = {https://www.cambridge.org/core/product/identifier/9781139028271/type/book},
+	abstract = {This book introduces the key stages of niche-based habitat suitability model building, evaluation and prediction required for understanding and predicting future patterns of species and biodiversity. Beginning with the main theory behind ecological niches and species distributions, the book proceeds through all major steps of model building, from conceptualization and model training to model evaluation and spatio-temporal predictions. Extensive examples using R support graduate students and researchers in quantifying ecological niches and predicting species distributions with their own data, and help to address key environmental and conservation problems. Reflecting this highly active field of research, the book incorporates the latest developments from informatics and statistics, as well as using data from remote sources such as satellite imagery. A website at www.unil.ch/hsdm contains the codes and supporting material required to run the examples and teach courses.},
+	urldate = {2025-03-05},
+	publisher = {Cambridge University Press},
+	author = {Guisan, Antoine and Thuiller, Wilfried and Zimmermann, Niklaus E.},
+	month = sep,
+	year = {2017},
+	doi = {10.1017/9781139028271},
+}
+
+@article{Pollock-2020,
+	title = {Protecting {Biodiversity} (in {All} {Its} {Complexity}): {New} {Models} and {Methods}},
+	volume = {35},
+	issn = {01695347},
+	shorttitle = {Protecting {Biodiversity} (in {All} {Its} {Complexity})},
+	url = {https://linkinghub.elsevier.com/retrieve/pii/S0169534720302305},
+	doi = {10.1016/j.tree.2020.08.015},
+	language = {en},
+	number = {12},
+	urldate = {2025-03-05},
+	journal = {Trends in Ecology \& Evolution},
+	author = {Pollock, Laura J. and O’Connor, Louise M.J. and Mokany, Karel and Rosauer, Dan F. and Talluto, Lauren and Thuiller, Wilfried},
+	month = dec,
+	year = {2020},
+	pages = {1119--1128},
+	file = {Texto completo:files/174/Pollock et al. - 2020 - Protecting Biodiversity (in All Its Complexity) N.pdf:application/pdf},
+}
+
+@article{Phillips-2006,
+	title = {Maximum entropy modeling of species geographic distributions},
+	volume = {190},
+	copyright = {https://www.elsevier.com/tdm/userlicense/1.0/},
+	issn = {03043800},
+	url = {https://linkinghub.elsevier.com/retrieve/pii/S030438000500267X},
+	doi = {10.1016/j.ecolmodel.2005.03.026},
+	language = {en},
+	number = {3-4},
+	urldate = {2025-03-05},
+	journal = {Ecological Modelling},
+	author = {Phillips, Steven J. and Anderson, Robert P. and Schapire, Robert E.},
+	month = jan,
+	year = {2006},
+	pages = {231--259},
+}
+
+@article{Phillips-2008,
+	title = {Modeling of species distributions with {Maxent}: new extensions and a comprehensive evaluation},
+	volume = {31},
+	issn = {0906-7590, 1600-0587},
+	shorttitle = {Modeling of species distributions with {Maxent}},
+	url = {https://onlinelibrary.wiley.com/doi/10.1111/j.0906-7590.2008.5203.x},
+	doi = {10.1111/j.0906-7590.2008.5203.x},
+	abstract = {Accurate modeling of geographic distributions of species is crucial to various applications in ecology and conservation. The best performing techniques often require some parameter tuning, which may be prohibitively time‐consuming to do separately for each species, or unreliable for small or biased datasets. Additionally, even with the abundance of good quality data, users interested in the application of species models need not have the statistical knowledge required for detailed tuning. In such cases, it is desirable to use “default settings”, tuned and validated on diverse datasets. Maxent is a recently introduced modeling technique, achieving high predictive accuracy and enjoying several additional attractive properties. The performance of Maxent is influenced by a moderate number of parameters. The first contribution of this paper is the empirical tuning of these parameters. Since many datasets lack information about species absence, we present a tuning method that uses presence‐only data. We evaluate our method on independently collected high‐quality presence‐absence data. In addition to tuning, we introduce several concepts that improve the predictive accuracy and running time of Maxent. We introduce “hinge features” that model more complex relationships in the training data; we describe a new logistic output format that gives an estimate of probability of presence; finally we explore “background sampling” strategies that cope with sample selection bias and decrease model‐building time. Our evaluation, based on a diverse dataset of 226 species from 6 regions, shows: 1) default settings tuned on presence‐only data achieve performance which is almost as good as if they had been tuned on the evaluation data itself; 2) hinge features substantially improve model performance; 3) logistic output improves model calibration, so that large differences in output values correspond better to large differences in suitability; 4) “target‐group” background sampling can give much better predictive performance than random background sampling; 5) random background sampling results in a dramatic decrease in running time, with no decrease in model performance.},
+	language = {en},
+	number = {2},
+	urldate = {2025-03-05},
+	journal = {Ecography},
+	author = {Phillips, Steven J. and Dudík, Miroslav},
+	month = apr,
+	year = {2008},
+	pages = {161--175},
+}
+
+@article{Bradter-2013,
+	title = {Identifying appropriate spatial scales of predictors in species distribution models with the random forest algorithm},
+	volume = {4},
+	copyright = {http://onlinelibrary.wiley.com/termsAndConditions\#vor},
+	issn = {2041-210X, 2041-210X},
+	url = {https://besjournals.onlinelibrary.wiley.com/doi/10.1111/j.2041-210x.2012.00253.x},
+	doi = {10.1111/j.2041-210x.2012.00253.x},
+	abstract = {Summary
+            
+              
+                
+                  
+                    Including predictors in species distribution models at inappropriate spatial scales can decrease the variance explained, add residual spatial autocorrelation (
+                    RSA
+                    ) and lead to the wrong conclusions. Some studies have measured predictors within different buffer sizes (scales) around sample locations, regressed each predictor against the response at each scale and selected the scale with the best model fit as the appropriate scale for this predictor. However, a predictor can influence a species at several scales or show several scales with good model fit due to a bias caused by
+                    RSA
+                    . This makes the evaluation of all scales with good model fit necessary. With potentially several scales per predictor and multiple predictors to evaluate, the number of predictors can be large relative to the number of data points, potentially impeding variable selection with traditional statistical techniques, such as logistic regression.
+                  
+                
+                
+                  
+                    We trialled a variable selection process using the random forest algorithm, which allows the simultaneous evaluation of several scales of multiple predictors. Using simulated responses, we compared the performance of models resulting from this approach with models using the known predictors at arbitrary and at the known spatial scales. We also apply the proposed approach to a real data set of curlew (
+                    Numenius arquata
+                    ).
+                  
+                
+                
+                  
+                    AIC
+                    ,
+                    AUC
+                    and Naglekerke's pseudo
+                    R
+                    2
+                    of the models resulting from the proposed variable selection were often very similar to the models with the known predictors at known spatial scales. Only two of nine models required the addition of spatial eigenvectors to account for
+                    RSA
+                    . Arbitrary scale models always required the addition of spatial eigenvectors. 75\% (50–100\%) of the known predictors were selected at scales similar to the known scale (within 3 km). In the curlew model, predictors at large, medium and small spatial scales were selected, suggesting that for appropriate landscape‐scale models multiple scales need to be evaluated.
+                  
+                
+                
+                  The proposed approach selected several of the correct predictors at appropriate spatial scales out of 544 possible predictors. Thus, it facilitates the evaluation of multiple spatial scales of multiple predictors against each other in landscape‐scale models.},
+	language = {en},
+	number = {2},
+	urldate = {2025-03-05},
+	journal = {Methods in Ecology and Evolution},
+	author = {Bradter, Ute and Kunin, William E. and Altringham, John D. and Thom, Tim J. and Benton, Tim G.},
+	editor = {Peres‐Neto, Pedro},
+	month = feb,
+	year = {2013},
+	pages = {167--174},
+}
+
+@article{Cutler-2007,
+	title = {{RANDOM} {FORESTS} {FOR} {CLASSIFICATION} {IN} {ECOLOGY}},
+	volume = {88},
+	copyright = {http://doi.wiley.com/10.1002/tdm\_license\_1.1},
+	issn = {0012-9658},
+	url = {http://doi.wiley.com/10.1890/07-0539.1},
+	doi = {10.1890/07-0539.1},
+	language = {en},
+	number = {11},
+	urldate = {2025-03-05},
+	journal = {Ecology},
+	author = {Cutler, D. Richard and Edwards, Thomas C. and Beard, Karen H. and Cutler, Adele and Hess, Kyle T. and Gibson, Jacob and Lawler, Joshua J.},
+	month = nov,
+	year = {2007},
+	pages = {2783--2792},
+}
+
+@article{Elith-2008a,
+	title = {A working guide to boosted regression trees},
+	volume = {77},
+	copyright = {http://onlinelibrary.wiley.com/termsAndConditions\#vor},
+	issn = {0021-8790, 1365-2656},
+	url = {https://besjournals.onlinelibrary.wiley.com/doi/10.1111/j.1365-2656.2008.01390.x},
+	doi = {10.1111/j.1365-2656.2008.01390.x},
+	language = {en},
+	number = {4},
+	urldate = {2025-03-05},
+	journal = {Journal of Animal Ecology},
+	author = {Elith, J. and Leathwick, J. R. and Hastie, T.},
+	month = jul,
+	year = {2008},
+	pages = {802--813},
+}
+
+@article{LeCun-2015a,
+	title = {Deep learning},
+	volume = {521},
+	issn = {0028-0836, 1476-4687},
+	url = {https://www.nature.com/articles/nature14539},
+	doi = {10.1038/nature14539},
+	language = {en},
+	number = {7553},
+	urldate = {2025-03-05},
+	journal = {Nature},
+	author = {LeCun, Yann and Bengio, Yoshua and Hinton, Geoffrey},
+	month = may,
+	year = {2015},
+	pages = {436--444},
+}
+
+@article{Karger-2017a,
+	title = {Climatologies at high resolution for the earth’s land surface areas},
+	volume = {4},
+	issn = {2052-4463},
+	url = {https://www.nature.com/articles/sdata2017122},
+	doi = {10.1038/sdata.2017.122},
+	abstract = {Abstract
+            High-resolution information on climatic conditions is essential to many applications in environmental and ecological sciences. Here we present the CHELSA (Climatologies at high resolution for the earth’s land surface areas) data of downscaled model output temperature and precipitation estimates of the ERA-Interim climatic reanalysis to a high resolution of 30 arc sec. The temperature algorithm is based on statistical downscaling of atmospheric temperatures. The precipitation algorithm incorporates orographic predictors including wind fields, valley exposition, and boundary layer height, with a subsequent bias correction. The resulting data consist of a monthly temperature and precipitation climatology for the years 1979–2013. We compare the data derived from the CHELSA algorithm with other standard gridded products and station data from the Global Historical Climate Network. We compare the performance of the new climatologies in species distribution modelling and show that we can increase the accuracy of species range predictions. We further show that CHELSA climatological data has a similar accuracy as other products for temperature, but that its predictions of precipitation patterns are better.},
+	language = {en},
+	number = {1},
+	urldate = {2025-03-05},
+	journal = {Scientific Data},
+	author = {Karger, Dirk Nikolaus and Conrad, Olaf and Böhner, Jürgen and Kawohl, Tobias and Kreft, Holger and Soria-Auza, Rodrigo Wilber and Zimmermann, Niklaus E. and Linder, H. Peter and Kessler, Michael},
+	month = sep,
+	year = {2017},
+	pages = {170122},
+	file = {Texto completo:files/182/Karger et al. - 2017 - Climatologies at high resolution for the earth’s l.pdf:application/pdf},
+}
+
+@misc{GBIF.OrgUser-2025,
+	title = {Occurrence {Download}},
+	copyright = {Creative Commons Attribution Non Commercial 4.0 International},
+	url = {https://www.gbif.org/occurrence/download/0000336-250225085111116},
+	doi = {10.15468/DL.5CMFJ3},
+	abstract = {A dataset containing 42595752 species occurrences available in GBIF matching the query:
+\{\vphantom{\}}
+ "and" : [
+ "TaxonKey is one of (Tracheophyta)",
+ "HasCoordinate is true",
+ "Geometry POLYGON((3.90468800000014 57.9590260000001,31.161979999 57.9590260000001,31.161979999 71.1812520000001,3.90468800000014 71.1812520000001,3.90468800000014 57.9590260000001))"
+ ]
+\vphantom{\{}\}
+
+ The dataset includes 42595752 records from 582 constituent datasets; see https://api.gbif.org/v1/occurrence/download/0000336-250225085111116/datasets/export for details.
+ 
+Data from some individual datasets included in this download may be licensed under less restrictive terms.},
+	urldate = {2025-03-05},
+	publisher = {The Global Biodiversity Information Facility},
+	author = {{GBIF.Org User}},
+	year = {2025},
+	note = {Artwork Size: 4653274521
+Pages: 4653274521},
+	keywords = {biodiversity, GBIF, species occurrences},
+}
+
+@misc{Chamberlain-2017,
+	title = {R {Python}, and {Ruby} clients for {GBIF} species occurrence data},
+	copyright = {http://creativecommons.org/licenses/by/4.0/},
+	url = {https://peerj.com/preprints/3304v1},
+	doi = {10.7287/peerj.preprints.3304v1},
+	abstract = {Background
+            . The number of individuals of each species in a given location forms the basis for many sub-fields of ecology and evolution. Data on individuals, including which species, and where they're found can be used for a large number of research questions. Global Biodiversity Information Facility (hereafter, GBIF) is the largest of these. Programmatic clients for GBIF would make research dealing with GBIF data much easier and more reproducible.
+          
+          
+            Methods
+            . We have developed clients to access GBIF data for each of the R, Python, and Ruby programming languages: rgbif, pygbif, gbifrb.
+          
+          
+            Results
+            . For all clients we describe their design and utility, and demonstrate some use cases.
+          
+          
+            Discussion
+            . Programmatic access to GBIF will facilitate more open and reproducible science - the three GBIF clients described herein are a significant contribution towards this goal.},
+	language = {en},
+	urldate = {2025-03-05},
+	author = {Chamberlain, Scott A and Boettiger, Carl},
+	month = sep,
+	year = {2017},
+	file = {Versión enviada:files/188/Chamberlain y Boettiger - 2017 - R Python, and Ruby clients for GBIF species occurr.pdf:application/pdf},
+}
+
+@misc{Paszke-2019,
+	title = {{PyTorch}: {An} {Imperative} {Style}, {High}-{Performance} {Deep} {Learning} {Library}},
+	copyright = {arXiv.org perpetual, non-exclusive license},
+	shorttitle = {{PyTorch}},
+	url = {https://arxiv.org/abs/1912.01703},
+	doi = {10.48550/ARXIV.1912.01703},
+	abstract = {Deep learning frameworks have often focused on either usability or speed, but not both. PyTorch is a machine learning library that shows that these two goals are in fact compatible: it provides an imperative and Pythonic programming style that supports code as a model, makes debugging easy and is consistent with other popular scientific computing libraries, while remaining efficient and supporting hardware accelerators such as GPUs. In this paper, we detail the principles that drove the implementation of PyTorch and how they are reflected in its architecture. We emphasize that every aspect of PyTorch is a regular Python program under the full control of its user. We also explain how the careful and pragmatic implementation of the key components of its runtime enables them to work together to achieve compelling performance. We demonstrate the efficiency of individual subsystems, as well as the overall speed of PyTorch on several common benchmarks.},
+	urldate = {2025-03-05},
+	publisher = {arXiv},
+	author = {Paszke, Adam and Gross, Sam and Massa, Francisco and Lerer, Adam and Bradbury, James and Chanan, Gregory and Killeen, Trevor and Lin, Zeming and Gimelshein, Natalia and Antiga, Luca and Desmaison, Alban and Köpf, Andreas and Yang, Edward and DeVito, Zach and Raison, Martin and Tejani, Alykhan and Chilamkurthy, Sasank and Steiner, Benoit and Fang, Lu and Bai, Junjie and Chintala, Soumith},
+	year = {2019},
+	note = {Version Number: 1},
+	keywords = {FOS: Computer and information sciences, Machine Learning (cs.LG), Machine Learning (stat.ML), Mathematical Software (cs.MS)},
+}
+
+@misc{Abadi-2016,
+	title = {{TensorFlow}: {Large}-{Scale} {Machine} {Learning} on {Heterogeneous} {Distributed} {Systems}},
+	copyright = {arXiv.org perpetual, non-exclusive license},
+	shorttitle = {{TensorFlow}},
+	url = {https://arxiv.org/abs/1603.04467},
+	doi = {10.48550/ARXIV.1603.04467},
+	abstract = {TensorFlow is an interface for expressing machine learning algorithms, and an implementation for executing such algorithms. A computation expressed using TensorFlow can be executed with little or no change on a wide variety of heterogeneous systems, ranging from mobile devices such as phones and tablets up to large-scale distributed systems of hundreds of machines and thousands of computational devices such as GPU cards. The system is flexible and can be used to express a wide variety of algorithms, including training and inference algorithms for deep neural network models, and it has been used for conducting research and for deploying machine learning systems into production across more than a dozen areas of computer science and other fields, including speech recognition, computer vision, robotics, information retrieval, natural language processing, geographic information extraction, and computational drug discovery. This paper describes the TensorFlow interface and an implementation of that interface that we have built at Google. The TensorFlow API and a reference implementation were released as an open-source package under the Apache 2.0 license in November, 2015 and are available at www.tensorflow.org.},
+	urldate = {2025-03-05},
+	publisher = {arXiv},
+	author = {Abadi, Martín and Agarwal, Ashish and Barham, Paul and Brevdo, Eugene and Chen, Zhifeng and Citro, Craig and Corrado, Greg S. and Davis, Andy and Dean, Jeffrey and Devin, Matthieu and Ghemawat, Sanjay and Goodfellow, Ian and Harp, Andrew and Irving, Geoffrey and Isard, Michael and Jia, Yangqing and Jozefowicz, Rafal and Kaiser, Lukasz and Kudlur, Manjunath and Levenberg, Josh and Mane, Dan and Monga, Rajat and Moore, Sherry and Murray, Derek and Olah, Chris and Schuster, Mike and Shlens, Jonathon and Steiner, Benoit and Sutskever, Ilya and Talwar, Kunal and Tucker, Paul and Vanhoucke, Vincent and Vasudevan, Vijay and Viegas, Fernanda and Vinyals, Oriol and Warden, Pete and Wattenberg, Martin and Wicke, Martin and Yu, Yuan and Zheng, Xiaoqiang},
+	year = {2016},
+	note = {Version Number: 2},
+	keywords = {FOS: Computer and information sciences, Machine Learning (cs.LG), Distributed, Parallel, and Cluster Computing (cs.DC)},
+}
+
+@misc{Lundberg-2017,
+	title = {A {Unified} {Approach} to {Interpreting} {Model} {Predictions}},
+	copyright = {arXiv.org perpetual, non-exclusive license},
+	url = {https://arxiv.org/abs/1705.07874},
+	doi = {10.48550/ARXIV.1705.07874},
+	abstract = {Understanding why a model makes a certain prediction can be as crucial as the prediction's accuracy in many applications. However, the highest accuracy for large modern datasets is often achieved by complex models that even experts struggle to interpret, such as ensemble or deep learning models, creating a tension between accuracy and interpretability. In response, various methods have recently been proposed to help users interpret the predictions of complex models, but it is often unclear how these methods are related and when one method is preferable over another. To address this problem, we present a unified framework for interpreting predictions, SHAP (SHapley Additive exPlanations). SHAP assigns each feature an importance value for a particular prediction. Its novel components include: (1) the identification of a new class of additive feature importance measures, and (2) theoretical results showing there is a unique solution in this class with a set of desirable properties. The new class unifies six existing methods, notable because several recent methods in the class lack the proposed desirable properties. Based on insights from this unification, we present new methods that show improved computational performance and/or better consistency with human intuition than previous approaches.},
+	urldate = {2025-03-05},
+	publisher = {arXiv},
+	author = {Lundberg, Scott and Lee, Su-In},
+	year = {2017},
+	note = {Version Number: 2},
+	keywords = {FOS: Computer and information sciences, Machine Learning (cs.LG), Machine Learning (stat.ML), Artificial Intelligence (cs.AI)},
+}
+
+@article{Selvaraju-2016,
+	title = {Grad-{CAM}: {Visual} {Explanations} from {Deep} {Networks} via {Gradient}-based {Localization}},
+	copyright = {arXiv.org perpetual, non-exclusive license},
+	shorttitle = {Grad-{CAM}},
+	url = {https://arxiv.org/abs/1610.02391},
+	doi = {10.48550/ARXIV.1610.02391},
+	abstract = {We propose a technique for producing "visual explanations" for decisions from a large class of CNN-based models, making them more transparent. Our approach - Gradient-weighted Class Activation Mapping (Grad-CAM), uses the gradients of any target concept, flowing into the final convolutional layer to produce a coarse localization map highlighting important regions in the image for predicting the concept. Grad-CAM is applicable to a wide variety of CNN model-families: (1) CNNs with fully-connected layers, (2) CNNs used for structured outputs, (3) CNNs used in tasks with multimodal inputs or reinforcement learning, without any architectural changes or re-training. We combine Grad-CAM with fine-grained visualizations to create a high-resolution class-discriminative visualization and apply it to off-the-shelf image classification, captioning, and visual question answering (VQA) models, including ResNet-based architectures. In the context of image classification models, our visualizations (a) lend insights into their failure modes, (b) are robust to adversarial images, (c) outperform previous methods on localization, (d) are more faithful to the underlying model and (e) help achieve generalization by identifying dataset bias. For captioning and VQA, we show that even non-attention based models can localize inputs. We devise a way to identify important neurons through Grad-CAM and combine it with neuron names to provide textual explanations for model decisions. Finally, we design and conduct human studies to measure if Grad-CAM helps users establish appropriate trust in predictions from models and show that Grad-CAM helps untrained users successfully discern a 'stronger' nodel from a 'weaker' one even when both make identical predictions. Our code is available at https://github.com/ramprs/grad-cam/, along with a demo at http://gradcam.cloudcv.org, and a video at youtu.be/COjUB9Izk6E.},
+	urldate = {2025-03-05},
+	author = {Selvaraju, Ramprasaath R. and Cogswell, Michael and Das, Abhishek and Vedantam, Ramakrishna and Parikh, Devi and Batra, Dhruv},
+	year = {2016},
+	note = {Publisher: arXiv
+Version Number: 4},
+	keywords = {FOS: Computer and information sciences, Machine Learning (cs.LG), Artificial Intelligence (cs.AI), Computer Vision and Pattern Recognition (cs.CV)},
+}
+
+@misc{OShea-2015,
+	title = {An {Introduction} to {Convolutional} {Neural} {Networks}},
+	copyright = {arXiv.org perpetual, non-exclusive license},
+	url = {https://arxiv.org/abs/1511.08458},
+	doi = {10.48550/ARXIV.1511.08458},
+	abstract = {The field of machine learning has taken a dramatic twist in recent times, with the rise of the Artificial Neural Network (ANN). These biologically inspired computational models are able to far exceed the performance of previous forms of artificial intelligence in common machine learning tasks. One of the most impressive forms of ANN architecture is that of the Convolutional Neural Network (CNN). CNNs are primarily used to solve difficult image-driven pattern recognition tasks and with their precise yet simple architecture, offers a simplified method of getting started with ANNs. This document provides a brief introduction to CNNs, discussing recently published papers and newly formed techniques in developing these brilliantly fantastic image recognition models. This introduction assumes you are familiar with the fundamentals of ANNs and machine learning.},
+	urldate = {2025-03-05},
+	publisher = {arXiv},
+	author = {O'Shea, Keiron and Nash, Ryan},
+	year = {2015},
+	note = {Version Number: 2},
+	keywords = {FOS: Computer and information sciences, Machine Learning (cs.LG), Computer Vision and Pattern Recognition (cs.CV), Neural and Evolutionary Computing (cs.NE)},
+}
+
+@misc{Dosovitskiy-2020,
+	title = {An {Image} is {Worth} 16x16 {Words}: {Transformers} for {Image} {Recognition} at {Scale}},
+	copyright = {arXiv.org perpetual, non-exclusive license},
+	shorttitle = {An {Image} is {Worth} 16x16 {Words}},
+	url = {https://arxiv.org/abs/2010.11929},
+	doi = {10.48550/ARXIV.2010.11929},
+	abstract = {While the Transformer architecture has become the de-facto standard for natural language processing tasks, its applications to computer vision remain limited. In vision, attention is either applied in conjunction with convolutional networks, or used to replace certain components of convolutional networks while keeping their overall structure in place. We show that this reliance on CNNs is not necessary and a pure transformer applied directly to sequences of image patches can perform very well on image classification tasks. When pre-trained on large amounts of data and transferred to multiple mid-sized or small image recognition benchmarks (ImageNet, CIFAR-100, VTAB, etc.), Vision Transformer (ViT) attains excellent results compared to state-of-the-art convolutional networks while requiring substantially fewer computational resources to train.},
+	urldate = {2025-03-05},
+	publisher = {arXiv},
+	author = {Dosovitskiy, Alexey and Beyer, Lucas and Kolesnikov, Alexander and Weissenborn, Dirk and Zhai, Xiaohua and Unterthiner, Thomas and Dehghani, Mostafa and Minderer, Matthias and Heigold, Georg and Gelly, Sylvain and Uszkoreit, Jakob and Houlsby, Neil},
+	year = {2020},
+	note = {Version Number: 2},
+	keywords = {FOS: Computer and information sciences, Machine Learning (cs.LG), Artificial Intelligence (cs.AI), Computer Vision and Pattern Recognition (cs.CV)},
+}
+
+@misc{Akkus-2023,
+	title = {Multimodal {Deep} {Learning}},
+	copyright = {Creative Commons Attribution 4.0 International},
+	url = {https://arxiv.org/abs/2301.04856},
+	doi = {10.48550/ARXIV.2301.04856},
+	abstract = {This book is the result of a seminar in which we reviewed multimodal approaches and attempted to create a solid overview of the field, starting with the current state-of-the-art approaches in the two subfields of Deep Learning individually. Further, modeling frameworks are discussed where one modality is transformed into the other, as well as models in which one modality is utilized to enhance representation learning for the other. To conclude the second part, architectures with a focus on handling both modalities simultaneously are introduced. Finally, we also cover other modalities as well as general-purpose multi-modal models, which are able to handle different tasks on different modalities within one unified architecture. One interesting application (Generative Art) eventually caps off this booklet.},
+	urldate = {2025-03-05},
+	publisher = {arXiv},
+	author = {Akkus, Cem and Chu, Luyang and Djakovic, Vladana and Jauch-Walser, Steffen and Koch, Philipp and Loss, Giacomo and Marquardt, Christopher and Moldovan, Marco and Sauter, Nadja and Schneider, Maximilian and Schulte, Rickmer and Urbanczyk, Karol and Goschenhofer, Jann and Heumann, Christian and Hvingelby, Rasmus and Schalk, Daniel and Aßenmacher, Matthias},
+	year = {2023},
+	note = {Version Number: 1},
+	keywords = {FOS: Computer and information sciences, Machine Learning (cs.LG), Machine Learning (stat.ML), Computation and Language (cs.CL)},
+}
+
+@article{CamilaPacheco-Riano-2024,
+	title = {Reliability of presence‐only data for assessing plant community responses to climate warming},
+	volume = {2024},
+	issn = {0906-7590, 1600-0587},
+	url = {https://nsojournals.onlinelibrary.wiley.com/doi/10.1111/ecog.07213},
+	doi = {10.1111/ecog.07213},
+	abstract = {Climate warming has triggered shifts in plant distributions, resulting in changes within communities, characterized by an increase in warm‐demanding species and a decrease in cold‐adapted species – referred to as thermophilization. Researchers conventionally rely on co‐occurrence data from vegetation assemblages to examine these community dynamics. Despite the increasing availability of presence‐only data in recent decades, their potential has largely remained unexplored due to concerns about their reliability. Our study aimed to determine whether climate‐induced changes in community dynamics, as inferred from presence‐only data from the Global Biodiversity Information Facility (GBIF), corresponded with those derived from co‐occurrence plot data. To assess the differences between these datasets, we computed a community temperature index (CTI) using a transfer function, weighted‐averaging partial least squares regression (WA‐PLS). We calibrated the transfect function model based on the species–temperature relationship using data before recent climate warming. Then we assessed the differences in CTI and examined the temporal trend in thermophilization. In a preliminary analysis, we assessed the performance of this calibration using three datasets: 1) Norwegian co‐occurrence data, 2) presence‐only data from a broader European region organized into pseudo‐plots (potentially capturing a larger part of the species niches), and 3) a combined dataset merging 1) and 2). The transfer function including the combined dataset performed best. Subsequently, we compared the CTI for the co‐occurrence plots paired up spatially and temporally with presence‐only pseudo‐plots. The results demonstrated that presence‐only data can effectively evaluate species assemblage responses to climate warming, with consistent CTI and thermophilization values to what was found for the co‐occurrence data. Employing presence‐only data for evaluating community responses opens up better spatial and temporal resolution and much more detailed analyses of such responses. Our results therefore outline how a large amount of presence‐only data can be used to enhance our understanding of community dynamics in a warmer world.},
+	language = {en},
+	number = {7},
+	urldate = {2025-04-04},
+	journal = {Ecography},
+	author = {Camila Pacheco‐Riaño, L. and Rumpf, Sabine and Maliniemi, Tuija and Flantua, Suzette G. A. and Grytnes, John‐Arvid},
+	month = jul,
+	year = {2024},
+	pages = {e07213},
+	file = {Texto completo:files/205/Camila Pacheco‐Riaño et al. - 2024 - Reliability of presence‐only data for assessing pl.pdf:application/pdf},
+}
+
+@article{Christin-2019,
+	title = {Applications for deep learning in ecology},
+	volume = {10},
+	issn = {2041-210X, 2041-210X},
+	url = {https://besjournals.onlinelibrary.wiley.com/doi/10.1111/2041-210X.13256},
+	doi = {10.1111/2041-210X.13256},
+	abstract = {Abstract
+            
+              
+                
+                  A lot of hype has recently been generated around deep learning, a novel group of artificial intelligence approaches able to break accuracy records in pattern recognition. Over the course of just a few years, deep learning has revolutionized several research fields such as bioinformatics and medicine with its flexibility and ability to process large and complex datasets. As ecological datasets are becoming larger and more complex, we believe these methods can be useful to ecologists as well.
+                
+                
+                  In this paper, we review existing implementations and show that deep learning has been used successfully to identify species, classify animal behaviour and estimate biodiversity in large datasets like camera‐trap images, audio recordings and videos. We demonstrate that deep learning can be beneficial to most ecological disciplines, including applied contexts, such as management and conservation.
+                
+                
+                  We also identify common questions about how and when to use deep learning, such as what are the steps required to create a deep learning network, which tools are available to help, and what are the requirements in terms of data and computer power. We provide guidelines, recommendations and useful resources, including a reference flowchart to help ecologists get started with deep learning.
+                
+                
+                  We argue that at a time when automatic monitoring of populations and ecosystems generates a vast amount of data that cannot be effectively processed by humans anymore, deep learning could become a powerful reference tool for ecologists.},
+	language = {en},
+	number = {10},
+	urldate = {2025-05-05},
+	journal = {Methods in Ecology and Evolution},
+	author = {Christin, Sylvain and Hervet, Éric and Lecomte, Nicolas},
+	editor = {Ye, Hao},
+	month = oct,
+	year = {2019},
+	pages = {1632--1644},
+}
+
+@article{Brodrick-2019,
+	title = {Uncovering {Ecological} {Patterns} with {Convolutional} {Neural} {Networks}},
+	volume = {34},
+	issn = {01695347},
+	url = {https://linkinghub.elsevier.com/retrieve/pii/S0169534719300862},
+	doi = {10.1016/j.tree.2019.03.006},
+	language = {en},
+	number = {8},
+	urldate = {2025-05-05},
+	journal = {Trends in Ecology \& Evolution},
+	author = {Brodrick, Philip G. and Davies, Andrew B. and Asner, Gregory P.},
+	month = aug,
+	year = {2019},
+	pages = {734--745},
+}
+
+@article{Lecun-1998,
+	title = {Gradient-based learning applied to document recognition},
+	volume = {86},
+	copyright = {https://ieeexplore.ieee.org/Xplorehelp/downloads/license-information/IEEE.html},
+	issn = {00189219},
+	url = {http://ieeexplore.ieee.org/document/726791/},
+	doi = {10.1109/5.726791},
+	number = {11},
+	urldate = {2025-05-05},
+	journal = {Proceedings of the IEEE},
+	author = {Lecun, Y. and Bottou, L. and Bengio, Y. and Haffner, P.},
+	month = nov,
+	year = {1998},
+	pages = {2278--2324},
+}
+
+@misc{He-2015,
+	title = {Deep {Residual} {Learning} for {Image} {Recognition}},
+	copyright = {arXiv.org perpetual, non-exclusive license},
+	url = {https://arxiv.org/abs/1512.03385},
+	doi = {10.48550/ARXIV.1512.03385},
+	abstract = {Deeper neural networks are more difficult to train. We present a residual learning framework to ease the training of networks that are substantially deeper than those used previously. We explicitly reformulate the layers as learning residual functions with reference to the layer inputs, instead of learning unreferenced functions. We provide comprehensive empirical evidence showing that these residual networks are easier to optimize, and can gain accuracy from considerably increased depth. On the ImageNet dataset we evaluate residual nets with a depth of up to 152 layers---8x deeper than VGG nets but still having lower complexity. An ensemble of these residual nets achieves 3.57\% error on the ImageNet test set. This result won the 1st place on the ILSVRC 2015 classification task. We also present analysis on CIFAR-10 with 100 and 1000 layers. The depth of representations is of central importance for many visual recognition tasks. Solely due to our extremely deep representations, we obtain a 28\% relative improvement on the COCO object detection dataset. Deep residual nets are foundations of our submissions to ILSVRC \&amp; COCO 2015 competitions, where we also won the 1st places on the tasks of ImageNet detection, ImageNet localization, COCO detection, and COCO segmentation.},
+	urldate = {2025-05-05},
+	publisher = {arXiv},
+	author = {He, Kaiming and Zhang, Xiangyu and Ren, Shaoqing and Sun, Jian},
+	year = {2015},
+	note = {Version Number: 1},
+	keywords = {FOS: Computer and information sciences, Computer Vision and Pattern Recognition (cs.CV)},
+}
+
+@article{Leblanc-2024a,
+	title = {A deep‐learning framework for enhancing habitat identification based on species composition},
+	volume = {27},
+	issn = {1402-2001, 1654-109X},
+	url = {https://onlinelibrary.wiley.com/doi/10.1111/avsc.12802},
+	doi = {10.1111/avsc.12802},
+	abstract = {Abstract
+            
+              Aims
+              The accurate classification of habitats is essential for effective biodiversity conservation. The goal of this study was to harness the potential of deep learning to advance habitat identification in Europe. We aimed to develop and evaluate models capable of assigning vegetation‐plot records to the habitats of the European Nature Information System (EUNIS), a widely used reference framework for European habitat types.
+            
+            
+              Location
+              The framework was designed for use in Europe and adjacent areas (e.g., Anatolia, Caucasus).
+            
+            
+              Methods
+              
+                We leveraged deep‐learning techniques, such as transformers (i.e., models with attention components able to learn contextual relations between categorical and numerical features) that we trained using spatial
+                k
+                ‐fold cross‐validation (CV) on vegetation plots sourced from the European Vegetation Archive (EVA), to show that they have great potential for classifying vegetation‐plot records. We tested different network architectures, feature encodings, hyperparameter tuning and noise addition strategies to identify the optimal model. We used an independent test set from the National Plant Monitoring Scheme (NPMS) to evaluate its performance and compare its results against the traditional expert systems.
+              
+            
+            
+              Results
+              Exploration of the use of deep learning applied to species composition and plot‐location criteria for habitat classification led to the development of a framework containing a wide range of models. Our selected algorithm, applied to European habitat types, significantly improved habitat classification accuracy, achieving a more than twofold improvement compared to the previous state‐of‐the‐art (SOTA) method on an external data set, clearly outperforming expert systems. The framework is shared and maintained through a GitHub repository.
+            
+            
+              Conclusions
+              Our results demonstrate the potential benefits of the adoption of deep learning for improving the accuracy of vegetation classification. They highlight the importance of incorporating advanced technologies into habitat monitoring. These algorithms have shown to be better suited for habitat type prediction than expert systems. They push the accuracy score on a database containing hundreds of thousands of standardized presence/absence European surveys to 88.74\%, as assessed by expert judgment. Finally, our results showcase that species dominance is a strong marker of ecosystems and that the exact cover abundance of the flora is not required to train neural networks with predictive performances. The framework we developed can be used by researchers and practitioners to accurately classify habitats.},
+	language = {en},
+	number = {3},
+	urldate = {2025-05-05},
+	journal = {Applied Vegetation Science},
+	author = {Leblanc, César and Bonnet, Pierre and Servajean, Maximilien and Chytrý, Milan and Aćić, Svetlana and Argagnon, Olivier and Bergamini, Ariel and Biurrun, Idoia and Bonari, Gianmaria and Campos, Juan A. and Čarni, Andraž and Ćušterevska, Renata and De Sanctis, Michele and Dengler, Jürgen and Garbolino, Emmanuel and Golub, Valentin and Jandt, Ute and Jansen, Florian and Lebedeva, Maria and Lenoir, Jonathan and Moeslund, Jesper Erenskjold and Pérez‐Haase, Aaron and Pielech, Remigiusz and Šibík, Jozef and Stančić, Zvjezdana and Stanisci, Angela and Swacha, Grzegorz and Uogintas, Domas and Vassilev, Kiril and Wohlgemuth, Thomas and Joly, Alexis},
+	month = jul,
+	year = {2024},
+	pages = {e12802},
+	file = {Texto completo:files/212/Leblanc et al. - 2024 - A deep‐learning framework for enhancing habitat id.pdf:application/pdf},
+}
+
+@article{Ramzan-2020,
+	title = {A {Deep} {Learning} {Approach} for {Automated} {Diagnosis} and {Multi}-{Class} {Classification} of {Alzheimer}’s {Disease} {Stages} {Using} {Resting}-{State} {fMRI} and {Residual} {Neural} {Networks}},
+	volume = {44},
+	issn = {0148-5598, 1573-689X},
+	url = {http://link.springer.com/10.1007/s10916-019-1475-2},
+	doi = {10.1007/s10916-019-1475-2},
+	language = {en},
+	number = {2},
+	urldate = {2025-05-05},
+	journal = {Journal of Medical Systems},
+	author = {Ramzan, Farheen and Khan, Muhammad Usman Ghani and Rehmat, Asim and Iqbal, Sajid and Saba, Tanzila and Rehman, Amjad and Mehmood, Zahid},
+	month = feb,
+	year = {2020},
+	pages = {37},
+}
+
+@article{Mienna-2020,
+	title = {Differential patterns of floristic phylogenetic diversity across a post‐glacial landscape},
+	volume = {47},
+	issn = {0305-0270, 1365-2699},
+	url = {https://onlinelibrary.wiley.com/doi/10.1111/jbi.13789},
+	doi = {10.1111/jbi.13789},
+	abstract = {Abstract
+            
+              Aim
+              In this study, we explored spatial patterns of phylogenetic diversity (PD) and endemism in the flora of Norway and tested hypothesized post‐glacial environmental drivers of PD, including temperature, precipitation, edaphic factors and time since glacial retreat.
+            
+            
+              Location
+              Norway.
+            
+            
+              Taxon
+              Vascular plants (Trachaeophyta).
+            
+            
+              Methods
+              We produced a multi‐locus maximum‐likelihood (ML) phylogeny using a combination of newly produced DNA sequences from herbarium specimens and sequences available from public repositories. We combined the phylogeny with species occurrence data to estimate PD and phylogenetic endemism across Norway, using a spatial randomization to judge statistical significance. We used multiple‐model inference to identify environmental variables that contributed the most to the patterns of PD. Finally, we estimated phylogenetic turnover and used this to identify Norwegian plant assemblages in terms of composition and evolutionary history.
+            
+            
+              Results
+              Our ML phylogeny contained 87\% of all currently described native Norwegian vascular plants. Assemblages were phylogenetically overdispersed in warmer and wetter regions of Norway, as well as in regions with a longer post‐glacial history. In cold and dry regions, plant assemblages were phylogenetically clustered, and characterized by neo‐endemism, while the mild and wet regions were characterized by both paleo‐ and neo‐endemism. PD was positively correlated with summer temperature and habitat heterogeneity, and peaked in the southeast of Norway.
+            
+            
+              Main conclusions
+              Both contemporary ecological factors (climate and habitat heterogeneity), and post‐glacial history seem to have shaped the phylogenetic structure of the flora of Norway. The flora in the far north of Norway appear to be a result of recent diversification while the coastal regions are assemblages of deeper lineages. Our results suggest that there is an evolutionary signal in the distribution of the Norwegian vascular flora.},
+	language = {en},
+	number = {4},
+	urldate = {2025-05-05},
+	journal = {Journal of Biogeography},
+	author = {Mienna, Ida M. and Speed, James D. M. and Bendiksby, Mika and Thornhill, Andrew H. and Mishler, Brent D. and Martin, Michael D.},
+	month = apr,
+	year = {2020},
+	pages = {915--926},
+	file = {Texto completo:files/215/Mienna et al. - 2020 - Differential patterns of floristic phylogenetic di.pdf:application/pdf},
+}
+
+@article{Sandel-2025,
+	title = {Disequilibrium in plant distributions: {Challenges} and approaches for species distribution models},
+	volume = {113},
+	issn = {0022-0477, 1365-2745},
+	shorttitle = {Disequilibrium in plant distributions},
+	url = {https://besjournals.onlinelibrary.wiley.com/doi/10.1111/1365-2745.70009},
+	doi = {10.1111/1365-2745.70009},
+	abstract = {Abstract
+            
+              
+                
+                  Environmental conditions are dynamic, and plants respond to those dynamics on multiple time scales. Disequilibrium occurs when a response occurs more slowly than the driving environmental changes. We review evidence regarding disequilibrium in plant distributions, including their responses to paleoclimate changes, recent climate change and new species introductions. There is strong evidence that plant species distributions are often in some disequilibrium with their environmental conditions.
+                
+                
+                  This disequilibrium poses a challenge when projecting future species distributions using species distribution models (SDMs). Classically, SDMs assume that the set of species occurrences is an unbiased sample of the suitable environmental conditions. However, a species in disequilibrium with the environment may have higher‐than‐expected occurrence probabilities (e.g. due to extinction debts) or lower‐than‐expected occurrence probabilities (e.g. due to dispersal limitation) in different areas. If unaccounted for, this will lead to biased estimates of the environmental suitability.
+                
+                
+                  We review methods for avoiding such biases in SDMs, ranging from simple thinning of the occurrence dataset to complex dynamic and process‐based models. Such models require large data inputs, natural history knowledge and technical expertise, so implementing them can be challenging. Despite this, we advocate for their increased use, since process‐based models provide the best potential to account for biases in model training data and to then represent the dynamics of species occupancy as ranges shift.
+                
+                
+                  
+                    Synthesis
+                    . Occurrence records for a species are often in disequilibrium with climate. SDMs trained on such data will produce biased estimates of a species' niche unless this disequilibrium is addressed in the modelling. A range of tools, spanning a wide gradient of complexity and realism, can resolve this bias.},
+	language = {en},
+	number = {4},
+	urldate = {2025-05-06},
+	journal = {Journal of Ecology},
+	author = {Sandel, Brody and Merow, Cory and Serra‐Diaz, Josep M. and Svenning, Jens‐Christian},
+	month = apr,
+	year = {2025},
+	pages = {782--794},
+}
+
+@misc{Lin-2018,
+	title = {Focal {Loss} for {Dense} {Object} {Detection}},
+	url = {http://arxiv.org/abs/1708.02002},
+	doi = {10.48550/arXiv.1708.02002},
+	abstract = {The highest accuracy object detectors to date are based on a two-stage approach popularized by R-CNN, where a classifier is applied to a sparse set of candidate object locations. In contrast, one-stage detectors that are applied over a regular, dense sampling of possible object locations have the potential to be faster and simpler, but have trailed the accuracy of two-stage detectors thus far. In this paper, we investigate why this is the case. We discover that the extreme foreground-background class imbalance encountered during training of dense detectors is the central cause. We propose to address this class imbalance by reshaping the standard cross entropy loss such that it down-weights the loss assigned to well-classified examples. Our novel Focal Loss focuses training on a sparse set of hard examples and prevents the vast number of easy negatives from overwhelming the detector during training. To evaluate the effectiveness of our loss, we design and train a simple dense detector we call RetinaNet. Our results show that when trained with the focal loss, RetinaNet is able to match the speed of previous one-stage detectors while surpassing the accuracy of all existing state-of-the-art two-stage detectors. Code is at: https://github.com/facebookresearch/Detectron.},
+	urldate = {2025-05-13},
+	publisher = {arXiv},
+	author = {Lin, Tsung-Yi and Goyal, Priya and Girshick, Ross and He, Kaiming and Dollár, Piotr},
+	month = feb,
+	year = {2018},
+	note = {arXiv:1708.02002 [cs]},
+	keywords = {Computer Science - Computer Vision and Pattern Recognition},
+	file = {Preprint PDF:files/218/Lin et al. - 2018 - Focal Loss for Dense Object Detection.pdf:application/pdf;Snapshot:files/219/1708.html:text/html},
+}
+
+@misc{Cui-2019,
+	title = {Class-{Balanced} {Loss} {Based} on {Effective} {Number} of {Samples}},
+	copyright = {arXiv.org perpetual, non-exclusive license},
+	url = {https://arxiv.org/abs/1901.05555},
+	doi = {10.48550/ARXIV.1901.05555},
+	abstract = {With the rapid increase of large-scale, real-world datasets, it becomes critical to address the problem of long-tailed data distribution (i.e., a few classes account for most of the data, while most classes are under-represented). Existing solutions typically adopt class re-balancing strategies such as re-sampling and re-weighting based on the number of observations for each class. In this work, we argue that as the number of samples increases, the additional benefit of a newly added data point will diminish. We introduce a novel theoretical framework to measure data overlap by associating with each sample a small neighboring region rather than a single point. The effective number of samples is defined as the volume of samples and can be calculated by a simple formula \$(1-β{\textasciicircum}\{n\})/(1-β)\$, where \$n\$ is the number of samples and \$β{\textbackslash}in [0,1)\$ is a hyperparameter. We design a re-weighting scheme that uses the effective number of samples for each class to re-balance the loss, thereby yielding a class-balanced loss. Comprehensive experiments are conducted on artificially induced long-tailed CIFAR datasets and large-scale datasets including ImageNet and iNaturalist. Our results show that when trained with the proposed class-balanced loss, the network is able to achieve significant performance gains on long-tailed datasets.},
+	urldate = {2025-05-13},
+	publisher = {arXiv},
+	author = {Cui, Yin and Jia, Menglin and Lin, Tsung-Yi and Song, Yang and Belongie, Serge},
+	year = {2019},
+	note = {Version Number: 1},
+	keywords = {FOS: Computer and information sciences, Computer Vision and Pattern Recognition (cs.CV)},
+}
+
+@article{Yoon-2023,
+	title = {Application of true skill statistics as a practical method for quantitatively assessing {CLIMEX} performance},
+	volume = {146},
+	issn = {1470160X},
+	url = {https://linkinghub.elsevier.com/retrieve/pii/S1470160X22013036},
+	doi = {10.1016/j.ecolind.2022.109830},
+	language = {en},
+	urldate = {2025-05-13},
+	journal = {Ecological Indicators},
+	author = {Yoon, Sunhee and Lee, Wang-Hee},
+	month = feb,
+	year = {2023},
+	pages = {109830},
+}
+
+@article{Brun-2024,
+	title = {Multispecies deep learning using citizen science data produces more informative plant community models},
+	volume = {15},
+	issn = {2041-1723},
+	url = {https://www.nature.com/articles/s41467-024-48559-9},
+	doi = {10.1038/s41467-024-48559-9},
+	abstract = {Abstract
+            In the age of big data, scientific progress is fundamentally limited by our capacity to extract critical information. Here, we map fine-grained spatiotemporal distributions for thousands of species, using deep neural networks (DNNs) and ubiquitous citizen science data. Based on 6.7 M observations, we jointly model the distributions of 2477 plant species and species aggregates across Switzerland with an ensemble of DNNs built with different cost functions. We find that, compared to commonly-used approaches, multispecies DNNs predict species distributions and especially community composition more accurately. Moreover, their design allows investigation of understudied aspects of ecology. Including seasonal variations of observation probability explicitly allows approximating flowering phenology; reweighting predictions to mirror cover-abundance allows mapping potentially canopy-dominant tree species nationwide; and projecting DNNs into the future allows assessing how distributions, phenology, and dominance may change. Given their skill and their versatility, multispecies DNNs can refine our understanding of the distribution of plants and well-sampled taxa in general.},
+	language = {en},
+	number = {1},
+	urldate = {2025-05-13},
+	journal = {Nature Communications},
+	author = {Brun, Philipp and Karger, Dirk N. and Zurell, Damaris and Descombes, Patrice and De Witte, Lucienne C. and De Lutio, Riccardo and Wegner, Jan Dirk and Zimmermann, Niklaus E.},
+	month = may,
+	year = {2024},
+	pages = {4421},
+	file = {Texto completo:files/224/Brun et al. - 2024 - Multispecies deep learning using citizen science d.pdf:application/pdf},
+}
+
+@article{Zhang-2024,
+	title = {A novel hybrid model for species distribution prediction using neural networks and {Grey} {Wolf} {Optimizer} algorithm},
+	volume = {14},
+	issn = {2045-2322},
+	url = {https://www.nature.com/articles/s41598-024-62285-8},
+	doi = {10.1038/s41598-024-62285-8},
+	abstract = {Abstract
+            Neural networks are frequently employed to model species distribution through backpropagation methods, known as backpropagation neural networks (BPNN). However, the complex structure of BPNN introduces parameter settings challenges, such as the determination of connection weights, which can affect the accuracy of model simulation. In this paper, we integrated the Grey Wolf Optimizer (GWO) algorithm, renowned for its excellent global search capacity and rapid convergence, to enhance the performance of BPNN. Then we obtained a novel hybrid algorithm, the Grey Wolf Optimizer algorithm optimized backpropagation neural networks algorithm (GNNA), designed for predicting species’ potential distribution. We also compared the GNNA with four prevalent species distribution models (SDMs), namely the generalized boosting model (GBM), generalized linear model (GLM), maximum entropy (MaxEnt), and random forest (RF). These models were evaluated using three evaluation metrics: the area under the receiver operating characteristic curve, Cohen’s kappa, and the true skill statistic, across 23 varied species. Additionally, we examined the predictive accuracy concerning spatial distribution. The results showed that the predictive performance of GNNA was significantly improved compared to BPNN, was significantly better than that of GLM and GBM, and was even comparable to that of MaxEnt and RF in predicting species distributions with small sample sizes. Furthermore, the GNNA demonstrates exceptional powers in forecasting the potential non-native distribution of invasive plant species.},
+	language = {en},
+	number = {1},
+	urldate = {2025-05-13},
+	journal = {Scientific Reports},
+	author = {Zhang, Hao-Tian and Yang, Ting-Ting and Wang, Wen-Ting},
+	month = may,
+	year = {2024},
+	pages = {11505},
+	file = {Texto completo:files/226/Zhang et al. - 2024 - A novel hybrid model for species distribution pred.pdf:application/pdf},
+}
+
+@article{Rolf-2021,
+	title = {A generalizable and accessible approach to machine learning with global satellite imagery},
+	volume = {12},
+	issn = {2041-1723},
+	url = {https://www.nature.com/articles/s41467-021-24638-z},
+	doi = {10.1038/s41467-021-24638-z},
+	abstract = {Abstract
+            Combining satellite imagery with machine learning (SIML) has the potential to address global challenges by remotely estimating socioeconomic and environmental conditions in data-poor regions, yet the resource requirements of SIML limit its accessibility and use. We show that a single encoding of satellite imagery can generalize across diverse prediction tasks (e.g., forest cover, house price, road length). Our method achieves accuracy competitive with deep neural networks at orders of magnitude lower computational cost, scales globally, delivers label super-resolution predictions, and facilitates characterizations of uncertainty. Since image encodings are shared across tasks, they can be centrally computed and distributed to unlimited researchers, who need only fit a linear regression to their own ground truth data in order to achieve state-of-the-art SIML performance.},
+	language = {en},
+	number = {1},
+	urldate = {2025-05-13},
+	journal = {Nature Communications},
+	author = {Rolf, Esther and Proctor, Jonathan and Carleton, Tamma and Bolliger, Ian and Shankar, Vaishaal and Ishihara, Miyabi and Recht, Benjamin and Hsiang, Solomon},
+	month = jul,
+	year = {2021},
+	pages = {4392},
+	file = {Texto completo:files/228/Rolf et al. - 2021 - A generalizable and accessible approach to machine.pdf:application/pdf},
+}
+
+@article{Estopinan-2022,
+	title = {Deep {Species} {Distribution} {Modeling} {From} {Sentinel}-2 {Image} {Time}-{Series}: {A} {Global} {Scale} {Analysis} on the {Orchid} {Family}},
+	volume = {13},
+	issn = {1664-462X},
+	shorttitle = {Deep {Species} {Distribution} {Modeling} {From} {Sentinel}-2 {Image} {Time}-{Series}},
+	url = {https://www.frontiersin.org/articles/10.3389/fpls.2022.839327/full},
+	doi = {10.3389/fpls.2022.839327},
+	abstract = {Species distribution models (SDMs) are widely used numerical tools that rely on correlations between geolocated presences (and possibly absences) and environmental predictors to model the ecological preferences of species. Recently, SDMs exploiting deep learning and remote sensing images have emerged and have demonstrated high predictive performance. In particular, it has been shown that one of the key advantages of these models (called deep-SDMs) is their ability to capture the spatial structure of the landscape, unlike prior models. In this paper, we examine whether the temporal dimension of remote sensing images can also be exploited by deep-SDMs. Indeed, satellites such as Sentinel-2 are now providing data with a high temporal revisit, and it is likely that the resulting time-series of images contain relevant information about the seasonal variations of the environment and vegetation. To confirm this hypothesis, we built a substantial and original dataset (called
+              DeepOrchidSeries
+              ) aimed at modeling the distribution of orchids on a global scale based on Sentinel-2 image time series. It includes around 1 million occurrences of orchids worldwide, each being paired with a 12-month-long time series of high-resolution images (640 x 640 m RGB+IR patches centered on the geolocated observations). This ambitious dataset enabled us to train several deep-SDMs based on convolutional neural networks (CNNs) whose input was extended to include the temporal dimension. To quantify the contribution of the temporal dimension, we designed a novel interpretability methodology based on temporal permutation tests, temporal sampling, and temporal averaging. We show that the predictive performance of the model is greatly increased by the seasonality information contained in the temporal series. In particular, occurrence-poor species and diversity-rich regions are the ones that benefit the most from this improvement, revealing the importance of habitat's temporal dynamics to characterize species distribution.},
+	urldate = {2025-05-13},
+	journal = {Frontiers in Plant Science},
+	author = {Estopinan, Joaquim and Servajean, Maximilien and Bonnet, Pierre and Munoz, François and Joly, Alexis},
+	month = apr,
+	year = {2022},
+	pages = {839327},
+	file = {Texto completo:files/230/Estopinan et al. - 2022 - Deep Species Distribution Modeling From Sentinel-2.pdf:application/pdf},
+}
+
+@inproceedings{Chen-2024,
+	address = {Atlanta GA USA},
+	title = {{MiTREE}: {Multi}-input {Transformer} {Ecoregion} {Encoder} for {Species} {Distribution} {Modelling}},
+	isbn = {9798400711763},
+	shorttitle = {{MiTREE}},
+	url = {https://dl.acm.org/doi/10.1145/3687123.3698297},
+	doi = {10.1145/3687123.3698297},
+	language = {en},
+	urldate = {2025-05-13},
+	booktitle = {Proceedings of the 7th {ACM} {SIGSPATIAL} {International} {Workshop} on {AI} for {Geographic} {Knowledge} {Discovery}},
+	publisher = {ACM},
+	author = {Chen, Theresa and Chiang, Yao-Yi},
+	month = oct,
+	year = {2024},
+	pages = {110--120},
+}
+
+@article{Choe-2021,
+	title = {Mapping {Potential} {Plant} {Species} {Richness} over {Large} {Areas} with {Deep} {Learning}, {MODIS}, and {Species} {Distribution} {Models}},
+	volume = {13},
+	copyright = {https://creativecommons.org/licenses/by/4.0/},
+	issn = {2072-4292},
+	url = {https://www.mdpi.com/2072-4292/13/13/2490},
+	doi = {10.3390/rs13132490},
+	abstract = {The spatial patterns of species richness can be used as indicators for conservation and restoration, but data problems, including the lack of species surveys and geographical data gaps, are obstacles to mapping species richness across large areas. Lack of species data can be overcome with remote sensing because it covers extended geographic areas and generates recurring data. We developed a Deep Learning (DL) framework using Moderate Resolution Imaging Spectroradiometer (MODIS) products and modeled potential species richness by stacking species distribution models (S-SDMs) to ask, “What are the spatial patterns of potential plant species richness across the Korean Peninsula, including inaccessible North Korea, where survey data are limited?” First, we estimated plant species richness in South Korea by combining the probability-based SDM results of 1574 species and used independent plant surveys to validate our potential species richness maps. Next, DL-based species richness models were fitted to the species richness results in South Korea, and a time-series of the normalized difference vegetation index (NDVI) and leaf area index (LAI) from MODIS. The individually developed models from South Korea were statistically tested using datasets that were not used in model training and obtained high accuracy outcomes (0.98, Pearson correlation). Finally, the proposed models were combined to estimate the richness patterns across the Korean Peninsula at a higher spatial resolution than the species survey data. From the statistical feature importance tests overall, growing season NDVI-related features were more important than LAI features for quantifying biodiversity from remote sensing time-series data.},
+	language = {en},
+	number = {13},
+	urldate = {2025-05-13},
+	journal = {Remote Sensing},
+	author = {Choe, Hyeyeong and Chi, Junhwa and Thorne, James H.},
+	month = jun,
+	year = {2021},
+	pages = {2490},
+	file = {Texto completo:files/235/Choe et al. - 2021 - Mapping Potential Plant Species Richness over Larg.pdf:application/pdf},
+}
