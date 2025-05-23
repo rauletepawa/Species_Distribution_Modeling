@@ -1198,3 +1198,343 @@ Version Number: 4},
 	author = {Moen, Asbjørn},
 	year = {1999},
 }
+
+@misc{Touvron-2020,
+	title = {Training data-efficient image transformers \&amp; distillation through attention},
+	copyright = {arXiv.org perpetual, non-exclusive license},
+	url = {https://arxiv.org/abs/2012.12877},
+	doi = {10.48550/ARXIV.2012.12877},
+	abstract = {Recently, neural networks purely based on attention were shown to address image understanding tasks such as image classification. However, these visual transformers are pre-trained with hundreds of millions of images using an expensive infrastructure, thereby limiting their adoption. In this work, we produce a competitive convolution-free transformer by training on Imagenet only. We train them on a single computer in less than 3 days. Our reference vision transformer (86M parameters) achieves top-1 accuracy of 83.1\% (single-crop evaluation) on ImageNet with no external data. More importantly, we introduce a teacher-student strategy specific to transformers. It relies on a distillation token ensuring that the student learns from the teacher through attention. We show the interest of this token-based distillation, especially when using a convnet as a teacher. This leads us to report results competitive with convnets for both Imagenet (where we obtain up to 85.2\% accuracy) and when transferring to other tasks. We share our code and models.},
+	urldate = {2025-05-13},
+	publisher = {arXiv},
+	author = {Touvron, Hugo and Cord, Matthieu and Douze, Matthijs and Massa, Francisco and Sablayrolles, Alexandre and Jégou, Hervé},
+	year = {2020},
+	note = {Version Number: 2},
+	keywords = {FOS: Computer and information sciences, Computer Vision and Pattern Recognition (cs.CV)},
+}
+
+@misc{Loshchilov-2017,
+	title = {Decoupled {Weight} {Decay} {Regularization}},
+	copyright = {arXiv.org perpetual, non-exclusive license},
+	url = {https://arxiv.org/abs/1711.05101},
+	doi = {10.48550/ARXIV.1711.05101},
+	abstract = {L\$\_2\$ regularization and weight decay regularization are equivalent for standard stochastic gradient descent (when rescaled by the learning rate), but as we demonstrate this is {\textbackslash}emph\{not\} the case for adaptive gradient algorithms, such as Adam. While common implementations of these algorithms employ L\$\_2\$ regularization (often calling it "weight decay" in what may be misleading due to the inequivalence we expose), we propose a simple modification to recover the original formulation of weight decay regularization by {\textbackslash}emph\{decoupling\} the weight decay from the optimization steps taken w.r.t. the loss function. We provide empirical evidence that our proposed modification (i) decouples the optimal choice of weight decay factor from the setting of the learning rate for both standard SGD and Adam and (ii) substantially improves Adam's generalization performance, allowing it to compete with SGD with momentum on image classification datasets (on which it was previously typically outperformed by the latter). Our proposed decoupled weight decay has already been adopted by many researchers, and the community has implemented it in TensorFlow and PyTorch; the complete source code for our experiments is available at https://github.com/loshchil/AdamW-and-SGDW},
+	urldate = {2025-05-13},
+	publisher = {arXiv},
+	author = {Loshchilov, Ilya and Hutter, Frank},
+	year = {2017},
+	note = {Version Number: 3},
+	keywords = {FOS: Computer and information sciences, Machine Learning (cs.LG), Neural and Evolutionary Computing (cs.NE), FOS: Mathematics, Optimization and Control (math.OC)},
+}
+
+@article{Pedregosa-2012a,
+	title = {Scikit-learn: {Machine} {Learning} in {Python}},
+	copyright = {arXiv.org perpetual, non-exclusive license},
+	shorttitle = {Scikit-learn},
+	url = {https://arxiv.org/abs/1201.0490},
+	doi = {10.48550/ARXIV.1201.0490},
+	abstract = {Scikit-learn is a Python module integrating a wide range of state-of-the-art machine learning algorithms for medium-scale supervised and unsupervised problems. This package focuses on bringing machine learning to non-specialists using a general-purpose high-level language. Emphasis is put on ease of use, performance, documentation, and API consistency. It has minimal dependencies and is distributed under the simplified BSD license, encouraging its use in both academic and commercial settings. Source code, binaries, and documentation can be downloaded from http://scikit-learn.org.},
+	urldate = {2025-05-13},
+	author = {Pedregosa, Fabian and Varoquaux, Gaël and Gramfort, Alexandre and Michel, Vincent and Thirion, Bertrand and Grisel, Olivier and Blondel, Mathieu and Müller, Andreas and Nothman, Joel and Louppe, Gilles and Prettenhofer, Peter and Weiss, Ron and Dubourg, Vincent and Vanderplas, Jake and Passos, Alexandre and Cournapeau, David and Brucher, Matthieu and Perrot, Matthieu and Duchesnay, Édouard},
+	year = {2012},
+	note = {Publisher: arXiv
+Version Number: 4},
+	keywords = {FOS: Computer and information sciences, Machine Learning (cs.LG), Mathematical Software (cs.MS)},
+}
+
+@article{Aldridge-2009,
+	title = {Performance of a {Finite}-{State} {Machine} {Implementation} of {Iterative} {Cluster} {Labeling} on {Desktop} and {Mobile} {Computing} {Platforms}},
+	volume = {21},
+	copyright = {https://ieeexplore.ieee.org/Xplorehelp/downloads/license-information/IEEE.html},
+	issn = {1041-4347},
+	url = {http://ieeexplore.ieee.org/document/4752822/},
+	doi = {10.1109/TKDE.2009.19},
+	number = {11},
+	urldate = {2025-05-13},
+	journal = {IEEE Transactions on Knowledge and Data Engineering},
+	author = {Aldridge, M.L. and Berry, M.W.},
+	month = nov,
+	year = {2009},
+	pages = {1604--1616},
+}
+
+@incollection{Torrey-2010,
+	title = {Transfer {Learning}:},
+	isbn = {978-1-60566-766-9 978-1-60566-767-6},
+	shorttitle = {Transfer {Learning}},
+	url = {http://services.igi-global.com/resolvedoi/resolve.aspx?doi=10.4018/978-1-60566-766-9.ch011},
+	abstract = {Transfer learning is the improvement of learning in a new task through the transfer of knowledge from a related task that has already been learned. While most machine learning algorithms are designed to address single tasks, the development of algorithms that facilitate transfer learning is a topic of ongoing interest in the machine-learning community. This chapter provides an introduction to the goals, settings, and challenges of transfer learning. It surveys current research in this area, giving an overview of the state of the art and outlining the open problems. The survey covers transfer in both inductive learning and reinforcement learning, and discusses the issues of negative transfer and task mapping.},
+	urldate = {2025-05-13},
+	booktitle = {Handbook of {Research} on {Machine} {Learning} {Applications} and {Trends}},
+	publisher = {IGI Global},
+	author = {Torrey, Lisa and Shavlik, Jude},
+	editor = {Olivas, Emilio Soria and Guerrero, José David Martín and Martinez-Sober, Marcelino and Magdalena-Benedito, Jose Rafael and Serrano López, Antonio José},
+	year = {2010},
+	doi = {10.4018/978-1-60566-766-9.ch011},
+	pages = {242--264},
+}
+
+@misc{McInnes-2018,
+	title = {{UMAP}: {Uniform} {Manifold} {Approximation} and {Projection} for {Dimension} {Reduction}},
+	copyright = {arXiv.org perpetual, non-exclusive license},
+	shorttitle = {{UMAP}},
+	url = {https://arxiv.org/abs/1802.03426},
+	doi = {10.48550/ARXIV.1802.03426},
+	abstract = {UMAP (Uniform Manifold Approximation and Projection) is a novel manifold learning technique for dimension reduction. UMAP is constructed from a theoretical framework based in Riemannian geometry and algebraic topology. The result is a practical scalable algorithm that applies to real world data. The UMAP algorithm is competitive with t-SNE for visualization quality, and arguably preserves more of the global structure with superior run time performance. Furthermore, UMAP has no computational restrictions on embedding dimension, making it viable as a general purpose dimension reduction technique for machine learning.},
+	urldate = {2025-05-13},
+	publisher = {arXiv},
+	author = {McInnes, Leland and Healy, John and Melville, James},
+	year = {2018},
+	note = {Version Number: 3},
+	keywords = {FOS: Computer and information sciences, Machine Learning (cs.LG), Machine Learning (stat.ML), Computational Geometry (cs.CG)},
+}
+
+@misc{Kokhlikyan-2020,
+	title = {Captum: {A} unified and generic model interpretability library for {PyTorch}},
+	copyright = {arXiv.org perpetual, non-exclusive license},
+	shorttitle = {Captum},
+	url = {https://arxiv.org/abs/2009.07896},
+	doi = {10.48550/ARXIV.2009.07896},
+	abstract = {In this paper we introduce a novel, unified, open-source model interpretability library for PyTorch [12]. The library contains generic implementations of a number of gradient and perturbation-based attribution algorithms, also known as feature, neuron and layer importance algorithms, as well as a set of evaluation metrics for these algorithms. It can be used for both classification and non-classification models including graph-structured models built on Neural Networks (NN). In this paper we give a high-level overview of supported attribution algorithms and show how to perform memory-efficient and scalable computations. We emphasize that the three main characteristics of the library are multimodality, extensibility and ease of use. Multimodality supports different modality of inputs such as image, text, audio or video. Extensibility allows adding new algorithms and features. The library is also designed for easy understanding and use. Besides, we also introduce an interactive visualization tool called Captum Insights that is built on top of Captum library and allows sample-based model debugging and visualization using feature importance metrics.},
+	urldate = {2025-05-13},
+	publisher = {arXiv},
+	author = {Kokhlikyan, Narine and Miglani, Vivek and Martin, Miguel and Wang, Edward and Alsallakh, Bilal and Reynolds, Jonathan and Melnikov, Alexander and Kliushkina, Natalia and Araya, Carlos and Yan, Siqi and Reblitz-Richardson, Orion},
+	year = {2020},
+	note = {Version Number: 1},
+	keywords = {FOS: Computer and information sciences, Machine Learning (cs.LG), Machine Learning (stat.ML), Artificial Intelligence (cs.AI)},
+}
+
+@misc{Sundararajan-2017,
+	title = {Axiomatic {Attribution} for {Deep} {Networks}},
+	copyright = {arXiv.org perpetual, non-exclusive license},
+	url = {https://arxiv.org/abs/1703.01365},
+	doi = {10.48550/ARXIV.1703.01365},
+	abstract = {We study the problem of attributing the prediction of a deep network to its input features, a problem previously studied by several other works. We identify two fundamental axioms---Sensitivity and Implementation Invariance that attribution methods ought to satisfy. We show that they are not satisfied by most known attribution methods, which we consider to be a fundamental weakness of those methods. We use the axioms to guide the design of a new attribution method called Integrated Gradients. Our method requires no modification to the original network and is extremely simple to implement; it just needs a few calls to the standard gradient operator. We apply this method to a couple of image models, a couple of text models and a chemistry model, demonstrating its ability to debug networks, to extract rules from a network, and to enable users to engage with models better.},
+	urldate = {2025-05-13},
+	publisher = {arXiv},
+	author = {Sundararajan, Mukund and Taly, Ankur and Yan, Qiqi},
+	year = {2017},
+	note = {Version Number: 2},
+	keywords = {FOS: Computer and information sciences, Machine Learning (cs.LG)},
+}
+
+@misc{Kapoor-2022,
+	title = {Leakage and the {Reproducibility} {Crisis} in {ML}-based {Science}},
+	copyright = {arXiv.org perpetual, non-exclusive license},
+	url = {https://arxiv.org/abs/2207.07048},
+	doi = {10.48550/ARXIV.2207.07048},
+	abstract = {The use of machine learning (ML) methods for prediction and forecasting has become widespread across the quantitative sciences. However, there are many known methodological pitfalls, including data leakage, in ML-based science. In this paper, we systematically investigate reproducibility issues in ML-based science. We show that data leakage is indeed a widespread problem and has led to severe reproducibility failures. Specifically, through a survey of literature in research communities that adopted ML methods, we find 17 fields where errors have been found, collectively affecting 329 papers and in some cases leading to wildly overoptimistic conclusions. Based on our survey, we present a fine-grained taxonomy of 8 types of leakage that range from textbook errors to open research problems. We argue for fundamental methodological changes to ML-based science so that cases of leakage can be caught before publication. To that end, we propose model info sheets for reporting scientific claims based on ML models that would address all types of leakage identified in our survey. To investigate the impact of reproducibility errors and the efficacy of model info sheets, we undertake a reproducibility study in a field where complex ML models are believed to vastly outperform older statistical models such as Logistic Regression (LR): civil war prediction. We find that all papers claiming the superior performance of complex ML models compared to LR models fail to reproduce due to data leakage, and complex ML models don't perform substantively better than decades-old LR models. While none of these errors could have been caught by reading the papers, model info sheets would enable the detection of leakage in each case.},
+	urldate = {2025-05-15},
+	publisher = {arXiv},
+	author = {Kapoor, Sayash and Narayanan, Arvind},
+	year = {2022},
+	note = {Version Number: 1},
+	keywords = {FOS: Computer and information sciences, Machine Learning (cs.LG), Artificial Intelligence (cs.AI), Methodology (stat.ME)},
+}
+
+@article{Deschamps-2023,
+	title = {Predict first–assemble later versus assemble first–predict later: {Revisiting} the dilemma for functional biogeography},
+	volume = {14},
+	issn = {2041-210X, 2041-210X},
+	shorttitle = {Predict first–assemble later versus assemble first–predict later},
+	url = {https://besjournals.onlinelibrary.wiley.com/doi/10.1111/2041-210X.14203},
+	doi = {10.1111/2041-210X.14203},
+	abstract = {Abstract
+            
+              
+                
+                  
+                    Predicting community‐level trait indices, such as community‐weighted mean or functional dispersion, in space or time, is crucial, as they are markers of ecosystem functions, proxies for ecosystem services, and are now integral part of conservation planning. On one hand, since members of a species share similar traits, a natural way is to model species distributions as a function of the environment first (i.e. with species distribution models), and then to reconstruct trait indices for any locality of interest (
+                    predict‐first
+                    ). On the other hand, community‐level trait indices can be seen as the direct result of environmental filtering, and thus their distributions may directly be modelled in response to the environment (
+                    assemble‐first
+                    ). Although relatively different, these two approaches have been used interchangeably in trait‐based ecology with unknown consequences on their usability.
+                  
+                
+                
+                  Here, using plant community (4463 plots) and trait data (LNC, leaf nitrogen content; PLH, plant height; SLA, specific leaf area, for {\textgreater}800 species) covering the French Alps, we compared the two approaches to predict community mean and functional dispersion indices, accounting or not for abundance (CM, community mean; CWM, community weighted mean; FDis, functional dispersion; uFDis, unweighted functional dispersion). We tested both interpolation versus extrapolation capabilities of the two approaches. To support the empirical findings, we also run the same comparative analysis on simulated community data.
+                
+                
+                  
+                    While both approaches produced similar and skillful CM/CWM predictions (
+                    R
+                    2
+                     {\textgreater} 0.63 for CWM PLH) for interpolation, the assemble‐first outperformed the predict‐first approach for extrapolation to unobserved environmental conditions (
+                    R
+                    2
+                     = 0.60 against 0.54 for CWM PLH). Functional dispersion was generally less well predicted, although the assemble‐first approach again provided better predictions for both interpolation (
+                    R
+                    2
+                     = 0.31 against 0.27 for FDis PLH) and extrapolation (
+                    R
+                    2
+                     = 0.28 against 0.18 for FDis PLH). The predict‐first approach systematically overestimated FDis. Results were confirmed by the simulation experiments.
+                  
+                
+                
+                  We conclude that the direct modelling of community‐level indices provides more robust spatial predictions over space and time and should thus be preferred. This approach also does not suffer from having generally too many species predicted by the predict‐first approach.},
+	language = {en},
+	number = {10},
+	urldate = {2025-05-15},
+	journal = {Methods in Ecology and Evolution},
+	author = {Deschamps, Gabrielle and Poggiato, Giovanni and Brun, Philipp and Galiez, Clovis and Thuiller, Wilfried},
+	month = oct,
+	year = {2023},
+	pages = {2680--2696},
+	file = {Texto completo:C\:\\Users\\Usuario\\Zotero\\storage\\VAWPW2A4\\Deschamps et al. - 2023 - Predict first–assemble later versus assemble first.pdf:application/pdf},
+}
+
+@article{Grytnes-1999,
+	title = {Plant species richness in {Fennoscandia}: evaluating the relative importance of climate and history},
+	volume = {19},
+	issn = {0107-055X, 1756-1051},
+	shorttitle = {Plant species richness in {Fennoscandia}},
+	url = {https://onlinelibrary.wiley.com/doi/10.1111/j.1756-1051.1999.tb01233.x},
+	doi = {10.1111/j.1756-1051.1999.tb01233.x},
+	abstract = {In Fennoscandia, the species richness of vascular plants in 75 × 75 km squares is highly correlated with geographical (latitude and longitude) and climatic variables (accumulated respiration sum, mean January temperature, and mean July temperature). When generalised additive models (GAM) are used, over 80\% of the variation in richness can be statistically explained by geography and climate. Even though climate has such a high explanatory power we present several arguments for interpreting these results with care. Climate has no ecologically sound explanatory power when the variation due to latitude and longitude is accounted for, and the strongest latitudinal gradient in summer temperature is in an area where the latitudinal gradient in species richness is absent. We discuss the role that Holocene history might have on the variation in species richness, and argue that history and climate should be considered simultaneously when explaining the observed patterns in the geographical variation of species richness.},
+	language = {en},
+	number = {4},
+	urldate = {2025-05-15},
+	journal = {Nordic Journal of Botany},
+	author = {Grytnes, John Arvid and Birks, H. J. B. and Peglar, Sylvia M.},
+	month = aug,
+	year = {1999},
+	pages = {489--503},
+	file = {Grytnes et al. - 1999 - Plant species richness in Fennoscandia evaluating.pdf:C\:\\Users\\Usuario\\Zotero\\storage\\6MGYL7GB\\Grytnes et al. - 1999 - Plant species richness in Fennoscandia evaluating.pdf:application/pdf},
+}
+
+@book{Kdegaldegas-2010,
+	address = {Trondheim},
+	title = {Environmental conditions and impacts for red list species},
+	isbn = {978-82-92838-28-0},
+	language = {eng},
+	publisher = {Norwegian Biodiversity Information Centre},
+	collaborator = {K°al°as, John Atle},
+	year = {2010},
+	note = {OCLC: 918258948},
+}
+
+@article{Rohde-1992,
+	title = {Latitudinal {Gradients} in {Species} {Diversity}: {The} {Search} for the {Primary} {Cause}},
+	volume = {65},
+	issn = {00301299},
+	shorttitle = {Latitudinal {Gradients} in {Species} {Diversity}},
+	url = {https://www.jstor.org/stable/3545569?origin=crossref},
+	doi = {10.2307/3545569},
+	number = {3},
+	urldate = {2025-05-15},
+	journal = {Oikos},
+	author = {Rohde, Klaus},
+	month = dec,
+	year = {1992},
+	pages = {514},
+}
+
+@article{Takola-2022,
+	title = {Hutchinson’s ecological niche for individuals},
+	volume = {37},
+	issn = {0169-3867, 1572-8404},
+	url = {https://link.springer.com/10.1007/s10539-022-09849-y},
+	doi = {10.1007/s10539-022-09849-y},
+	abstract = {Abstract
+            We here develop a concept of an individualized niche in analogy to Hutchison’s population-level concept of the ecological niche. We consider the individualized (ecological) niche as the range of environmental conditions under which a particular individual has an expected lifetime reproductive success of ≥ 1. Our concept has primarily an ecological function, as it refers to the match of an individual phenotype to its contemporary environment (niche fit) while we discuss evolutionary fitness as an evaluative parameter of this fit. We address four specific challenges that occur when scaling the niche down from populations to individuals. In particular, we discuss (1) the consequences of uniqueness of individuals in a population and the corresponding lack of statistical replication, (2) the dynamic nature of individualized niches and how they can be studied either as time-slice niches, as prospective niches or as trajectory-based niches, (3) the dimensionality of the individualized niche, that is greater than the population niche due to the additional dimensions of intra-specific niche space, (4) how the boundaries of individualized niche space can be defined by expected lifetime reproductive success and how expected reproductive success can be inferred by marginalizing fitness functions across phenotypes or environments. We frame our discussion in the context of recent interest in the causes and consequences of individual differences in animal behavior.},
+	language = {en},
+	number = {4},
+	urldate = {2025-05-15},
+	journal = {Biology \& Philosophy},
+	author = {Takola, Elina and Schielzeth, Holger},
+	month = aug,
+	year = {2022},
+	pages = {25},
+	file = {Texto completo:C\:\\Users\\Usuario\\Zotero\\storage\\Y65ZFX8R\\Takola y Schielzeth - 2022 - Hutchinson’s ecological niche for individuals.pdf:application/pdf},
+}
+
+@article{article,
+	title = {The {HIRHAM} regional climate model version 5 (beta)},
+	journal = {DMI Technical Report 06-17},
+	author = {Christensen, Ole and Drews, Martin and Christensen, Jens and Dethloff, Klaus and Hebestadt, Ines and Ketelsen, Klaus and Rinke, Annette},
+	month = jan,
+	year = {2007},
+}
+
+@misc{Artsdatabanken-2024,
+	title = {Species {Map} {Service} ({Artskart})},
+	url = {https://artsdatabanken.no/},
+	urldate = {2025-05-19},
+	author = {Artsdatabanken},
+	year = {2024},
+}
+
+@techreport{RaulPerezPrats-2025,
+	title = {Species {Distribution} {Modelling}},
+	url = {https://github.com/rauletepawa/Species_Distribution_Modeling},
+	institution = {GitHub},
+	author = {Raúl Pérez Prats},
+	year = {2025},
+}
+
+@article{Speed-2013,
+	title = {The {Response} of {Alpine} \textit{{Salix}} {Shrubs} to {Long}-{Term} {Browsing} {Varies} with {Elevation} and {Herbivore} {Density}},
+	volume = {45},
+	issn = {1523-0430, 1938-4246},
+	url = {https://www.tandfonline.com/doi/full/10.1657/1938-4246-45.4.584},
+	doi = {10.1657/1938-4246-45.4.584},
+	language = {en},
+	number = {4},
+	urldate = {2025-05-20},
+	journal = {Arctic, Antarctic, and Alpine Research},
+	author = {Speed, James D. M. and Austrheim, Gunnar and Hester, Alison J. and Mysterud, Atle},
+	month = nov,
+	year = {2013},
+	pages = {584--593},
+	file = {Texto completo:C\:\\Users\\Usuario\\Zotero\\storage\\7FUFIZ94\\Speed et al. - 2013 - The Response of Alpine Salix Shrubs to Long.pdf:application/pdf},
+}
+
+@article{Ikotun-2023,
+	title = {K-means clustering algorithms: {A} comprehensive review, variants analysis, and advances in the era of big data},
+	volume = {622},
+	issn = {00200255},
+	shorttitle = {K-means clustering algorithms},
+	url = {https://linkinghub.elsevier.com/retrieve/pii/S0020025522014633},
+	doi = {10.1016/j.ins.2022.11.139},
+	language = {en},
+	urldate = {2025-05-21},
+	journal = {Information Sciences},
+	author = {Ikotun, Abiodun M. and Ezugwu, Absalom E. and Abualigah, Laith and Abuhaija, Belal and Heming, Jia},
+	month = apr,
+	year = {2023},
+	pages = {178--210},
+}
+
+@misc{Vaswani-2017,
+	title = {Attention {Is} {All} {You} {Need}},
+	copyright = {arXiv.org perpetual, non-exclusive license},
+	url = {https://arxiv.org/abs/1706.03762},
+	doi = {10.48550/ARXIV.1706.03762},
+	abstract = {The dominant sequence transduction models are based on complex recurrent or convolutional neural networks in an encoder-decoder configuration. The best performing models also connect the encoder and decoder through an attention mechanism. We propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely. Experiments on two machine translation tasks show these models to be superior in quality while being more parallelizable and requiring significantly less time to train. Our model achieves 28.4 BLEU on the WMT 2014 English-to-German translation task, improving over the existing best results, including ensembles by over 2 BLEU. On the WMT 2014 English-to-French translation task, our model establishes a new single-model state-of-the-art BLEU score of 41.8 after training for 3.5 days on eight GPUs, a small fraction of the training costs of the best models from the literature. We show that the Transformer generalizes well to other tasks by applying it successfully to English constituency parsing both with large and limited training data.},
+	urldate = {2025-05-21},
+	publisher = {arXiv},
+	author = {Vaswani, Ashish and Shazeer, Noam and Parmar, Niki and Uszkoreit, Jakob and Jones, Llion and Gomez, Aidan N. and Kaiser, Lukasz and Polosukhin, Illia},
+	year = {2017},
+	note = {Version Number: 7},
+	keywords = {FOS: Computer and information sciences, Machine Learning (cs.LG), Computation and Language (cs.CL)},
+}
+
+@article{Karger-2020,
+	title = {High-resolution monthly precipitation and temperature time series from 2006 to 2100},
+	volume = {7},
+	copyright = {https://creativecommons.org/licenses/by/4.0},
+	issn = {2052-4463},
+	url = {https://www.nature.com/articles/s41597-020-00587-y},
+	doi = {10.1038/s41597-020-00587-y},
+	abstract = {AbstractPredicting future climatic conditions at high spatial resolution is essential for many applications and impact studies in science. Here, we present monthly time series data on precipitation, minimum- and maximum temperature for four downscaled global circulation models. We used model output statistics in combination with mechanistic downscaling (the CHELSA algorithm) to calculate mean monthly maximum and minimum temperatures, as well as monthly precipitation at {\textasciitilde}5 km spatial resolution globally for the years 2006–2100. We validated the performance of the downscaling algorithm by comparing model output with the observed climate of the historical period 1950–1969.},
+	language = {en},
+	number = {1},
+	urldate = {2025-05-23},
+	journal = {Scientific Data},
+	author = {Karger, Dirk Nikolaus and Schmatz, Dirk R. and Dettling, Gabriel and Zimmermann, Niklaus E.},
+	month = jul,
+	year = {2020},
+	note = {Publisher: Springer Science and Business Media LLC},
+	file = {Texto completo:C\:\\Users\\Usuario\\Zotero\\storage\\IZV8EGM2\\Karger et al. - 2020 - High-resolution monthly precipitation and temperat.pdf:application/pdf},
+}
