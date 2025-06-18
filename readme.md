@@ -1,4 +1,4 @@
-# Repository Masters Thesis Project
+# Deep Learning Approaches for Modelling Vascular Plant Assemblage Compositionin Norway Using Satellite Environmental  Data
 
 ## Table of Contents
 
